@@ -1,0 +1,29 @@
+{
+  "benchmark_name": "AirCypher-150",
+  "total_queries": 150,
+  "categories": {
+    "Aggregate": 38,
+    "Station Filtering": 30,
+    "Temporal": 30,
+    "Health Risk": 30,
+    "Comparative": 22
+  },
+  "complexity": {
+    "simple": 8,
+    "medium": 69,
+    "complex": 73
+  },
+  "logical_forms": 13,
+  "prefectures_covered": 43,
+  "execution_stats": {
+    "min_execution_time_s": 0.2,
+    "max_execution_time_s": 9.6,
+    "mean_execution_time_s": 2.03,
+    "median_execution_time_s": 1.43
+  },
+  "validation": {
+    "all_queries_execute": true,
+    "all_results_non_empty": true,
+    "all_values_verified_in_graph": true
+  }
+}

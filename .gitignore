@@ -1,0 +1,12 @@
+# Neo4j database dump — too large for Git (6.1 GB)
+# Distribute separately; see 01_knowledge_graph/neo4j_backup/README_BACKUP.md
+01_knowledge_graph/neo4j_backup/jpm2kg.dump
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db

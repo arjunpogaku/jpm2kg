@@ -1,0 +1,41 @@
+{
+  "graph_name": "JPM2KG",
+  "description": "Japan PM2.5 Knowledge Graph",
+  "node_types": [
+    {
+      "label": "Station",
+      "count": 1116,
+      "properties": ["stationId", "stationName", "stationType_en", "latitude", "longitude"]
+    },
+    {
+      "label": "Location",
+      "count": 1116,
+      "properties": ["prefecture_en", "city_en", "address"]
+    },
+    {
+      "label": "ObservationTime",
+      "count": 71149372,
+      "properties": ["timestamp", "year", "month", "season", "dayType", "timeCategory"]
+    },
+    {
+      "label": "ObservedPM25",
+      "count": 71149372,
+      "properties": ["pm25", "pm25_level"]
+    }
+  ],
+  "relationship_types": [
+    {"type": "LOCATED_AT",   "from": "Station",         "to": "Location",        "count": 1116},
+    {"type": "AT_LOCATION",  "from": "ObservationTime",  "to": "Location",        "count": 71149372},
+    {"type": "OBSERVED_AT",  "from": "ObservedPM25",     "to": "ObservationTime", "count": 71149372},
+    {"type": "RECORDED_BY",  "from": "ObservedPM25",     "to": "Station",         "count": 71149372}
+  ],
+  "total_nodes": 142300976,
+  "total_relationships": 213449232,
+  "data_coverage": {
+    "prefectures": 46,
+    "cities": 619,
+    "date_range": "2018-01-01 to 2026-01-01",
+    "valid_pm25_observations": 66086807,
+    "pm25_validity_range": "[0, 500] μg/m³"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "total_nodes": 142300976,
+  "total_relationships": 213449232,
+  "node_breakdown": {
+    "Station": 1116,
+    "Location": 1116,
+    "ObservationTime": 71149372,
+    "ObservedPM25": 71149372
+  },
+  "relationship_breakdown": {
+    "LOCATED_AT": 1116,
+    "AT_LOCATION": 71149372,
+    "OBSERVED_AT": 71149372,
+    "RECORDED_BY": 71149372
+  },
+  "pm25_stats": {
+    "total_observations": 71149372,
+    "valid_observations": 66086807,
+    "validity_filter": "0 <= pm25 <= 500",
+    "mean_pm25_valid": "computed from live graph",
+    "std_pm25_valid": "computed from live graph"
+  }
+}

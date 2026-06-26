@@ -1,0 +1,3804 @@
+[
+  {
+    "category": "station_filtering",
+    "complexity": "simple",
+    "intent": "station_monitoring",
+    "nl": "Which general stations are in Yamaguchi Prefecture?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Yamaguchi Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='General Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "meta": {
+      "pref": "Yamaguchi Prefecture",
+      "stype": "General Station"
+    },
+    "execution_time_ms": 46,
+    "result_row_count": 20,
+    "validated": true,
+    "query_id": "q001",
+    "prefectures_used": [
+      "Yamaguchi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Yamaguchi Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='General Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "nl_query": "Which general stations are in Yamaguchi Prefecture?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Tottori Prefecture, which stations had unhealthy PM2.5 during Winter?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tottori Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Tottori Prefecture",
+      "season": "Winter"
+    },
+    "execution_time_ms": 198,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q002",
+    "prefectures_used": [
+      "Tottori Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tottori Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Tottori Prefecture, which stations had unhealthy PM2.5 during Winter?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Wakayama Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Wakayama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Wakayama Prefecture",
+      "season": "Autumn"
+    },
+    "execution_time_ms": 733,
+    "result_row_count": 14,
+    "validated": true,
+    "query_id": "q003",
+    "prefectures_used": [
+      "Wakayama Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Wakayama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Wakayama Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "simple",
+    "intent": "station_monitoring",
+    "nl": "Which general stations are in Akita Prefecture?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Akita Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='General Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "meta": {
+      "pref": "Akita Prefecture",
+      "stype": "General Station"
+    },
+    "execution_time_ms": 8,
+    "result_row_count": 7,
+    "validated": true,
+    "query_id": "q006",
+    "prefectures_used": [
+      "Akita Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Akita Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='General Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "nl_query": "Which general stations are in Akita Prefecture?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Ibaraki Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Ibaraki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Ibaraki Prefecture",
+      "season": "Autumn"
+    },
+    "execution_time_ms": 766,
+    "result_row_count": 19,
+    "validated": true,
+    "query_id": "q007",
+    "prefectures_used": [
+      "Ibaraki Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Ibaraki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Ibaraki Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Fukushima Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Fukushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Fukushima Prefecture",
+      "season": "Autumn"
+    },
+    "execution_time_ms": 451,
+    "result_row_count": 8,
+    "validated": true,
+    "query_id": "q008",
+    "prefectures_used": [
+      "Fukushima Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Fukushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Fukushima Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "Which stations in Tokushima Prefecture recorded unhealthy PM2.5 levels, and how often?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tokushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS unhealthy_count ORDER BY unhealthy_count DESC LIMIT 20",
+    "meta": {
+      "pref": "Tokushima Prefecture"
+    },
+    "execution_time_ms": 431,
+    "result_row_count": 10,
+    "validated": true,
+    "query_id": "q009",
+    "prefectures_used": [
+      "Tokushima Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tokushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS unhealthy_count ORDER BY unhealthy_count DESC LIMIT 20",
+    "nl_query": "Which stations in Tokushima Prefecture recorded unhealthy PM2.5 levels, and how often?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "Which stations in Hokkaido Prefecture recorded unhealthy PM2.5 levels, and how often?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Hokkaido Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS unhealthy_count ORDER BY unhealthy_count DESC LIMIT 20",
+    "meta": {
+      "pref": "Hokkaido Prefecture"
+    },
+    "execution_time_ms": 1017,
+    "result_row_count": 20,
+    "validated": true,
+    "query_id": "q013",
+    "prefectures_used": [
+      "Hokkaido Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Hokkaido Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS unhealthy_count ORDER BY unhealthy_count DESC LIMIT 20",
+    "nl_query": "Which stations in Hokkaido Prefecture recorded unhealthy PM2.5 levels, and how often?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Hokkaido Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Hokkaido Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Hokkaido Prefecture",
+      "season": "Autumn"
+    },
+    "execution_time_ms": 1023,
+    "result_row_count": 20,
+    "validated": true,
+    "query_id": "q014",
+    "prefectures_used": [
+      "Hokkaido Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Hokkaido Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Hokkaido Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Fukuoka Prefecture, which stations had unhealthy PM2.5 during Summer?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Fukuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Fukuoka Prefecture",
+      "season": "Summer"
+    },
+    "execution_time_ms": 1658,
+    "result_row_count": 20,
+    "validated": true,
+    "query_id": "q015",
+    "prefectures_used": [
+      "Fukuoka Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Fukuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Fukuoka Prefecture, which stations had unhealthy PM2.5 during Summer?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Miyagi Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Miyagi Prefecture",
+      "season": "Autumn"
+    },
+    "execution_time_ms": 1119,
+    "result_row_count": 17,
+    "validated": true,
+    "query_id": "q016",
+    "prefectures_used": [
+      "Miyagi Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Miyagi Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "simple",
+    "intent": "station_monitoring",
+    "nl": "Which general stations are in Chiba Prefecture?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Chiba Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='General Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "meta": {
+      "pref": "Chiba Prefecture",
+      "stype": "General Station"
+    },
+    "execution_time_ms": 12,
+    "result_row_count": 50,
+    "validated": true,
+    "query_id": "q017",
+    "prefectures_used": [
+      "Chiba Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Chiba Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='General Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "nl_query": "Which general stations are in Chiba Prefecture?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "Which stations in Ishikawa Prefecture recorded unhealthy PM2.5 levels, and how often?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Ishikawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS unhealthy_count ORDER BY unhealthy_count DESC LIMIT 20",
+    "meta": {
+      "pref": "Ishikawa Prefecture"
+    },
+    "execution_time_ms": 653,
+    "result_row_count": 16,
+    "validated": true,
+    "query_id": "q018",
+    "prefectures_used": [
+      "Ishikawa Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Ishikawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS unhealthy_count ORDER BY unhealthy_count DESC LIMIT 20",
+    "nl_query": "Which stations in Ishikawa Prefecture recorded unhealthy PM2.5 levels, and how often?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "simple",
+    "intent": "station_monitoring",
+    "nl": "How many PM2.5 monitoring stations are in Toyama Prefecture?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Toyama Prefecture'})<-[:LOCATED_AT]-(s:Station) RETURN count(s) AS station_count",
+    "meta": {
+      "pref": "Toyama Prefecture"
+    },
+    "execution_time_ms": 20,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q019",
+    "prefectures_used": [
+      "Toyama Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Toyama Prefecture'})<-[:LOCATED_AT]-(s:Station) RETURN count(s) AS station_count",
+    "nl_query": "How many PM2.5 monitoring stations are in Toyama Prefecture?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Fukushima Prefecture, which stations had unhealthy PM2.5 during Summer?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Fukushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Fukushima Prefecture",
+      "season": "Summer"
+    },
+    "execution_time_ms": 446,
+    "result_row_count": 11,
+    "validated": true,
+    "query_id": "q020",
+    "prefectures_used": [
+      "Fukushima Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Fukushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Fukushima Prefecture, which stations had unhealthy PM2.5 during Summer?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "simple",
+    "intent": "station_monitoring",
+    "nl": "Which roadside stations are in Tochigi Prefecture?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tochigi Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='Roadside Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "meta": {
+      "pref": "Tochigi Prefecture",
+      "stype": "Roadside Station"
+    },
+    "execution_time_ms": 8,
+    "result_row_count": 2,
+    "validated": true,
+    "query_id": "q021",
+    "prefectures_used": [
+      "Tochigi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tochigi Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='Roadside Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "nl_query": "Which roadside stations are in Tochigi Prefecture?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Mie Prefecture, which stations had unhealthy PM2.5 during Summer?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Mie Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Mie Prefecture",
+      "season": "Summer"
+    },
+    "execution_time_ms": 1028,
+    "result_row_count": 20,
+    "validated": true,
+    "query_id": "q022",
+    "prefectures_used": [
+      "Mie Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Mie Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Mie Prefecture, which stations had unhealthy PM2.5 during Summer?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Tokushima Prefecture, which stations had unhealthy PM2.5 during Spring?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tokushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Tokushima Prefecture",
+      "season": "Spring"
+    },
+    "execution_time_ms": 430,
+    "result_row_count": 10,
+    "validated": true,
+    "query_id": "q023",
+    "prefectures_used": [
+      "Tokushima Prefecture"
+    ],
+    "seasons_used": [
+      "Spring"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tokushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Tokushima Prefecture, which stations had unhealthy PM2.5 during Spring?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Tokushima Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tokushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Tokushima Prefecture",
+      "season": "Autumn"
+    },
+    "execution_time_ms": 423,
+    "result_row_count": 10,
+    "validated": true,
+    "query_id": "q024",
+    "prefectures_used": [
+      "Tokushima Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tokushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Tokushima Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Nagano Prefecture, which stations had unhealthy PM2.5 during Spring?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Nagano Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Nagano Prefecture",
+      "season": "Spring"
+    },
+    "execution_time_ms": 587,
+    "result_row_count": 16,
+    "validated": true,
+    "query_id": "q027",
+    "prefectures_used": [
+      "Nagano Prefecture"
+    ],
+    "seasons_used": [
+      "Spring"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Nagano Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Nagano Prefecture, which stations had unhealthy PM2.5 during Spring?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "simple",
+    "intent": "station_monitoring",
+    "nl": "Which general stations are in Okayama Prefecture?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Okayama Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='General Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "meta": {
+      "pref": "Okayama Prefecture",
+      "stype": "General Station"
+    },
+    "execution_time_ms": 10,
+    "result_row_count": 24,
+    "validated": true,
+    "query_id": "q028",
+    "prefectures_used": [
+      "Okayama Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Okayama Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='General Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "nl_query": "Which general stations are in Okayama Prefecture?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Tochigi Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tochigi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Tochigi Prefecture",
+      "season": "Autumn"
+    },
+    "execution_time_ms": 458,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q029",
+    "prefectures_used": [
+      "Tochigi Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tochigi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Tochigi Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "Which stations in Mie Prefecture recorded unhealthy PM2.5 levels, and how often?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Mie Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS unhealthy_count ORDER BY unhealthy_count DESC LIMIT 20",
+    "meta": {
+      "pref": "Mie Prefecture"
+    },
+    "execution_time_ms": 1006,
+    "result_row_count": 20,
+    "validated": true,
+    "query_id": "q030",
+    "prefectures_used": [
+      "Mie Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Mie Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS unhealthy_count ORDER BY unhealthy_count DESC LIMIT 20",
+    "nl_query": "Which stations in Mie Prefecture recorded unhealthy PM2.5 levels, and how often?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "simple",
+    "intent": "station_monitoring",
+    "nl": "Which roadside stations are in Hiroshima Prefecture?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Hiroshima Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='Roadside Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "meta": {
+      "pref": "Hiroshima Prefecture",
+      "stype": "Roadside Station"
+    },
+    "execution_time_ms": 8,
+    "result_row_count": 6,
+    "validated": true,
+    "query_id": "q032",
+    "prefectures_used": [
+      "Hiroshima Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Hiroshima Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='Roadside Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "nl_query": "Which roadside stations are in Hiroshima Prefecture?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Fukui Prefecture, which stations had unhealthy PM2.5 during Spring?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Fukui Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Fukui Prefecture",
+      "season": "Spring"
+    },
+    "execution_time_ms": 368,
+    "result_row_count": 9,
+    "validated": true,
+    "query_id": "q034",
+    "prefectures_used": [
+      "Fukui Prefecture"
+    ],
+    "seasons_used": [
+      "Spring"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Fukui Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Fukui Prefecture, which stations had unhealthy PM2.5 during Spring?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Miyagi Prefecture, which stations had unhealthy PM2.5 during Winter?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Miyagi Prefecture",
+      "season": "Winter"
+    },
+    "execution_time_ms": 1121,
+    "result_row_count": 20,
+    "validated": true,
+    "query_id": "q035",
+    "prefectures_used": [
+      "Miyagi Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Miyagi Prefecture, which stations had unhealthy PM2.5 during Winter?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "Which stations in Nagano Prefecture recorded unhealthy PM2.5 levels, and how often?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Nagano Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS unhealthy_count ORDER BY unhealthy_count DESC LIMIT 20",
+    "meta": {
+      "pref": "Nagano Prefecture"
+    },
+    "execution_time_ms": 567,
+    "result_row_count": 16,
+    "validated": true,
+    "query_id": "q036",
+    "prefectures_used": [
+      "Nagano Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Nagano Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS unhealthy_count ORDER BY unhealthy_count DESC LIMIT 20",
+    "nl_query": "Which stations in Nagano Prefecture recorded unhealthy PM2.5 levels, and how often?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "In Niigata Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Niigata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "meta": {
+      "pref": "Niigata Prefecture",
+      "season": "Autumn"
+    },
+    "execution_time_ms": 745,
+    "result_row_count": 15,
+    "validated": true,
+    "query_id": "q038",
+    "prefectures_used": [
+      "Niigata Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Niigata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS cnt ORDER BY cnt DESC LIMIT 20",
+    "nl_query": "In Niigata Prefecture, which stations had unhealthy PM2.5 during Autumn?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "Which stations in Kochi Prefecture recorded unhealthy PM2.5 levels, and how often?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kochi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS unhealthy_count ORDER BY unhealthy_count DESC LIMIT 20",
+    "meta": {
+      "pref": "Kochi Prefecture"
+    },
+    "execution_time_ms": 296,
+    "result_row_count": 7,
+    "validated": true,
+    "query_id": "q039",
+    "prefectures_used": [
+      "Kochi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kochi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN s.stationname_en AS station, count(p) AS unhealthy_count ORDER BY unhealthy_count DESC LIMIT 20",
+    "nl_query": "Which stations in Kochi Prefecture recorded unhealthy PM2.5 levels, and how often?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "station_filtering",
+    "complexity": "simple",
+    "intent": "station_monitoring",
+    "nl": "Which general stations are in Hokkaido Prefecture?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Hokkaido Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='General Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "meta": {
+      "pref": "Hokkaido Prefecture",
+      "stype": "General Station"
+    },
+    "execution_time_ms": 9,
+    "result_row_count": 21,
+    "validated": true,
+    "query_id": "q040",
+    "prefectures_used": [
+      "Hokkaido Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Hokkaido Prefecture'})<-[:LOCATED_AT]-(s:Station) WHERE s.stationtype_en='General Station' RETURN s.stationname_en AS station ORDER BY station LIMIT 50",
+    "nl_query": "Which general stations are in Hokkaido Prefecture?",
+    "type": "station_filtering"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Akita Prefecture during Winter 2024?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Akita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Akita Prefecture",
+      "season": "Winter",
+      "year": 2024
+    },
+    "execution_time_ms": 927,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q043",
+    "prefectures_used": [
+      "Akita Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2024
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Akita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Akita Prefecture during Winter 2024?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Kumamoto Prefecture during Winter 2022?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kumamoto Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Kumamoto Prefecture",
+      "season": "Winter",
+      "year": 2022
+    },
+    "execution_time_ms": 3582,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q044",
+    "prefectures_used": [
+      "Kumamoto Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kumamoto Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Kumamoto Prefecture during Winter 2022?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Nagasaki Prefecture during Winter 2021?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Nagasaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Nagasaki Prefecture",
+      "season": "Winter",
+      "year": 2021
+    },
+    "execution_time_ms": 2705,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q045",
+    "prefectures_used": [
+      "Nagasaki Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2021
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Nagasaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Nagasaki Prefecture during Winter 2021?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Oita Prefecture during Summer 2019?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Oita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Oita Prefecture",
+      "season": "Summer",
+      "year": 2019
+    },
+    "execution_time_ms": 2086,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q046",
+    "prefectures_used": [
+      "Oita Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Oita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Oita Prefecture during Summer 2019?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "How many PM2.5 readings of each level were recorded in Shizuoka Prefecture in 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Shizuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) RETURN p.pm25_level AS level, count(p) AS cnt ORDER BY cnt DESC",
+    "meta": {
+      "pref": "Shizuoka Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 4331,
+    "result_row_count": 6,
+    "validated": true,
+    "query_id": "q047",
+    "prefectures_used": [
+      "Shizuoka Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Shizuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) RETURN p.pm25_level AS level, count(p) AS cnt ORDER BY cnt DESC",
+    "nl_query": "How many PM2.5 readings of each level were recorded in Shizuoka Prefecture in 2025?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Shimane Prefecture during Winter 2019?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Shimane Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Shimane Prefecture",
+      "season": "Winter",
+      "year": 2019
+    },
+    "execution_time_ms": 1088,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q048",
+    "prefectures_used": [
+      "Shimane Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Shimane Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Shimane Prefecture during Winter 2019?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Ibaraki Prefecture during Winter 2019?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Ibaraki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Ibaraki Prefecture",
+      "season": "Winter",
+      "year": 2019
+    },
+    "execution_time_ms": 2145,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q049",
+    "prefectures_used": [
+      "Ibaraki Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Ibaraki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Ibaraki Prefecture during Winter 2019?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Mie Prefecture during Spring 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Mie Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Mie Prefecture",
+      "season": "Spring",
+      "year": 2025
+    },
+    "execution_time_ms": 3851,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q050",
+    "prefectures_used": [
+      "Mie Prefecture"
+    ],
+    "seasons_used": [
+      "Spring"
+    ],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Mie Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Mie Prefecture during Spring 2025?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Nagasaki Prefecture during Spring 2023?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Nagasaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Nagasaki Prefecture",
+      "season": "Spring",
+      "year": 2023
+    },
+    "execution_time_ms": 2267,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q051",
+    "prefectures_used": [
+      "Nagasaki Prefecture"
+    ],
+    "seasons_used": [
+      "Spring"
+    ],
+    "years_used": [
+      2023
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Nagasaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Nagasaki Prefecture during Spring 2023?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Yamaguchi Prefecture during Winter 2022?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Yamaguchi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Yamaguchi Prefecture",
+      "season": "Winter",
+      "year": 2022
+    },
+    "execution_time_ms": 2415,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q052",
+    "prefectures_used": [
+      "Yamaguchi Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Yamaguchi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Yamaguchi Prefecture during Winter 2022?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Shiga Prefecture during Autumn 2021?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Shiga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn',year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Shiga Prefecture",
+      "season": "Autumn",
+      "year": 2021
+    },
+    "execution_time_ms": 1437,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q053",
+    "prefectures_used": [
+      "Shiga Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [
+      2021
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Shiga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn',year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Shiga Prefecture during Autumn 2021?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Mie Prefecture during Spring 2021?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Mie Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Mie Prefecture",
+      "season": "Spring",
+      "year": 2021
+    },
+    "execution_time_ms": 2943,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q055",
+    "prefectures_used": [
+      "Mie Prefecture"
+    ],
+    "seasons_used": [
+      "Spring"
+    ],
+    "years_used": [
+      2021
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Mie Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Mie Prefecture during Spring 2021?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Saitama Prefecture during Autumn 2019?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Saitama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn',year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Saitama Prefecture",
+      "season": "Autumn",
+      "year": 2019
+    },
+    "execution_time_ms": 9612,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q056",
+    "prefectures_used": [
+      "Saitama Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Saitama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn',year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Saitama Prefecture during Autumn 2019?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Fukuoka Prefecture during Summer 2024?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Fukuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Fukuoka Prefecture",
+      "season": "Summer",
+      "year": 2024
+    },
+    "execution_time_ms": 4688,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q057",
+    "prefectures_used": [
+      "Fukuoka Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [
+      2024
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Fukuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Fukuoka Prefecture during Summer 2024?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Kyoto Prefecture during Spring 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kyoto Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Kyoto Prefecture",
+      "season": "Spring",
+      "year": 2018
+    },
+    "execution_time_ms": 3475,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q059",
+    "prefectures_used": [
+      "Kyoto Prefecture"
+    ],
+    "seasons_used": [
+      "Spring"
+    ],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kyoto Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Kyoto Prefecture during Spring 2018?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Oita Prefecture during Winter 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Oita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Oita Prefecture",
+      "season": "Winter",
+      "year": 2025
+    },
+    "execution_time_ms": 1789,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q060",
+    "prefectures_used": [
+      "Oita Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Oita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Oita Prefecture during Winter 2025?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Okinawa Prefecture during Summer 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Okinawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Okinawa Prefecture",
+      "season": "Summer",
+      "year": 2018
+    },
+    "execution_time_ms": 780,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q061",
+    "prefectures_used": [
+      "Okinawa Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Okinawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Okinawa Prefecture during Summer 2018?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Osaka Prefecture during Winter 2023?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Osaka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Osaka Prefecture",
+      "season": "Winter",
+      "year": 2023
+    },
+    "execution_time_ms": 6121,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q062",
+    "prefectures_used": [
+      "Osaka Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2023
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Osaka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Osaka Prefecture during Winter 2023?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Miyagi Prefecture during Spring 2022?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Miyagi Prefecture",
+      "season": "Spring",
+      "year": 2022
+    },
+    "execution_time_ms": 3201,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q063",
+    "prefectures_used": [
+      "Miyagi Prefecture"
+    ],
+    "seasons_used": [
+      "Spring"
+    ],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Miyagi Prefecture during Spring 2022?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Miyagi Prefecture during Spring 2021?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Miyagi Prefecture",
+      "season": "Spring",
+      "year": 2021
+    },
+    "execution_time_ms": 3195,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q064",
+    "prefectures_used": [
+      "Miyagi Prefecture"
+    ],
+    "seasons_used": [
+      "Spring"
+    ],
+    "years_used": [
+      2021
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Miyagi Prefecture during Spring 2021?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "How many PM2.5 readings of each level were recorded in Toyama Prefecture in 2019?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Toyama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) RETURN p.pm25_level AS level, count(p) AS cnt ORDER BY cnt DESC",
+    "meta": {
+      "pref": "Toyama Prefecture",
+      "year": 2019
+    },
+    "execution_time_ms": 1191,
+    "result_row_count": 6,
+    "validated": true,
+    "query_id": "q065",
+    "prefectures_used": [
+      "Toyama Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Toyama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) RETURN p.pm25_level AS level, count(p) AS cnt ORDER BY cnt DESC",
+    "nl_query": "How many PM2.5 readings of each level were recorded in Toyama Prefecture in 2019?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Nagasaki Prefecture during Autumn 2021?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Nagasaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn',year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Nagasaki Prefecture",
+      "season": "Autumn",
+      "year": 2021
+    },
+    "execution_time_ms": 2245,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q068",
+    "prefectures_used": [
+      "Nagasaki Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [
+      2021
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Nagasaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn',year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Nagasaki Prefecture during Autumn 2021?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Ibaraki Prefecture during Spring 2022?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Ibaraki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Ibaraki Prefecture",
+      "season": "Spring",
+      "year": 2022
+    },
+    "execution_time_ms": 2129,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q070",
+    "prefectures_used": [
+      "Ibaraki Prefecture"
+    ],
+    "seasons_used": [
+      "Spring"
+    ],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Ibaraki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring',year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Ibaraki Prefecture during Spring 2022?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Iwate Prefecture during Summer 2023?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Iwate Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Iwate Prefecture",
+      "season": "Summer",
+      "year": 2023
+    },
+    "execution_time_ms": 1216,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q071",
+    "prefectures_used": [
+      "Iwate Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [
+      2023
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Iwate Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Iwate Prefecture during Summer 2023?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Saga Prefecture during Autumn 2020?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Saga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn',year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Saga Prefecture",
+      "season": "Autumn",
+      "year": 2020
+    },
+    "execution_time_ms": 1470,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q073",
+    "prefectures_used": [
+      "Saga Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Saga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn',year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Saga Prefecture during Autumn 2020?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Kanagawa Prefecture during Summer 2023?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kanagawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Kanagawa Prefecture",
+      "season": "Summer",
+      "year": 2023
+    },
+    "execution_time_ms": 7824,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q074",
+    "prefectures_used": [
+      "Kanagawa Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [
+      2023
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kanagawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Kanagawa Prefecture during Summer 2023?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Aichi Prefecture during Winter 2023?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Aichi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Aichi Prefecture",
+      "season": "Winter",
+      "year": 2023
+    },
+    "execution_time_ms": 6776,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q075",
+    "prefectures_used": [
+      "Aichi Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2023
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Aichi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Aichi Prefecture during Winter 2023?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Okayama Prefecture during Winter 2019?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Okayama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Okayama Prefecture",
+      "season": "Winter",
+      "year": 2019
+    },
+    "execution_time_ms": 3164,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q076",
+    "prefectures_used": [
+      "Okayama Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Okayama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Okayama Prefecture during Winter 2019?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Miyagi Prefecture during Winter 2020?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Miyagi Prefecture",
+      "season": "Winter",
+      "year": 2020
+    },
+    "execution_time_ms": 3200,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q077",
+    "prefectures_used": [
+      "Miyagi Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Miyagi Prefecture during Winter 2020?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "How many PM2.5 readings of each level were recorded in Aichi Prefecture in 2020?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Aichi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) RETURN p.pm25_level AS level, count(p) AS cnt ORDER BY cnt DESC",
+    "meta": {
+      "pref": "Aichi Prefecture",
+      "year": 2020
+    },
+    "execution_time_ms": 5237,
+    "result_row_count": 6,
+    "validated": true,
+    "query_id": "q079",
+    "prefectures_used": [
+      "Aichi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Aichi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) RETURN p.pm25_level AS level, count(p) AS cnt ORDER BY cnt DESC",
+    "nl_query": "How many PM2.5 readings of each level were recorded in Aichi Prefecture in 2020?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Gunma Prefecture during Summer 2024?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Gunma Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Gunma Prefecture",
+      "season": "Summer",
+      "year": 2024
+    },
+    "execution_time_ms": 1012,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q080",
+    "prefectures_used": [
+      "Gunma Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [
+      2024
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Gunma Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Gunma Prefecture during Summer 2024?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Hokkaido Prefecture during Summer 2023?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Hokkaido Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Hokkaido Prefecture",
+      "season": "Summer",
+      "year": 2023
+    },
+    "execution_time_ms": 2933,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q081",
+    "prefectures_used": [
+      "Hokkaido Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [
+      2023
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Hokkaido Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Hokkaido Prefecture during Summer 2023?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Tochigi Prefecture during Autumn 2024?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tochigi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn',year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Tochigi Prefecture",
+      "season": "Autumn",
+      "year": 2024
+    },
+    "execution_time_ms": 1295,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q082",
+    "prefectures_used": [
+      "Tochigi Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [
+      2024
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tochigi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn',year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Tochigi Prefecture during Autumn 2024?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Kyoto Prefecture during Summer 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kyoto Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Kyoto Prefecture",
+      "season": "Summer",
+      "year": 2018
+    },
+    "execution_time_ms": 3520,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q083",
+    "prefectures_used": [
+      "Kyoto Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kyoto Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer',year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Kyoto Prefecture during Summer 2018?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Tottori Prefecture during Winter 2024?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tottori Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Tottori Prefecture",
+      "season": "Winter",
+      "year": 2024
+    },
+    "execution_time_ms": 432,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q085",
+    "prefectures_used": [
+      "Tottori Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2024
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tottori Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Tottori Prefecture during Winter 2024?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "How many PM2.5 readings of each level were recorded in Yamagata Prefecture in 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Yamagata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) RETURN p.pm25_level AS level, count(p) AS cnt ORDER BY cnt DESC",
+    "meta": {
+      "pref": "Yamagata Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 1008,
+    "result_row_count": 6,
+    "validated": true,
+    "query_id": "q086",
+    "prefectures_used": [
+      "Yamagata Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Yamagata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) RETURN p.pm25_level AS level, count(p) AS cnt ORDER BY cnt DESC",
+    "nl_query": "How many PM2.5 readings of each level were recorded in Yamagata Prefecture in 2025?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "What was the average PM2.5 in Ibaraki Prefecture during Winter 2020?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Ibaraki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "meta": {
+      "pref": "Ibaraki Prefecture",
+      "season": "Winter",
+      "year": 2020
+    },
+    "execution_time_ms": 2117,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q088",
+    "prefectures_used": [
+      "Ibaraki Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Ibaraki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter',year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN round(avg(p.pm25),2) AS avg_pm25, max(p.pm25) AS max_pm25, count(p) AS n",
+    "nl_query": "What was the average PM2.5 in Ibaraki Prefecture during Winter 2020?",
+    "type": "aggregate"
+  },
+  {
+    "category": "aggregate",
+    "complexity": "medium",
+    "intent": "aggregate",
+    "nl": "How many PM2.5 readings of each level were recorded in Kagoshima Prefecture in 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kagoshima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) RETURN p.pm25_level AS level, count(p) AS cnt ORDER BY cnt DESC",
+    "meta": {
+      "pref": "Kagoshima Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 1038,
+    "result_row_count": 6,
+    "validated": true,
+    "query_id": "q090",
+    "prefectures_used": [
+      "Kagoshima Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kagoshima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) RETURN p.pm25_level AS level, count(p) AS cnt ORDER BY cnt DESC",
+    "nl_query": "How many PM2.5 readings of each level were recorded in Kagoshima Prefecture in 2018?",
+    "type": "aggregate"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Aomori Prefecture in 2020.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Aomori Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Aomori Prefecture",
+      "year": 2020
+    },
+    "execution_time_ms": 1194,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q092",
+    "prefectures_used": [
+      "Aomori Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Aomori Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Aomori Prefecture in 2020.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "How did the average PM2.5 in Iwate Prefecture change year over year?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Iwate Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.year AS year, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY year",
+    "meta": {
+      "pref": "Iwate Prefecture"
+    },
+    "execution_time_ms": 1542,
+    "result_row_count": 9,
+    "validated": true,
+    "query_id": "q093",
+    "prefectures_used": [
+      "Iwate Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Iwate Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.year AS year, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY year",
+    "nl_query": "How did the average PM2.5 in Iwate Prefecture change year over year?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "What was the monthly average PM2.5 in Gunma Prefecture during 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Gunma Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "meta": {
+      "pref": "Gunma Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 1025,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q094",
+    "prefectures_used": [
+      "Gunma Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Gunma Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "nl_query": "What was the monthly average PM2.5 in Gunma Prefecture during 2025?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "What was the monthly average PM2.5 in Tottori Prefecture during 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tottori Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "meta": {
+      "pref": "Tottori Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 446,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q095",
+    "prefectures_used": [
+      "Tottori Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tottori Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "nl_query": "What was the monthly average PM2.5 in Tottori Prefecture during 2025?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "What was the monthly average PM2.5 in Tokushima Prefecture during 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tokushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "meta": {
+      "pref": "Tokushima Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 1379,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q097",
+    "prefectures_used": [
+      "Tokushima Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tokushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "nl_query": "What was the monthly average PM2.5 in Tokushima Prefecture during 2025?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "What was the monthly average PM2.5 in Kumamoto Prefecture during 2022?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kumamoto Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "meta": {
+      "pref": "Kumamoto Prefecture",
+      "year": 2022
+    },
+    "execution_time_ms": 2849,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q098",
+    "prefectures_used": [
+      "Kumamoto Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kumamoto Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "nl_query": "What was the monthly average PM2.5 in Kumamoto Prefecture during 2022?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "What was the monthly average PM2.5 in Ibaraki Prefecture during 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Ibaraki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "meta": {
+      "pref": "Ibaraki Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 2109,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q099",
+    "prefectures_used": [
+      "Ibaraki Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Ibaraki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "nl_query": "What was the monthly average PM2.5 in Ibaraki Prefecture during 2018?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Oita Prefecture in 2018.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Oita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Oita Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 1776,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q102",
+    "prefectures_used": [
+      "Oita Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Oita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Oita Prefecture in 2018.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Hokkaido Prefecture in 2021.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Hokkaido Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Hokkaido Prefecture",
+      "year": 2021
+    },
+    "execution_time_ms": 3158,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q103",
+    "prefectures_used": [
+      "Hokkaido Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2021
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Hokkaido Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Hokkaido Prefecture in 2021.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "What was the monthly average PM2.5 in Hiroshima Prefecture during 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Hiroshima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "meta": {
+      "pref": "Hiroshima Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 3461,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q104",
+    "prefectures_used": [
+      "Hiroshima Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Hiroshima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "nl_query": "What was the monthly average PM2.5 in Hiroshima Prefecture during 2018?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Miyazaki Prefecture in 2022.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Miyazaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Miyazaki Prefecture",
+      "year": 2022
+    },
+    "execution_time_ms": 2142,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q105",
+    "prefectures_used": [
+      "Miyazaki Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Miyazaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Miyazaki Prefecture in 2022.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Aichi Prefecture in 2022.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Aichi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Aichi Prefecture",
+      "year": 2022
+    },
+    "execution_time_ms": 6790,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q106",
+    "prefectures_used": [
+      "Aichi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Aichi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Aichi Prefecture in 2022.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Nara Prefecture in 2023.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Nara Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Nara Prefecture",
+      "year": 2023
+    },
+    "execution_time_ms": 1337,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q108",
+    "prefectures_used": [
+      "Nara Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2023
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Nara Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Nara Prefecture in 2023.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Shiga Prefecture in 2024.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Shiga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Shiga Prefecture",
+      "year": 2024
+    },
+    "execution_time_ms": 1450,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q109",
+    "prefectures_used": [
+      "Shiga Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2024
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Shiga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Shiga Prefecture in 2024.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Hokkaido Prefecture in 2025.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Hokkaido Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Hokkaido Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 2894,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q111",
+    "prefectures_used": [
+      "Hokkaido Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Hokkaido Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Hokkaido Prefecture in 2025.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Hiroshima Prefecture in 2020.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Hiroshima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Hiroshima Prefecture",
+      "year": 2020
+    },
+    "execution_time_ms": 2982,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q112",
+    "prefectures_used": [
+      "Hiroshima Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Hiroshima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Hiroshima Prefecture in 2020.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Miyagi Prefecture in 2025.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Miyagi Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 3229,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q114",
+    "prefectures_used": [
+      "Miyagi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Miyagi Prefecture in 2025.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "What was the monthly average PM2.5 in Shimane Prefecture during 2023?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Shimane Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "meta": {
+      "pref": "Shimane Prefecture",
+      "year": 2023
+    },
+    "execution_time_ms": 1079,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q115",
+    "prefectures_used": [
+      "Shimane Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2023
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Shimane Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "nl_query": "What was the monthly average PM2.5 in Shimane Prefecture during 2023?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Miyazaki Prefecture in 2019.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Miyazaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Miyazaki Prefecture",
+      "year": 2019
+    },
+    "execution_time_ms": 1779,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q116",
+    "prefectures_used": [
+      "Miyazaki Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Miyazaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Miyazaki Prefecture in 2019.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "What was the monthly average PM2.5 in Kyoto Prefecture during 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kyoto Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "meta": {
+      "pref": "Kyoto Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 3495,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q117",
+    "prefectures_used": [
+      "Kyoto Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kyoto Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "nl_query": "What was the monthly average PM2.5 in Kyoto Prefecture during 2018?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Nara Prefecture in 2019.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Nara Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Nara Prefecture",
+      "year": 2019
+    },
+    "execution_time_ms": 1076,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q118",
+    "prefectures_used": [
+      "Nara Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Nara Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Nara Prefecture in 2019.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "What was the monthly average PM2.5 in Kochi Prefecture during 2021?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kochi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "meta": {
+      "pref": "Kochi Prefecture",
+      "year": 2021
+    },
+    "execution_time_ms": 950,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q120",
+    "prefectures_used": [
+      "Kochi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2021
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kochi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "nl_query": "What was the monthly average PM2.5 in Kochi Prefecture during 2021?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "How did the average PM2.5 in Chiba Prefecture change year over year?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Chiba Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.year AS year, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY year",
+    "meta": {
+      "pref": "Chiba Prefecture"
+    },
+    "execution_time_ms": 7039,
+    "result_row_count": 9,
+    "validated": true,
+    "query_id": "q122",
+    "prefectures_used": [
+      "Chiba Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Chiba Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.year AS year, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY year",
+    "nl_query": "How did the average PM2.5 in Chiba Prefecture change year over year?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "What was the monthly average PM2.5 in Aichi Prefecture during 2022?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Aichi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "meta": {
+      "pref": "Aichi Prefecture",
+      "year": 2022
+    },
+    "execution_time_ms": 6674,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q123",
+    "prefectures_used": [
+      "Aichi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Aichi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "nl_query": "What was the monthly average PM2.5 in Aichi Prefecture during 2022?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "What was the monthly average PM2.5 in Saga Prefecture during 2019?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Saga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "meta": {
+      "pref": "Saga Prefecture",
+      "year": 2019
+    },
+    "execution_time_ms": 1486,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q124",
+    "prefectures_used": [
+      "Saga Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Saga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "nl_query": "What was the monthly average PM2.5 in Saga Prefecture during 2019?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Kagoshima Prefecture in 2022.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kagoshima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Kagoshima Prefecture",
+      "year": 2022
+    },
+    "execution_time_ms": 1367,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q125",
+    "prefectures_used": [
+      "Kagoshima Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kagoshima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Kagoshima Prefecture in 2022.",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "How did the average PM2.5 in Tochigi Prefecture change year over year?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tochigi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.year AS year, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY year",
+    "meta": {
+      "pref": "Tochigi Prefecture"
+    },
+    "execution_time_ms": 1323,
+    "result_row_count": 9,
+    "validated": true,
+    "query_id": "q127",
+    "prefectures_used": [
+      "Tochigi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tochigi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.year AS year, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY year",
+    "nl_query": "How did the average PM2.5 in Tochigi Prefecture change year over year?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "What was the monthly average PM2.5 in Tokushima Prefecture during 2023?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tokushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "meta": {
+      "pref": "Tokushima Prefecture",
+      "year": 2023
+    },
+    "execution_time_ms": 1189,
+    "result_row_count": 12,
+    "validated": true,
+    "query_id": "q128",
+    "prefectures_used": [
+      "Tokushima Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2023
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tokushima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.month AS month, round(avg(p.pm25),2) AS avg_pm25 ORDER BY month",
+    "nl_query": "What was the monthly average PM2.5 in Tokushima Prefecture during 2023?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "How did the average PM2.5 in Saitama Prefecture change year over year?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Saitama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.year AS year, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY year",
+    "meta": {
+      "pref": "Saitama Prefecture"
+    },
+    "execution_time_ms": 8053,
+    "result_row_count": 9,
+    "validated": true,
+    "query_id": "q129",
+    "prefectures_used": [
+      "Saitama Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Saitama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.year AS year, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY year",
+    "nl_query": "How did the average PM2.5 in Saitama Prefecture change year over year?",
+    "type": "temporal"
+  },
+  {
+    "category": "temporal",
+    "complexity": "complex",
+    "intent": "temporal",
+    "nl": "Compare the average PM2.5 across seasons in Oita Prefecture in 2022.",
+    "cypher": "MATCH (l:Location {prefecture_en:'Oita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Oita Prefecture",
+      "year": 2022
+    },
+    "execution_time_ms": 1813,
+    "result_row_count": 4,
+    "validated": true,
+    "query_id": "q130",
+    "prefectures_used": [
+      "Oita Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Oita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN t.season AS season, round(avg(p.pm25),2) AS avg_pm25 ORDER BY avg_pm25 DESC",
+    "nl_query": "Compare the average PM2.5 across seasons in Oita Prefecture in 2022.",
+    "type": "temporal"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "How many unhealthy PM2.5 readings occurred in Fukuoka Prefecture during Winter?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Fukuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "meta": {
+      "pref": "Fukuoka Prefecture",
+      "season": "Winter"
+    },
+    "execution_time_ms": 1835,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q131",
+    "prefectures_used": [
+      "Fukuoka Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Fukuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "nl_query": "How many unhealthy PM2.5 readings occurred in Fukuoka Prefecture during Winter?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Gunma Prefecture exceeded Japan's 35 ug/m3 standard in 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Gunma Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Gunma Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 1193,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q133",
+    "prefectures_used": [
+      "Gunma Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Gunma Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Gunma Prefecture exceeded Japan's 35 ug/m3 standard in 2025?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Fukuoka Prefecture exceeded Japan's 35 ug/m3 standard in 2022?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Fukuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Fukuoka Prefecture",
+      "year": 2022
+    },
+    "execution_time_ms": 5651,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q134",
+    "prefectures_used": [
+      "Fukuoka Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Fukuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Fukuoka Prefecture exceeded Japan's 35 ug/m3 standard in 2022?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "How many unhealthy PM2.5 readings occurred in Ibaraki Prefecture during Spring?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Ibaraki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "meta": {
+      "pref": "Ibaraki Prefecture",
+      "season": "Spring"
+    },
+    "execution_time_ms": 742,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q136",
+    "prefectures_used": [
+      "Ibaraki Prefecture"
+    ],
+    "seasons_used": [
+      "Spring"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Ibaraki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "nl_query": "How many unhealthy PM2.5 readings occurred in Ibaraki Prefecture during Spring?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "How many unhealthy PM2.5 readings occurred in Akita Prefecture during Winter?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Akita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "meta": {
+      "pref": "Akita Prefecture",
+      "season": "Winter"
+    },
+    "execution_time_ms": 322,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q137",
+    "prefectures_used": [
+      "Akita Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Akita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "nl_query": "How many unhealthy PM2.5 readings occurred in Akita Prefecture during Winter?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "How many unhealthy PM2.5 readings occurred in Nagasaki Prefecture during Summer?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Nagasaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "meta": {
+      "pref": "Nagasaki Prefecture",
+      "season": "Summer"
+    },
+    "execution_time_ms": 780,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q138",
+    "prefectures_used": [
+      "Nagasaki Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Nagasaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "nl_query": "How many unhealthy PM2.5 readings occurred in Nagasaki Prefecture during Summer?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "How many unhealthy PM2.5 readings occurred in Nagasaki Prefecture during Autumn?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Nagasaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "meta": {
+      "pref": "Nagasaki Prefecture",
+      "season": "Autumn"
+    },
+    "execution_time_ms": 781,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q139",
+    "prefectures_used": [
+      "Nagasaki Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Nagasaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "nl_query": "How many unhealthy PM2.5 readings occurred in Nagasaki Prefecture during Autumn?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Fukuoka Prefecture exceeded Japan's 35 ug/m3 standard in 2023?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Fukuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Fukuoka Prefecture",
+      "year": 2023
+    },
+    "execution_time_ms": 4894,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q140",
+    "prefectures_used": [
+      "Fukuoka Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2023
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Fukuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Fukuoka Prefecture exceeded Japan's 35 ug/m3 standard in 2023?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Fukui Prefecture exceeded Japan's 35 ug/m3 standard in 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Fukui Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Fukui Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 1154,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q143",
+    "prefectures_used": [
+      "Fukui Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Fukui Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Fukui Prefecture exceeded Japan's 35 ug/m3 standard in 2018?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Kagawa Prefecture exceeded Japan's 35 ug/m3 standard in 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kagawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Kagawa Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 1676,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q144",
+    "prefectures_used": [
+      "Kagawa Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kagawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Kagawa Prefecture exceeded Japan's 35 ug/m3 standard in 2025?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Gunma Prefecture exceeded Japan's 35 ug/m3 standard in 2019?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Gunma Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Gunma Prefecture",
+      "year": 2019
+    },
+    "execution_time_ms": 956,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q145",
+    "prefectures_used": [
+      "Gunma Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Gunma Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Gunma Prefecture exceeded Japan's 35 ug/m3 standard in 2019?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Miyagi Prefecture exceeded Japan's 35 ug/m3 standard in 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Miyagi Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 3101,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q147",
+    "prefectures_used": [
+      "Miyagi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Miyagi Prefecture exceeded Japan's 35 ug/m3 standard in 2018?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "How many unhealthy PM2.5 readings occurred in Osaka Prefecture during Winter?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Osaka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "meta": {
+      "pref": "Osaka Prefecture",
+      "season": "Winter"
+    },
+    "execution_time_ms": 2158,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q148",
+    "prefectures_used": [
+      "Osaka Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Osaka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "nl_query": "How many unhealthy PM2.5 readings occurred in Osaka Prefecture during Winter?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Gifu Prefecture exceeded Japan's 35 ug/m3 standard in 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Gifu Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Gifu Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 1732,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q150",
+    "prefectures_used": [
+      "Gifu Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Gifu Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Gifu Prefecture exceeded Japan's 35 ug/m3 standard in 2018?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Akita Prefecture exceeded Japan's 35 ug/m3 standard in 2020?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Akita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Akita Prefecture",
+      "year": 2020
+    },
+    "execution_time_ms": 889,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q151",
+    "prefectures_used": [
+      "Akita Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Akita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Akita Prefecture exceeded Japan's 35 ug/m3 standard in 2020?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Gunma Prefecture exceeded Japan's 35 ug/m3 standard in 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Gunma Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Gunma Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 958,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q152",
+    "prefectures_used": [
+      "Gunma Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Gunma Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Gunma Prefecture exceeded Japan's 35 ug/m3 standard in 2018?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "How many unhealthy PM2.5 readings occurred in Shimane Prefecture during Winter?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Shimane Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "meta": {
+      "pref": "Shimane Prefecture",
+      "season": "Winter"
+    },
+    "execution_time_ms": 380,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q153",
+    "prefectures_used": [
+      "Shimane Prefecture"
+    ],
+    "seasons_used": [
+      "Winter"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Shimane Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Winter'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "nl_query": "How many unhealthy PM2.5 readings occurred in Shimane Prefecture during Winter?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Yamagata Prefecture exceeded Japan's 35 ug/m3 standard in 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Yamagata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Yamagata Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 1162,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q154",
+    "prefectures_used": [
+      "Yamagata Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Yamagata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Yamagata Prefecture exceeded Japan's 35 ug/m3 standard in 2025?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Okayama Prefecture exceeded Japan's 35 ug/m3 standard in 2020?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Okayama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Okayama Prefecture",
+      "year": 2020
+    },
+    "execution_time_ms": 4002,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q155",
+    "prefectures_used": [
+      "Okayama Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Okayama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Okayama Prefecture exceeded Japan's 35 ug/m3 standard in 2020?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "How many unhealthy PM2.5 readings occurred in Kagoshima Prefecture during Autumn?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kagoshima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "meta": {
+      "pref": "Kagoshima Prefecture",
+      "season": "Autumn"
+    },
+    "execution_time_ms": 463,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q157",
+    "prefectures_used": [
+      "Kagoshima Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kagoshima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "nl_query": "How many unhealthy PM2.5 readings occurred in Kagoshima Prefecture during Autumn?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Tochigi Prefecture exceeded Japan's 35 ug/m3 standard in 2019?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tochigi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Tochigi Prefecture",
+      "year": 2019
+    },
+    "execution_time_ms": 1334,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q158",
+    "prefectures_used": [
+      "Tochigi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tochigi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Tochigi Prefecture exceeded Japan's 35 ug/m3 standard in 2019?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Oita Prefecture exceeded Japan's 35 ug/m3 standard in 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Oita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Oita Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 1727,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q160",
+    "prefectures_used": [
+      "Oita Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Oita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Oita Prefecture exceeded Japan's 35 ug/m3 standard in 2025?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Shizuoka Prefecture exceeded Japan's 35 ug/m3 standard in 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Shizuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Shizuoka Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 4110,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q161",
+    "prefectures_used": [
+      "Shizuoka Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Shizuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Shizuoka Prefecture exceeded Japan's 35 ug/m3 standard in 2025?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "How many unhealthy PM2.5 readings occurred in Kagawa Prefecture during Spring?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kagawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "meta": {
+      "pref": "Kagawa Prefecture",
+      "season": "Spring"
+    },
+    "execution_time_ms": 508,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q162",
+    "prefectures_used": [
+      "Kagawa Prefecture"
+    ],
+    "seasons_used": [
+      "Spring"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kagawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Spring'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "nl_query": "How many unhealthy PM2.5 readings occurred in Kagawa Prefecture during Spring?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "How many unhealthy PM2.5 readings occurred in Nagano Prefecture during Autumn?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Nagano Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "meta": {
+      "pref": "Nagano Prefecture",
+      "season": "Autumn"
+    },
+    "execution_time_ms": 569,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q164",
+    "prefectures_used": [
+      "Nagano Prefecture"
+    ],
+    "seasons_used": [
+      "Autumn"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Nagano Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Autumn'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "nl_query": "How many unhealthy PM2.5 readings occurred in Nagano Prefecture during Autumn?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Kagawa Prefecture exceeded Japan's 35 ug/m3 standard in 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kagawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Kagawa Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 1406,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q165",
+    "prefectures_used": [
+      "Kagawa Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kagawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Kagawa Prefecture exceeded Japan's 35 ug/m3 standard in 2018?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Tochigi Prefecture exceeded Japan's 35 ug/m3 standard in 2021?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tochigi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Tochigi Prefecture",
+      "year": 2021
+    },
+    "execution_time_ms": 1253,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q166",
+    "prefectures_used": [
+      "Tochigi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2021
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tochigi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Tochigi Prefecture exceeded Japan's 35 ug/m3 standard in 2021?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Mie Prefecture exceeded Japan's 35 ug/m3 standard in 2019?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Mie Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Mie Prefecture",
+      "year": 2019
+    },
+    "execution_time_ms": 2853,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q167",
+    "prefectures_used": [
+      "Mie Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Mie Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Mie Prefecture exceeded Japan's 35 ug/m3 standard in 2019?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "complex",
+    "intent": "health_risk",
+    "nl": "What percentage of readings in Ishikawa Prefecture exceeded Japan's 35 ug/m3 standard in 2020?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Ishikawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "meta": {
+      "pref": "Ishikawa Prefecture",
+      "year": 2020
+    },
+    "execution_time_ms": 1790,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q169",
+    "prefectures_used": [
+      "Ishikawa Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Ishikawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH count(p) AS tot, count(CASE WHEN p.pm25>35.0 THEN 1 END) AS ex RETURN tot AS total, ex AS exceedances, round(100.0*ex/tot,2) AS exceed_pct",
+    "nl_query": "What percentage of readings in Ishikawa Prefecture exceeded Japan's 35 ug/m3 standard in 2020?",
+    "type": "health_risk"
+  },
+  {
+    "category": "health_risk",
+    "complexity": "medium",
+    "intent": "health_risk",
+    "nl": "How many unhealthy PM2.5 readings occurred in Wakayama Prefecture during Summer?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Wakayama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "meta": {
+      "pref": "Wakayama Prefecture",
+      "season": "Summer"
+    },
+    "execution_time_ms": 583,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q170",
+    "prefectures_used": [
+      "Wakayama Prefecture"
+    ],
+    "seasons_used": [
+      "Summer"
+    ],
+    "years_used": [],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Wakayama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {season:'Summer'}) WHERE p.pm25_level IN ['Slightly Unhealthy','Unhealthy','Very Unhealthy'] RETURN count(p) AS unhealthy_count",
+    "nl_query": "How many unhealthy PM2.5 readings occurred in Wakayama Prefecture during Summer?",
+    "type": "health_risk"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Niigata Prefecture (2018), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Niigata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Niigata Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 2076,
+    "result_row_count": 2,
+    "validated": true,
+    "query_id": "q172",
+    "prefectures_used": [
+      "Niigata Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Niigata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Niigata Prefecture (2018), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Niigata Prefecture (2020), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Niigata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Niigata Prefecture",
+      "year": 2020
+    },
+    "execution_time_ms": 2055,
+    "result_row_count": 2,
+    "validated": true,
+    "query_id": "q173",
+    "prefectures_used": [
+      "Niigata Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Niigata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Niigata Prefecture (2020), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Shiga Prefecture (2018), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Shiga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Shiga Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 1700,
+    "result_row_count": 2,
+    "validated": true,
+    "query_id": "q174",
+    "prefectures_used": [
+      "Shiga Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Shiga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Shiga Prefecture (2018), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Kumamoto Prefecture (2021), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Kumamoto Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Kumamoto Prefecture",
+      "year": 2021
+    },
+    "execution_time_ms": 2980,
+    "result_row_count": 2,
+    "validated": true,
+    "query_id": "q175",
+    "prefectures_used": [
+      "Kumamoto Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2021
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Kumamoto Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Kumamoto Prefecture (2021), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Toyama Prefecture (2023), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Toyama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Toyama Prefecture",
+      "year": 2023
+    },
+    "execution_time_ms": 1752,
+    "result_row_count": 2,
+    "validated": true,
+    "query_id": "q176",
+    "prefectures_used": [
+      "Toyama Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2023
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Toyama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Toyama Prefecture (2023), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Saga Prefecture (2020), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Saga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Saga Prefecture",
+      "year": 2020
+    },
+    "execution_time_ms": 1885,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q177",
+    "prefectures_used": [
+      "Saga Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Saga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Saga Prefecture (2020), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Shiga Prefecture (2025), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Shiga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Shiga Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 1430,
+    "result_row_count": 2,
+    "validated": true,
+    "query_id": "q178",
+    "prefectures_used": [
+      "Shiga Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Shiga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Shiga Prefecture (2025), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "complex",
+    "intent": "comparative",
+    "nl": "Which stations had the highest average PM2.5 in Yamagata Prefecture in 2021?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Yamagata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "meta": {
+      "pref": "Yamagata Prefecture",
+      "year": 2021
+    },
+    "execution_time_ms": 1329,
+    "result_row_count": 10,
+    "validated": true,
+    "query_id": "q179",
+    "prefectures_used": [
+      "Yamagata Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2021
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Yamagata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2021}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "nl_query": "Which stations had the highest average PM2.5 in Yamagata Prefecture in 2021?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Akita Prefecture (2019), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Akita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Akita Prefecture",
+      "year": 2019
+    },
+    "execution_time_ms": 893,
+    "result_row_count": 2,
+    "validated": true,
+    "query_id": "q180",
+    "prefectures_used": [
+      "Akita Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2019
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Akita Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2019}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Akita Prefecture (2019), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "complex",
+    "intent": "comparative",
+    "nl": "Which stations had the highest average PM2.5 in Tottori Prefecture in 2022?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Tottori Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "meta": {
+      "pref": "Tottori Prefecture",
+      "year": 2022
+    },
+    "execution_time_ms": 395,
+    "result_row_count": 3,
+    "validated": true,
+    "query_id": "q181",
+    "prefectures_used": [
+      "Tottori Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Tottori Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "nl_query": "Which stations had the highest average PM2.5 in Tottori Prefecture in 2022?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "complex",
+    "intent": "comparative",
+    "nl": "Which stations had the highest average PM2.5 in Shiga Prefecture in 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Shiga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "meta": {
+      "pref": "Shiga Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 1401,
+    "result_row_count": 10,
+    "validated": true,
+    "query_id": "q184",
+    "prefectures_used": [
+      "Shiga Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Shiga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "nl_query": "Which stations had the highest average PM2.5 in Shiga Prefecture in 2018?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "complex",
+    "intent": "comparative",
+    "nl": "Which stations had the highest average PM2.5 in Hiroshima Prefecture in 2022?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Hiroshima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "meta": {
+      "pref": "Hiroshima Prefecture",
+      "year": 2022
+    },
+    "execution_time_ms": 2910,
+    "result_row_count": 10,
+    "validated": true,
+    "query_id": "q185",
+    "prefectures_used": [
+      "Hiroshima Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Hiroshima Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "nl_query": "Which stations had the highest average PM2.5 in Hiroshima Prefecture in 2022?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "complex",
+    "intent": "comparative",
+    "nl": "Which stations had the highest average PM2.5 in Saitama Prefecture in 2018?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Saitama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "meta": {
+      "pref": "Saitama Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 7487,
+    "result_row_count": 10,
+    "validated": true,
+    "query_id": "q186",
+    "prefectures_used": [
+      "Saitama Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Saitama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "nl_query": "Which stations had the highest average PM2.5 in Saitama Prefecture in 2018?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "complex",
+    "intent": "comparative",
+    "nl": "Which stations had the highest average PM2.5 in Shizuoka Prefecture in 2022?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Shizuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "meta": {
+      "pref": "Shizuoka Prefecture",
+      "year": 2022
+    },
+    "execution_time_ms": 4232,
+    "result_row_count": 10,
+    "validated": true,
+    "query_id": "q188",
+    "prefectures_used": [
+      "Shizuoka Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2022
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Shizuoka Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2022}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "nl_query": "Which stations had the highest average PM2.5 in Shizuoka Prefecture in 2022?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "complex",
+    "intent": "comparative",
+    "nl": "Which stations had the highest average PM2.5 in Gifu Prefecture in 2020?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Gifu Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "meta": {
+      "pref": "Gifu Prefecture",
+      "year": 2020
+    },
+    "execution_time_ms": 1746,
+    "result_row_count": 10,
+    "validated": true,
+    "query_id": "q189",
+    "prefectures_used": [
+      "Gifu Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Gifu Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "nl_query": "Which stations had the highest average PM2.5 in Gifu Prefecture in 2020?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Saga Prefecture (2023), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Saga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Saga Prefecture",
+      "year": 2023
+    },
+    "execution_time_ms": 1455,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q191",
+    "prefectures_used": [
+      "Saga Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2023
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Saga Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2023}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Saga Prefecture (2023), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Chiba Prefecture (2018), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Chiba Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Chiba Prefecture",
+      "year": 2018
+    },
+    "execution_time_ms": 6699,
+    "result_row_count": 2,
+    "validated": true,
+    "query_id": "q192",
+    "prefectures_used": [
+      "Chiba Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2018
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Chiba Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2018}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Chiba Prefecture (2018), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Toyama Prefecture (2020), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Toyama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Toyama Prefecture",
+      "year": 2020
+    },
+    "execution_time_ms": 1495,
+    "result_row_count": 2,
+    "validated": true,
+    "query_id": "q194",
+    "prefectures_used": [
+      "Toyama Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2020
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Toyama Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2020}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Toyama Prefecture (2020), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Miyagi Prefecture (2024), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Miyagi Prefecture",
+      "year": 2024
+    },
+    "execution_time_ms": 3142,
+    "result_row_count": 2,
+    "validated": true,
+    "query_id": "q195",
+    "prefectures_used": [
+      "Miyagi Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2024
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Miyagi Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Miyagi Prefecture (2024), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "complex",
+    "intent": "comparative",
+    "nl": "Which stations had the highest average PM2.5 in Nagasaki Prefecture in 2025?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Nagasaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "meta": {
+      "pref": "Nagasaki Prefecture",
+      "year": 2025
+    },
+    "execution_time_ms": 2186,
+    "result_row_count": 10,
+    "validated": true,
+    "query_id": "q196",
+    "prefectures_used": [
+      "Nagasaki Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2025
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Nagasaki Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2025}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 WITH s, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n WHERE n>100 RETURN s.stationname_en AS station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10",
+    "nl_query": "Which stations had the highest average PM2.5 in Nagasaki Prefecture in 2025?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Yamagata Prefecture (2024), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Yamagata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Yamagata Prefecture",
+      "year": 2024
+    },
+    "execution_time_ms": 1169,
+    "result_row_count": 2,
+    "validated": true,
+    "query_id": "q197",
+    "prefectures_used": [
+      "Yamagata Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2024
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Yamagata Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Yamagata Prefecture (2024), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  },
+  {
+    "category": "comparative",
+    "complexity": "medium",
+    "intent": "comparative",
+    "nl": "In Okinawa Prefecture (2024), did roadside stations record higher PM2.5 than general stations?",
+    "cypher": "MATCH (l:Location {prefecture_en:'Okinawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "meta": {
+      "pref": "Okinawa Prefecture",
+      "year": 2024
+    },
+    "execution_time_ms": 608,
+    "result_row_count": 1,
+    "validated": true,
+    "query_id": "q198",
+    "prefectures_used": [
+      "Okinawa Prefecture"
+    ],
+    "seasons_used": [],
+    "years_used": [
+      2024
+    ],
+    "gold_cypher": "MATCH (l:Location {prefecture_en:'Okinawa Prefecture'})<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime {year:2024}) WHERE p.pm25 >= 0 AND p.pm25 <= 500 RETURN s.stationtype_en AS station_type, round(avg(p.pm25),2) AS avg_pm25, count(p) AS n ORDER BY avg_pm25 DESC",
+    "nl_query": "In Okinawa Prefecture (2024), did roadside stations record higher PM2.5 than general stations?",
+    "type": "comparative"
+  }
+]
