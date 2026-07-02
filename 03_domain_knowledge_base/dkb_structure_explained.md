@@ -47,7 +47,7 @@ Graph traversal rules that enforce correctness and performance:
 4. Standard traversal path: `Location ← LOCATED_AT ← Station ← RECORDED_BY ← ObservedPM25 → OBSERVED_AT → ObservationTime`
 
 ### `query_patterns`
-28 exemplar NL–Cypher pairs covering the five benchmark categories at varying complexity levels. In the `DKB` system, all 28 are included in the prompt as fixed few-shot examples. In `DKB+Hybrid`, a subset of the most relevant examples is selected dynamically per query using BM25+embedding hybrid retrieval.
+28 exemplar NL–Cypher pairs covering the five benchmark categories at varying complexity levels. In the `DKB` system, all 28 are included in the prompt as fixed few-shot examples. In `DKB+Hybrid`, the top-3 (k=3) most relevant examples are selected dynamically per query using dense embedding (sentence-transformers `all-MiniLM-L6-v2`) cosine similarity only — there is no BM25 or other sparse term, and no weighting coefficient (see `pipeline/systems.py`, `_retrieve_top_k`).
 
 ### `data_quality_notes`
 Notes on data anomalies, known sensor issues, and recommended filters for robust analysis.
