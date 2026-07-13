@@ -1,24 +1,24 @@
-Paired Wilcoxon signed-rank test — DKB+Hybrid vs others (SE), pooled over 4 LLMs
-N = 150 queries x 4 LLMs = 600 paired observations
+Per-LLM paired Wilcoxon signed-rank test (SE), one-sided (alternative='greater'),
+zero_method='pratt', N=150 queries per LLM, combined across 4 LLMs via Stouffer's method.
 
-DKB+Hybrid (0.416) vs Baseline (0.000):
-  median SE difference = +0.400
-  Wilcoxon W = 0.0,  p = 1.490e-59 ***
-  Cohen's d = 1.474 (large effect)
-  95% CI of mean SE difference = [+0.384, +0.449] (bootstrap, 10k)
-  Interpretation: DKB+Hybrid significantly exceeds Baseline on semantic equivalence.
+vs. Baseline:
+  llama3.2:3b          N=150  p=3.017e-09  dz=0.480  mean_diff=+0.126
+  gemma2:9b            N=150  p=7.329e-17  dz=0.808  mean_diff=+0.278
+  qwen2.5-coder:32b    N=150  p=2.576e-25  dz=1.781  mean_diff=+0.647
+  qwen2.5:72b          N=150  p=1.513e-25  dz=1.735  mean_diff=+0.614
+  Stouffer combined: z=17.393  p=4.657e-68  dz_mean=1.201 (large effect)  95% CI=[+0.390, +0.443]
 
-DKB+Hybrid (0.416) vs Schema Baseline (0.001):
-  median SE difference = +0.400
-  Wilcoxon W = 0.0,  p = 1.520e-59 ***
-  Cohen's d = 1.467 (large effect)
-  95% CI of mean SE difference = [+0.383, +0.448] (bootstrap, 10k)
-  Interpretation: DKB+Hybrid significantly exceeds Schema Baseline on semantic equivalence.
+vs. Schema Baseline:
+  llama3.2:3b          N=150  p=3.017e-09  dz=0.480  mean_diff=+0.126
+  gemma2:9b            N=150  p=7.329e-17  dz=0.808  mean_diff=+0.278
+  qwen2.5-coder:32b    N=150  p=2.603e-25  dz=1.761  mean_diff=+0.643
+  qwen2.5:72b          N=150  p=1.513e-25  dz=1.735  mean_diff=+0.614
+  Stouffer combined: z=17.393  p=4.698e-68  dz_mean=1.196 (large effect)  95% CI=[+0.389, +0.442]
 
-DKB+Hybrid (0.416) vs DKB (0.328):
-  median SE difference = +0.000
-  Wilcoxon W = 8522.5,  p = 2.198e-09 ***
-  Cohen's d = 0.227 (small effect)
-  95% CI of mean SE difference = [+0.059, +0.118] (bootstrap, 10k)
-  Interpretation: DKB+Hybrid significantly exceeds DKB on semantic equivalence.
+vs. DKB:
+  llama3.2:3b          N=150  p=2.547e-08  dz=0.426  mean_diff=+0.111
+  gemma2:9b            N=150  p=6.470e-01  dz=0.105  mean_diff=+0.035
+  qwen2.5-coder:32b    N=150  p=5.391e-08  dz=0.416  mean_diff=+0.185
+  qwen2.5:72b          N=150  p=2.736e-02  dz=0.053  mean_diff=+0.021
+  Stouffer combined: z=6.153  p=3.813e-10  dz_mean=0.250 (small effect)  95% CI=[+0.059, +0.117]
 

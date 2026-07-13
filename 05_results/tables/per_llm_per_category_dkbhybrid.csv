@@ -1,0 +1,6 @@
+Category,llama3.2:3b,gemma2:9b,qwen2.5-coder:32b,qwen2.5:72b,Pooled
+Aggregate,0.327,0.4868,0.7122,0.792,0.5795
+Temporal,0.0091,0.1967,0.7733,0.6933,0.4181
+Station Filtering,0.2052,0.4124,0.3514,0.3801,0.3373
+Health Risk,0.0,0.1667,0.8,0.7,0.4167
+Comparative,0.0,0.0,0.5545,0.397,0.2379

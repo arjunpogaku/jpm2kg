@@ -1,102 +1,65 @@
-# BDA 2026 Submission Package
-## Structured Domain Grounding for Natural-Language Querying
-## of Japan's Large-Scale PM2.5 Knowledge Graph
+# BDA 2026 Reproducibility Package
+## Structured Domain Grounding for Natural-Language Querying of Japan's Large-Scale PM2.5 Knowledge Graph
 
 **Authors:** Arjun Chakravarthi POGAKU, Uday Kiran RAGE
 **Affiliation:** University of Aizu, Aizu-Wakamatsu, Fukushima, Japan
 **Conference:** BDA 2026 — Big Data Analytics
 
----
+This package contains the knowledge graph, benchmark, domain knowledge base,
+evaluation pipeline, and raw results needed to reproduce the tables reported
+in the paper: JPM2KG (a PM2.5 knowledge graph for Japan), the AirCypher-150
+NL-to-Cypher benchmark, and the DKB (Domain Knowledge Base) grounding
+framework.
 
-## Package Overview
-
-This package contains all materials needed to review and reproduce the paper, including the knowledge graph, benchmark, pipeline code, and all experimental results.
+## Contents
 
 ```
-reviewer_package_BDA2026/
-├── README.md                  ← YOU ARE HERE
-├── REPRODUCIBILITY.md         ← Step-by-step reproduction
-├── RESULTS_SUMMARY.md         ← Quick results overview
-│
-├── 01_knowledge_graph/        ← JPM2KG graph resources
-├── 02_benchmark/              ← AirCypher-150 benchmark
+reviewer_package_BDA2026_FINAL/
+├── README.md                  ← you are here
+├── 01_knowledge_graph/        ← JPM2KG schema, statistics, and Neo4j dump
+├── 02_benchmark/               ← AirCypher-150 benchmark (150 NL-to-Cypher queries)
 ├── 03_domain_knowledge_base/  ← DKB definition and structure
-├── 04_pipeline/               ← All evaluation code
-├── 05_results/                ← All results, tables, figures
-└── 06_environment/            ← Software environment details
+├── 04_pipeline/               ← evaluation code + table-generation scripts
+├── 05_results/                ← raw per-query results + regenerated tables
+└── 06_environment/            ← software environment details
 ```
 
----
+- **`01_knowledge_graph/`** — the JPM2KG schema and statistics, plus a Neo4j dump (`neo4j_backup/`) to restore the graph.
+- **`02_benchmark/`** — the AirCypher-150 benchmark (150 queries, 5 categories) and its summary statistics.
+- **`03_domain_knowledge_base/`** — the DKB's canonical values, domain rules, and traversal policies, with a structural explanation.
+- **`04_pipeline/`** — the six prompting systems (`systems.py`), evaluation metrics (`evaluator.py`), evaluation loop (`experiment_runner.py`), and the two scripts that produce every table below.
+- **`05_results/`** — `raw/results_full.jsonl` (one record per system × LLM × query) and `tables/`, generated fresh from that file by the scripts in `04_pipeline/`.
+- **`06_environment/`** — Docker/Neo4j setup notes and the exact Ollama model tags used.
 
-## Quick Start for Reviewers
+## To reproduce the paper's tables
 
-### "I want to see the results"
-→ Open: `RESULTS_SUMMARY.md`
-→ Or see tables: `05_results/tables/table1_main.csv`
-→ Or see figures: `05_results/figures/`
+From `04_pipeline/`, with `results_full.jsonl` in place under `05_results/raw/`:
 
-### "I want to understand the benchmark"
-→ Open: `02_benchmark/README_BENCHMARK.md`
-→ Browse queries: `02_benchmark/aircypher150_benchmark.json`
-→ See examples: `02_benchmark/sample_queries.md`
+```bash
+python3 generate_paper_tables.py       # Tables 1-3 + the single-LLM ablation table
+python3 compute_per_llm_stats.py       # Table 4: per-LLM significance testing + breakdown
+```
 
-### "I want to understand the DKB"
-→ Open: `03_domain_knowledge_base/README_DKB.md`
-→ Inspect DKB: `03_domain_knowledge_base/dkb_japan.json`
-→ Read explanation: `03_domain_knowledge_base/dkb_structure_explained.md`
+Both scripts read `05_results/raw/results_full.jsonl` and
+`02_benchmark/aircypher150_benchmark.json`, and write into `05_results/tables/`
+by default.
 
-### "I want to understand the code"
-→ Open: `04_pipeline/README_PIPELINE.md`
-→ Key files: `systems.py` (6 systems), `evaluator.py` (5 metrics)
+To reproduce `results_full.jsonl` itself from scratch: restore the Neo4j graph
+from `01_knowledge_graph/neo4j_backup/`, pull the Ollama models listed in
+`06_environment/ollama_models.txt`, then run `experiment_runner.py` with the
+six systems (`baseline`, `cypherbench_style`, `schema_plus_values`,
+`dkb_no_examples`, `dkb`, `dkb_hybrid`) against all four LLMs and the
+AirCypher-150 benchmark.
 
-### "I want to reproduce the experiments"
-→ Open: `REPRODUCIBILITY.md` (complete step-by-step guide)
-→ Restore KG: `01_knowledge_graph/neo4j_backup/README_BACKUP.md`
-→ Run pipeline: `04_pipeline/experiment_runner.py`
+## Full research history
 
-### "I want to inspect the raw data"
-→ Raw results: `05_results/raw/results_full.jsonl`
-→ Each line: one evaluation record with all 5 metrics
-
----
-
-## Paper Contributions
-
-| Contribution | Location in Package |
-|---|---|
-| JPM2KG knowledge graph | `01_knowledge_graph/` |
-| AirCypher-150 benchmark | `02_benchmark/` |
-| DKB framework | `03_domain_knowledge_base/` |
-| Evaluation pipeline | `04_pipeline/` |
-| All results | `05_results/` |
-
----
-
-## Key Results at a Glance
-
-| System | Semantic Equivalence (SE) |
-|---|---|
-| Baseline (no context) | 0.000 |
-| Schema Baseline (CypherBench-style) | 0.001 |
-| Schema + Canonical Values | 0.070 |
-| DKB without Examples | 0.215 |
-| DKB with Fixed Examples | 0.328 |
-| **DKB+Hybrid (Proposed)** | **0.416** |
-
-Schema grounding is necessary but insufficient. Domain grounding is the critical driver of semantic correctness (~400× improvement over schema-only baseline).
-
----
-
-## Contact
-
-For questions about the code or data, please contact:
-arjun.chakravarthip@gmail.com
-
----
+This package is deliberately minimal: it contains only what's needed to
+regenerate the paper's tables from the shipped raw results. The full
+development history — including exploratory ablations, earlier pipeline
+versions, and intermediate analyses that did not make it into the paper — is
+preserved at the git tag `bda2026-submission`, if needed for provenance.
 
 ## Citation
-
-If you use JPM2KG, AirCypher-150, or the DKB framework, please cite:
 
 ```bibtex
 @inproceedings{pogaku2026domaingrounding,
