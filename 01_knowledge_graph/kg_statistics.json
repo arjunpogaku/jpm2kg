@@ -1,4 +1,6 @@
 {
+  "graph_name": "JPM2KG",
+  "neo4j_version": "2026.02.2",
   "total_nodes": 142300976,
   "total_relationships": 213449232,
   "node_breakdown": {
@@ -13,11 +15,34 @@
     "OBSERVED_AT": 71149372,
     "RECORDED_BY": 71149372
   },
-  "pm25_stats": {
-    "total_observations": 71149372,
-    "valid_observations": 66086807,
-    "validity_filter": "0 <= pm25 <= 500",
-    "mean_pm25_valid": "computed from live graph",
-    "std_pm25_valid": "computed from live graph"
+  "coverage": {
+    "stations": 1116,
+    "prefectures": 46,
+    "cities": 619
+  },
+  "pm25_value_distribution": {
+    "total_observedpm25_records": 71149372,
+    "pm25_null": 3087056,
+    "pm25_below_0": 1974663,
+    "pm25_above_500": 846,
+    "pm25_valid_0_to_500_inclusive": 66086807,
+    "pm25_min_stored": -10000,
+    "pm25_max_stored": 65535,
+    "partition_note": "The four groups (NULL, <0, >500, [0,500]) partition all 71,149,372 ObservedPM25 records.",
+    "numerical_validity_convention": "p.pm25 >= 0 AND p.pm25 <= 500",
+    "numerical_validity_convention_note": "Data-quality convention used for numerical aggregation in JPM2KG and in the AirCypher-150 reference queries. It is a convention adopted for this graph, not an external or universal standard."
+  },
+  "pm25_level_bands": {
+    "convention": "JPM2KG system-defined category convention",
+    "not_an_official_classification": "These five bands are the mapping implemented in JPM2KG. They are not an official WHO classification and not an official Japanese regulatory classification.",
+    "bands": [
+      {"pm25_level": "Safe",               "pm25_min": 0,  "pm25_max": 15,   "records": 54671498},
+      {"pm25_level": "Moderate",           "pm25_min": 16, "pm25_max": 35,   "records": 10797159},
+      {"pm25_level": "Slightly Unhealthy", "pm25_min": 36, "pm25_max": 50,   "records": 520675},
+      {"pm25_level": "Unhealthy",          "pm25_min": 51, "pm25_max": 70,   "records": 82390},
+      {"pm25_level": "Very Unhealthy",     "pm25_min": 71, "pm25_max": null, "records": 15931}
+    ],
+    "records_without_pm25_level": 5061719,
+    "records_without_pm25_level_note": "Records whose stored pm25 is NULL (3,087,056) or negative (1,974,663) carry no pm25_level."
   }
 }

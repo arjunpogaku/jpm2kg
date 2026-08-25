@@ -1,0 +1,126 @@
+prompting_configuration,category,model,n,vmf1_saved,vmf1_strict_reexecuted,vmf1_tolerant,vmf1_delta_tolerant_minus_strict,vmf1_exact1_saved,vmf1_exact1_strict,vmf1_exact1_tolerant,rmem_strict_correct,rmem_relaxed_only_correct,rmem_tolerant_correct,rmem_still_incorrect,rmem_strict_accuracy,rmem_tolerant_accuracy,rmem_absolute_difference,rmem_relative_difference,execution_failures,vmf1_1_but_rmem_0
+Baseline,aggregate,gemma2:9b,38,0.0,0.0,0.0,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,5,0
+Baseline,aggregate,llama3.2:3b,38,0.0,0.0,0.0,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,30,0
+Baseline,aggregate,qwen2.5-coder:32b,38,0.0,0.0,0.0,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,5,0
+Baseline,aggregate,qwen2.5:72b,38,0.0,0.0,0.0,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,1,0
+Baseline,comparative,gemma2:9b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,1,0
+Baseline,comparative,llama3.2:3b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,14,0
+Baseline,comparative,qwen2.5-coder:32b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,5,0
+Baseline,comparative,qwen2.5:72b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,0,0
+Baseline,health_risk,gemma2:9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,19,0
+Baseline,health_risk,llama3.2:3b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,18,0
+Baseline,health_risk,qwen2.5-coder:32b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,19,0
+Baseline,health_risk,qwen2.5:72b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,1,0
+Baseline,station_filtering,gemma2:9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,7,0
+Baseline,station_filtering,llama3.2:3b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,19,0
+Baseline,station_filtering,qwen2.5-coder:32b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,1,0
+Baseline,station_filtering,qwen2.5:72b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,1,0
+Baseline,temporal,gemma2:9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,30,0
+Baseline,temporal,llama3.2:3b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,23,0
+Baseline,temporal,qwen2.5-coder:32b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,4,0
+Baseline,temporal,qwen2.5:72b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,6,0
+DKB,aggregate,gemma2:9b,38,0.5921,0.5921,0.5921,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,5,0
+DKB,aggregate,llama3.2:3b,38,0.0105,0.0105,0.0632,0.0527,0,0,0,0,0,0,38,0.0,0.0,0.0,,3,0
+DKB,aggregate,qwen2.5-coder:32b,38,0.6938,0.6938,0.6938,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,0,0
+DKB,aggregate,qwen2.5:72b,38,0.8096,0.8096,0.8096,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,0,0
+DKB,comparative,gemma2:9b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,22,0
+DKB,comparative,llama3.2:3b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,16,0
+DKB,comparative,qwen2.5-coder:32b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,16,0
+DKB,comparative,qwen2.5:72b,22,0.9273,0.9273,0.9273,0.0,14,14,14,14,0,14,8,0.6364,0.6364,0.0,0.0,0,0
+DKB,health_risk,gemma2:9b,30,0.0533,0.0533,0.0933,0.04,0,0,0,0,0,0,30,0.0,0.0,0.0,,23,0
+DKB,health_risk,llama3.2:3b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,2,0
+DKB,health_risk,qwen2.5-coder:32b,30,0.6833,0.6833,0.6833,0.0,11,11,11,11,0,11,19,0.3667,0.3667,0.0,0.0,0,0
+DKB,health_risk,qwen2.5:72b,30,0.3167,0.3167,0.3167,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,0,0
+DKB,station_filtering,gemma2:9b,30,0.2324,0.2324,0.2324,0.0,4,4,4,4,0,4,26,0.1333,0.1333,0.0,0.0,18,0
+DKB,station_filtering,llama3.2:3b,30,0.0333,0.0333,0.0333,0.0,1,1,1,1,0,1,29,0.0333,0.0333,0.0,0.0,26,0
+DKB,station_filtering,qwen2.5-coder:32b,30,0.3084,0.4554,0.4554,0.0,5,5,5,5,0,5,25,0.1667,0.1667,0.0,0.0,3,0
+DKB,station_filtering,qwen2.5:72b,30,0.3803,0.3803,0.3803,0.0,1,1,1,1,0,1,29,0.0333,0.0333,0.0,0.0,1,0
+DKB,temporal,gemma2:9b,30,0.1828,0.1828,0.3353,0.1525,0,0,0,0,0,0,30,0.0,0.0,0.0,,14,0
+DKB,temporal,llama3.2:3b,30,0.0267,0.0267,0.0267,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,9,0
+DKB,temporal,qwen2.5-coder:32b,30,0.44,0.44,0.44,0.0,10,10,10,10,0,10,20,0.3333,0.3333,0.0,0.0,16,0
+DKB,temporal,qwen2.5:72b,30,0.56,0.56,0.56,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,9,0
+DKB+Hybrid,aggregate,gemma2:9b,38,0.4868,0.4868,0.4868,0.0,2,2,2,2,0,2,36,0.0526,0.0526,0.0,0.0,3,0
+DKB+Hybrid,aggregate,llama3.2:3b,38,0.327,0.327,0.3375,0.0105,0,0,0,0,0,0,38,0.0,0.0,0.0,,8,0
+DKB+Hybrid,aggregate,qwen2.5-coder:32b,38,0.7122,0.7122,0.7122,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,0,0
+DKB+Hybrid,aggregate,qwen2.5:72b,38,0.792,0.792,0.792,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,0,0
+DKB+Hybrid,comparative,gemma2:9b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,22,0
+DKB+Hybrid,comparative,llama3.2:3b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,18,0
+DKB+Hybrid,comparative,qwen2.5-coder:32b,22,0.5545,0.5545,0.5545,0.0,9,9,9,9,0,9,13,0.4091,0.4091,0.0,0.0,9,0
+DKB+Hybrid,comparative,qwen2.5:72b,22,0.397,0.397,0.397,0.0,6,6,6,6,0,6,16,0.2727,0.2727,0.0,0.0,12,0
+DKB+Hybrid,health_risk,gemma2:9b,30,0.1667,0.1667,0.1667,0.0,5,5,5,5,0,5,25,0.1667,0.1667,0.0,0.0,6,0
+DKB+Hybrid,health_risk,llama3.2:3b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,7,0
+DKB+Hybrid,health_risk,qwen2.5-coder:32b,30,0.8,0.8,0.8,0.0,24,24,24,24,0,24,6,0.8,0.8,0.0,0.0,0,0
+DKB+Hybrid,health_risk,qwen2.5:72b,30,0.7,0.7,0.7,0.0,21,21,21,21,0,21,9,0.7,0.7,0.0,0.0,0,0
+DKB+Hybrid,station_filtering,gemma2:9b,30,0.4124,0.4124,0.4124,0.0,7,7,7,7,0,7,23,0.2333,0.2333,0.0,0.0,12,0
+DKB+Hybrid,station_filtering,llama3.2:3b,30,0.2052,0.2052,0.2052,0.0,3,3,3,3,0,3,27,0.1,0.1,0.0,0.0,14,0
+DKB+Hybrid,station_filtering,qwen2.5-coder:32b,30,0.3514,0.4059,0.4059,0.0,1,1,1,1,0,1,29,0.0333,0.0333,0.0,0.0,4,0
+DKB+Hybrid,station_filtering,qwen2.5:72b,30,0.3801,0.3801,0.3801,0.0,1,1,1,1,0,1,29,0.0333,0.0333,0.0,0.0,2,0
+DKB+Hybrid,temporal,gemma2:9b,30,0.1967,0.1967,0.3256,0.1289,0,0,1,0,1,1,29,0.0,0.0333,0.0333,,14,0
+DKB+Hybrid,temporal,llama3.2:3b,30,0.0091,0.0091,0.0091,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,21,0
+DKB+Hybrid,temporal,qwen2.5-coder:32b,30,0.7733,0.7733,0.7733,0.0,12,12,12,12,0,12,18,0.4,0.4,0.0,0.0,4,0
+DKB+Hybrid,temporal,qwen2.5:72b,30,0.6933,0.6933,0.6933,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,4,0
+DKB-NoExamples,aggregate,gemma2:9b,38,0.0395,0.0395,0.4211,0.3816,0,0,0,0,0,0,38,0.0,0.0,0.0,,6,0
+DKB-NoExamples,aggregate,llama3.2:3b,38,0.0263,0.0263,0.0526,0.0263,0,0,0,0,0,0,38,0.0,0.0,0.0,,19,0
+DKB-NoExamples,aggregate,qwen2.5-coder:32b,38,0.549,0.549,0.549,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,0,0
+DKB-NoExamples,aggregate,qwen2.5:72b,38,0.3852,0.3852,0.3852,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,10,0
+DKB-NoExamples,comparative,gemma2:9b,22,0.1052,0.1052,0.1957,0.0905,0,0,0,0,0,0,22,0.0,0.0,0.0,,6,0
+DKB-NoExamples,comparative,llama3.2:3b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,13,0
+DKB-NoExamples,comparative,qwen2.5-coder:32b,22,0.6727,0.6727,0.6727,0.0,6,6,6,6,0,6,16,0.2727,0.2727,0.0,0.0,0,0
+DKB-NoExamples,comparative,qwen2.5:72b,22,0.1149,0.1149,0.1149,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,3,0
+DKB-NoExamples,health_risk,gemma2:9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,19,0
+DKB-NoExamples,health_risk,llama3.2:3b,30,0.0111,0.0111,0.0378,0.0267,0,0,0,0,0,0,30,0.0,0.0,0.0,,11,0
+DKB-NoExamples,health_risk,qwen2.5-coder:32b,30,0.3,0.3,0.3,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,0,0
+DKB-NoExamples,health_risk,qwen2.5:72b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,4,0
+DKB-NoExamples,station_filtering,gemma2:9b,30,0.1784,0.1784,0.1784,0.0,1,1,1,1,0,1,29,0.0333,0.0333,0.0,0.0,6,0
+DKB-NoExamples,station_filtering,llama3.2:3b,30,0.0884,0.0884,0.0884,0.0,1,1,1,1,0,1,29,0.0333,0.0333,0.0,0.0,6,0
+DKB-NoExamples,station_filtering,qwen2.5-coder:32b,30,0.421,0.421,0.421,0.0,1,1,1,1,0,1,29,0.0333,0.0333,0.0,0.0,0,0
+DKB-NoExamples,station_filtering,qwen2.5:72b,30,0.2105,0.2105,0.2105,0.0,1,1,1,1,0,1,29,0.0333,0.0333,0.0,0.0,0,0
+DKB-NoExamples,temporal,gemma2:9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,30,0
+DKB-NoExamples,temporal,llama3.2:3b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,30,0
+DKB-NoExamples,temporal,qwen2.5-coder:32b,30,0.5667,0.5667,0.5667,0.0,17,17,17,17,0,17,13,0.5667,0.5667,0.0,0.0,13,0
+DKB-NoExamples,temporal,qwen2.5:72b,30,0.6,0.6,0.6,0.0,18,18,18,18,0,18,12,0.6,0.6,0.0,0.0,6,0
+Schema Baseline,aggregate,gemma2:9b,38,0.0,0.0,0.0,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,30,0
+Schema Baseline,aggregate,llama3.2:3b,38,0.0,0.0,0.0,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,14,0
+Schema Baseline,aggregate,qwen2.5-coder:32b,38,0.0,0.0,0.1974,0.1974,0,0,0,0,0,0,38,0.0,0.0,0.0,,0,0
+Schema Baseline,aggregate,qwen2.5:72b,38,0.0,0.0,0.0,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,1,0
+Schema Baseline,comparative,gemma2:9b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,11,0
+Schema Baseline,comparative,llama3.2:3b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,13,0
+Schema Baseline,comparative,qwen2.5-coder:32b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,22,0
+Schema Baseline,comparative,qwen2.5:72b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,8,0
+Schema Baseline,health_risk,gemma2:9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,27,0
+Schema Baseline,health_risk,llama3.2:3b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,20,0
+Schema Baseline,health_risk,qwen2.5-coder:32b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,19,0
+Schema Baseline,health_risk,qwen2.5:72b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,0,0
+Schema Baseline,station_filtering,gemma2:9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,22,0
+Schema Baseline,station_filtering,llama3.2:3b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,10,0
+Schema Baseline,station_filtering,qwen2.5-coder:32b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,1,0
+Schema Baseline,station_filtering,qwen2.5:72b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,20,0
+Schema Baseline,temporal,gemma2:9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,30,0
+Schema Baseline,temporal,llama3.2:3b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,24,0
+Schema Baseline,temporal,qwen2.5-coder:32b,30,0.0208,0.0208,0.0333,0.0125,0,0,1,0,1,1,29,0.0,0.0333,0.0333,,16,0
+Schema Baseline,temporal,qwen2.5:72b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,7,0
+Schema+Values,aggregate,gemma2:9b,38,0.0,0.0,0.0,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,24,0
+Schema+Values,aggregate,llama3.2:3b,38,0.0,0.0,0.0,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,18,0
+Schema+Values,aggregate,qwen2.5-coder:32b,38,0.0239,0.0239,0.0239,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,0,0
+Schema+Values,aggregate,qwen2.5:72b,38,0.1148,0.1148,0.1148,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,8,0
+Schema+Values,comparative,gemma2:9b,22,0.2114,0.2114,0.3182,0.1068,2,2,7,2,5,7,15,0.0909,0.3182,0.2273,2.5,13,0
+Schema+Values,comparative,llama3.2:3b,22,0.0238,0.0238,0.0238,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,11,0
+Schema+Values,comparative,qwen2.5-coder:32b,22,0.2273,0.2273,0.2273,0.0,5,5,5,5,0,5,17,0.2273,0.2273,0.0,0.0,16,0
+Schema+Values,comparative,qwen2.5:72b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,5,0
+Schema+Values,health_risk,gemma2:9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,19,0
+Schema+Values,health_risk,llama3.2:3b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,28,0
+Schema+Values,health_risk,qwen2.5-coder:32b,30,0.0333,0.0333,0.0333,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,17,0
+Schema+Values,health_risk,qwen2.5:72b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,13,0
+Schema+Values,station_filtering,gemma2:9b,30,0.203,0.203,0.203,0.0,1,1,1,1,0,1,29,0.0333,0.0333,0.0,0.0,6,0
+Schema+Values,station_filtering,llama3.2:3b,30,0.068,0.068,0.068,0.0,1,1,1,1,0,1,29,0.0333,0.0333,0.0,0.0,7,0
+Schema+Values,station_filtering,qwen2.5-coder:32b,30,0.2125,0.1967,0.1967,0.0,3,3,3,3,0,3,27,0.1,0.1,0.0,0.0,20,0
+Schema+Values,station_filtering,qwen2.5:72b,30,0.2547,0.2547,0.2547,0.0,7,7,7,7,0,7,23,0.2333,0.2333,0.0,0.0,0,0
+Schema+Values,temporal,gemma2:9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,30,0
+Schema+Values,temporal,llama3.2:3b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,27,0
+Schema+Values,temporal,qwen2.5-coder:32b,30,0.0267,0.0267,0.0267,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,15,0
+Schema+Values,temporal,qwen2.5:72b,30,0.0933,0.0933,0.0933,0.0,2,2,2,2,0,2,28,0.0667,0.0667,0.0,0.0,27,0
+Text2Cypher-FT,aggregate,text2cypher-gemma2-9b,38,0.0,0.0,0.0,0.0,0,0,0,0,0,0,38,0.0,0.0,0.0,,6,0
+Text2Cypher-FT,comparative,text2cypher-gemma2-9b,22,0.0,0.0,0.0,0.0,0,0,0,0,0,0,22,0.0,0.0,0.0,,18,0
+Text2Cypher-FT,health_risk,text2cypher-gemma2-9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,17,0
+Text2Cypher-FT,station_filtering,text2cypher-gemma2-9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,1,0
+Text2Cypher-FT,temporal,text2cypher-gemma2-9b,30,0.0,0.0,0.0,0.0,0,0,0,0,0,0,30,0.0,0.0,0.0,,21,0

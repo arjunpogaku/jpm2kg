@@ -1,68 +1,75 @@
-# Japan PM2.5 NL-to-Cypher Query Generation System
-project_name: Japan_PM25_QueryGen
-version: "2.0"
+# JPM2KG NL-to-Cypher evaluation — public configuration
+#
+# No credentials in this file. The password is read from the NEO4J_PASSWORD
+# environment variable; see .env.example.
+#
+# All paths are relative to the repository root.
+
+project_name: JPM2KG_QueryGen
+version: "2.1"
 scope: "Japan (single-domain case study with transferable DKB design)"
 
 neo4j:
-  uri: bolt://localhost:37689        # jp-pm25-neo4j container (host port 37689 → 7687)
+  uri: bolt://localhost:37689        # host port 37689 -> container port 7687
   username: neo4j
-  password: StrongPasswordHere
+  password_env: NEO4J_PASSWORD       # value is never stored here
   database: neo4j
-  container: jp-pm25-neo4j
-  kg_type: japan_pm25
-  description: "Japan PM2.5 monitoring KG — 1,116 stations, 71M hourly readings (2018–2026), cleaned Japan-only"
+  container: jpm2kg-neo4j
+  description: "JPM2KG — 1,116 stations, 71,149,372 hourly PM2.5 observations (2018-2026)"
 
 ollama:
   base_url: http://localhost:11434
-  # Primary model for smoke test and single-LLM evaluation runs.
-  # Re-selected 2026-06-21 on QUALITY, not just speed:
-  #   - llama3:8B          fast (~2s) but emits INVALID Cypher (e.g. SQL GROUP BY) -> unusable
-  #   - qwen2.5-coder:32b  valid Cypher, ~4.4s warm (cold load ~21s)  <- chosen (reliability)
-  #   - codestral:latest   valid Cypher, ~1.4s warm (cold load ~39s)  <- fast alternative
-  # NOTE: llama3:8B and llama3:latest are the SAME model id (365c0bd3c000); the
-  # earlier "170s" was the long CypherBench schema prompt, not the model.
-  primary_model: qwen2.5-coder:32b
-  fast_alternative: codestral:latest
-  timeout: 60
-  models:
-    cypher:    hmahmood/neo4j-gemma-3-27b-inst-q8  # fine-tuned for Neo4j Cypher
-    general:   qwen3.5:9b
-    large:     qwen3.5:35b
-    code:      qwen2.5-coder:32b
-    embedding: embeddinggemma:latest
-    evaluation_models:
-      - llama3:8B
-      - qwen2.5:7b
-      - qwen2.5-coder:32b
-      - deepseek-coder:33b
-  timeout_seconds: 60
+  timeout_seconds: 60                # 120 was used for qwen2.5:72b
   retry_attempts: 2
+  # The four models reported in the paper.
+  models:
+    - llama3.2:3b
+    - gemma2:9b
+    - qwen2.5-coder:32b
+    - qwen2.5:72b
+  # Generation settings; see 06_environment/models_and_generation.md
+  generation:
+    temperature: 0.0
+    num_ctx: 8192
+    num_predict: 512
+    stream: false
+    think: false
+    keep_alive: 30m
+    seed: null                       # no seed was pinned
+
+finetuned_baseline:
+  checkpoint: neo4j/text2cypher-gemma-2-9b-it-finetuned-2024v1
+  runtime: huggingface_transformers
+  quantization: 4-bit NF4, double quantization, bfloat16 compute
+  do_sample: false
+  max_new_tokens: 256
+
+retrieval:
+  # DKB+Hybrid exemplar retrieval. k was fixed a priori at 3; see
+  # 05_results/camera_ready/k_sensitivity/ for the sensitivity analysis.
+  model: all-MiniLM-L6-v2
+  k: 3
+  similarity: cosine
+  exemplars_in_prompt: 8             # k retrieved + fixed head, truncated to 8
 
 dkb:
-  filepath: /home/arjun/pm25_system/data/dkb_japan.json
-  transferability_doc: /home/arjun/pm25_system/data/TRANSFERABILITY.md
-  description: "Domain Knowledge Base for Japan PM2.5 KG — v2.0, Japan-only"
+  filepath: 03_domain_knowledge_base/dkb_japan.json
+  archived_experimental_dkb: 03_domain_knowledge_base/archive/dkb_japan_bda2026_experimental.json
 
 benchmark:
-  filepath: /home/arjun/pm25_system/benchmarks/benchmark.json
-  system_queries_file: /home/arjun/pm25_system/benchmarks/system_queries.json
-  human_queries_file: /home/arjun/pm25_system/benchmarks/human_queries.json
-  num_system_queries: 300
-  num_human_queries: 100
+  filepath: 02_benchmark/aircypher150_benchmark.json
+  num_queries: 150
 
 results:
-  output_dir: /home/arjun/pm25_system/results/
-  results_file: results_raw.jsonl
-  summary_tables_file: summary_tables.csv
-  plots_dir: /home/arjun/pm25_system/results/plots/
-  statistical_analysis_file: statistical_analysis.txt
+  raw_results: 05_results/raw/results_full.jsonl     # immutable historical output
+  camera_ready_dir: 05_results/camera_ready/
+  tables_dir: 05_results/tables/
 
-paths:
-  root: /home/arjun/pm25_system
-  data_dir: /home/arjun/pm25_system/data/
-  benchmark_dir: /home/arjun/pm25_system/benchmarks/
-  kg_builders_dir: /home/arjun/pm25_system/kg_builders/
-  pipeline_dir: /home/arjun/pm25_system/pipeline/
-  utils_dir: /home/arjun/pm25_system/utils/
-  results_dir: /home/arjun/pm25_system/results/
-  cleanup_dir: /home/arjun/pm25_system/cleanup/
+systems:
+  # The six prompting configurations, with the labels used in the paper tables.
+  baseline:           Baseline
+  cypherbench_style:  Schema
+  schema_plus_values: Schema+Values
+  dkb_no_examples:    DKB-NoExamples
+  dkb:                DKB
+  dkb_hybrid:         DKB+Hybrid

@@ -1,33 +1,45 @@
 {
   "graph_name": "JPM2KG",
-  "description": "Japan PM2.5 Knowledge Graph",
+  "description": "Japan PM2.5 Knowledge Graph — property names as stored in Neo4j.",
   "node_types": [
     {
       "label": "Station",
       "count": 1116,
-      "properties": ["stationId", "stationName", "stationType_en", "latitude", "longitude"]
+      "properties": ["sid", "stationname_en", "stationtype_en"]
     },
     {
       "label": "Location",
       "count": 1116,
-      "properties": ["prefecture_en", "city_en", "address"]
+      "properties": ["sid", "prefecture_en", "city_en", "street_en", "pincode", "lat", "lon"]
     },
     {
       "label": "ObservationTime",
       "count": 71149372,
-      "properties": ["timestamp", "year", "month", "season", "dayType", "timeCategory"]
+      "properties": ["tid", "obsdate", "year", "month", "month_name", "hour", "weekday_name", "dayType", "season", "timeCategory"]
     },
     {
       "label": "ObservedPM25",
       "count": 71149372,
-      "properties": ["pm25", "pm25_level"]
+      "properties": ["tid", "pm25", "pm25_level"]
     }
   ],
   "relationship_types": [
-    {"type": "LOCATED_AT",   "from": "Station",         "to": "Location",        "count": 1116},
-    {"type": "AT_LOCATION",  "from": "ObservationTime",  "to": "Location",        "count": 71149372},
-    {"type": "OBSERVED_AT",  "from": "ObservedPM25",     "to": "ObservationTime", "count": 71149372},
-    {"type": "RECORDED_BY",  "from": "ObservedPM25",     "to": "Station",         "count": 71149372}
+    {"type": "LOCATED_AT",  "from": "Station",          "to": "Location",        "count": 1116},
+    {"type": "AT_LOCATION", "from": "ObservationTime",  "to": "Location",        "count": 71149372},
+    {"type": "OBSERVED_AT", "from": "ObservedPM25",     "to": "ObservationTime", "count": 71149372},
+    {"type": "RECORDED_BY", "from": "ObservedPM25",     "to": "Station",         "count": 71149372}
+  ],
+  "canonical_traversal": "(l:Location)<-[:LOCATED_AT]-(s:Station)<-[:RECORDED_BY]-(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)",
+  "enum_values": {
+    "Station.stationtype_en": ["General Station", "Roadside Station"],
+    "ObservationTime.season": ["Spring", "Summer", "Autumn", "Winter"],
+    "ObservationTime.dayType": ["Weekday", "Weekend"],
+    "ObservationTime.timeCategory": ["Morning", "Afternoon", "Evening", "Night"],
+    "ObservedPM25.pm25_level": ["Safe", "Moderate", "Slightly Unhealthy", "Unhealthy", "Very Unhealthy"]
+  },
+  "schema_notes": [
+    "Prefecture and city are on Location, NOT on Station. Filtering by prefecture requires traversing LOCATED_AT.",
+    "pm25_level is the JPM2KG system-defined category convention (Safe 0-15, Moderate 16-35, Slightly Unhealthy 36-50, Unhealthy 51-70, Very Unhealthy >=71). It is not an official WHO or Japanese regulatory classification. See kg_construction_notes.md."
   ],
   "total_nodes": 142300976,
   "total_relationships": 213449232,
@@ -35,7 +47,9 @@
     "prefectures": 46,
     "cities": 619,
     "date_range": "2018-01-01 to 2026-01-01",
-    "valid_pm25_observations": 66086807,
-    "pm25_validity_range": "[0, 500] μg/m³"
+    "total_pm25_observations": 71149372,
+    "pm25_observations_in_0_500_inclusive": 66086807,
+    "numerical_validity_convention": "p.pm25 >= 0 AND p.pm25 <= 500",
+    "numerical_validity_convention_note": "Data-quality convention used for numerical aggregation, not an external or universal standard."
   }
 }

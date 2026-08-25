@@ -1,0 +1,5 @@
+metric,comparison,n_paired,mean_k3,mean_comparator,mean_paired_difference,n_questions_k3_higher,n_questions_equal,n_questions_comparator_higher,bootstrap_resamples,bootstrap_seed,ci95_low,ci95_high,ci_excludes_zero
+VM_F1_strict,k3_minus_k1,150,0.6546,0.556,0.0986,51,78,21,10000,20260824,0.0405,0.1595,1
+VM_F1_strict,k3_minus_k5,150,0.6546,0.6379,0.0167,27,113,10,10000,20260824,-0.0142,0.0483,0
+VM_F1_tolerant,k3_minus_k1,150,0.6546,0.556,0.0986,51,78,21,10000,20260824,0.0405,0.1595,1
+VM_F1_tolerant,k3_minus_k5,150,0.6546,0.6379,0.0167,27,113,10,10000,20260824,-0.0142,0.0483,0

@@ -28,7 +28,27 @@ Exhaustive enumeration of all valid values for categorical properties:
 - All `timeCategory` values: `'Morning'`, `'Afternoon'`, `'Evening'`, `'Night'`
 
 ### `pm25_health_rules`
-WHO/Japanese regulatory PM2.5 thresholds and the corresponding `pm25_level` strings used in the graph. Enables health-risk queries that reference level names rather than raw numeric thresholds.
+Two distinct kinds of rule, kept separate on purpose:
+
+1. **The JPM2KG category convention** — the five `pm25_level` bands actually stored in
+   the graph. This is a system-defined convention of JPM2KG. It is **not** an official
+   WHO classification and **not** an official Japanese regulatory classification:
+
+   | `pm25_level` | Stored `pm25` range (µg/m³) |
+   |---|---|
+   | `Safe` | 0–15 |
+   | `Moderate` | 16–35 |
+   | `Slightly Unhealthy` | 36–50 |
+   | `Unhealthy` | 51–70 |
+   | `Very Unhealthy` | ≥ 71 |
+
+2. **Genuine regulatory thresholds**, cited as such: Japan's environmental quality
+   standard (35 µg/m³ daily, 15 µg/m³ annual) and the WHO 2021 guidelines
+   (15 µg/m³ 24-hour mean, 5 µg/m³ annual mean). These are numeric thresholds on
+   `pm25`; they are not the same thing as `pm25_level` and are not conflated with it.
+
+Together these let health-risk questions be answered by level name where the band
+convention applies, and by numeric threshold where a regulatory limit is meant.
 
 ### `temporal_rules`
 Rules for mapping natural-language temporal expressions to graph attributes:
@@ -42,15 +62,33 @@ Coverage information: prefecture list, station count per prefecture, and notes o
 ### `traversal_policies`
 Graph traversal rules that enforce correctness and performance:
 1. **Always start from Station or Location** (1,116 nodes), never from ObservedPM25 or ObservationTime (71M nodes)
-2. **Always apply the validity filter** `WHERE p.pm25 >= 0 AND p.pm25 <= 500`
+2. **Always apply the numerical-validity convention** `WHERE p.pm25 >= 0 AND p.pm25 <= 500`
+   for numeric aggregation (this is a JPM2KG data-quality convention, not an external standard)
 3. **Prefecture is on Location, not Station** — must join via `LOCATED_AT`
 4. Standard traversal path: `Location ← LOCATED_AT ← Station ← RECORDED_BY ← ObservedPM25 → OBSERVED_AT → ObservationTime`
 
 ### `query_patterns`
-28 exemplar NL–Cypher pairs covering the five benchmark categories at varying complexity levels. In the `DKB` system, all 28 are included in the prompt as fixed few-shot examples. In `DKB+Hybrid`, the top-3 (k=3) most relevant examples are selected dynamically per query using dense embedding (sentence-transformers `all-MiniLM-L6-v2`) cosine similarity only — there is no BM25 or other sparse term, and no weighting coefficient (see `pipeline/systems.py`, `_retrieve_top_k`).
+An exemplar pool of 28 NL–Cypher pairs covering the five benchmark categories at
+varying complexity levels.
+
+The prompt shows **8 exemplars** in both exemplar-using configurations
+(`_build_dkb_prompt_core` in `04_pipeline/systems.py` truncates the exemplar list to 8):
+
+- **`DKB`** — the first 8 pool entries, fixed for every question.
+- **`DKB+Hybrid`** — the top-k (k=3) pool entries most similar to the question, prepended
+  to the same fixed list and truncated to 8, so 3 retrieved + 5 fixed. Retrieval is dense
+  embedding cosine similarity only (sentence-transformers `all-MiniLM-L6-v2`); there is no
+  BM25 or other sparse term and no weighting coefficient (see `04_pipeline/systems.py`,
+  `_retrieve_top_k`).
+
+The pool is disjoint from AirCypher-150: no benchmark item shares an identical
+natural-language question, an identical Cypher query, or an identical normalized query
+structure with any exemplar.
 
 ### `data_quality_notes`
-Notes on data anomalies, known sensor issues, and recommended filters for robust analysis.
+Notes on data anomalies, known sensor issues, and the numerical-validity convention
+`p.pm25 >= 0 AND p.pm25 <= 500` used for aggregation. That predicate is a data-quality
+convention adopted for this graph, not an external or universal standard.
 
 ## How the DKB is Used
 
@@ -62,7 +100,10 @@ Each prompting system uses a different subset of DKB components:
 | Schema Baseline | ✓ (schema only) | — | — | — |
 | Schema+Values | ✓ | ✓ | — | — |
 | DKB-NoExamples | ✓ | ✓ | ✓ | — |
-| DKB | ✓ | ✓ | ✓ | Fixed (28) |
-| DKB+Hybrid | ✓ | ✓ | ✓ | Dynamic (top-k) |
+| DKB | ✓ | ✓ | ✓ | Fixed (8 of the 28-pair pool) |
+| DKB+Hybrid | ✓ | ✓ | ✓ | Top-3 retrieved + 5 fixed (8 total) |
 
-The ablation study (Table 4) isolates the contribution of each component by measuring the SE improvement when each is added incrementally.
+The ablation isolates the contribution of each component by measuring the improvement in
+Value-Multiset F1 (VM-F1) and Row-Multiset Exact Match (RMEM) as each is added incrementally.
+See `../04_pipeline/METRICS.md` for the metric definitions and
+`../05_results/camera_ready/` for the camera-ready results.

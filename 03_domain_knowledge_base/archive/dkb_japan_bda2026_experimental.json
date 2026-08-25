@@ -1,0 +1,714 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "name": "Japan PM2.5 Domain Knowledge Base",
+    "domain": "Environmental Air Quality Monitoring",
+    "geographic_scope": "Japan",
+    "temporal_coverage": "2018–2026",
+    "created": "2026-06-19",
+    "kg_schema_file": "japan_kg_schema_cleaned.json",
+    "transferability_doc": "TRANSFERABILITY.md",
+    "description": "Structured knowledge base for natural language to Cypher query generation over the Japan PM2.5 monitoring knowledge graph. Covers schema, health standards, temporal rules, traversal policies, and validated query patterns.",
+    "note_on_schema_names": "This DKB documents a CONCEPTUAL schema (Station, Location, Timestamp, Observation, PM2.5Value) that maps cleanly to domain language. The ACTUAL KG uses (Station, Location, ObservationTime, ObservedPM25). All Cypher patterns use ACTUAL KG property names. See schema_bridge for the mapping."
+  },
+
+  "kg_actual_schema": {
+    "node_labels": {
+      "Station":          {"count": 1116,       "description": "Air quality monitoring station"},
+      "Location":         {"count": 1116,       "description": "Geographic location (prefecture/city)"},
+      "ObservationTime":  {"count": 71149372,   "description": "Hourly timestamp with rich temporal attributes"},
+      "ObservedPM25":     {"count": 71149372,   "description": "PM2.5 measurement paired 1-to-1 with an ObservationTime"}
+    },
+    "relationship_types": {
+      "LOCATED_AT":  {"count": 1116,      "pattern": "(Station)-[:LOCATED_AT]->(Location)"},
+      "AT_LOCATION": {"count": 71149372,  "pattern": "(ObservationTime)-[:AT_LOCATION]->(Location)"},
+      "OBSERVED_AT": {"count": 71149372,  "pattern": "(ObservedPM25)-[:OBSERVED_AT]->(ObservationTime)"},
+      "RECORDED_BY": {"count": 71149372,  "pattern": "(ObservedPM25)-[:RECORDED_BY]->(Station)"}
+    },
+    "canonical_traversal": "MATCH (p:ObservedPM25)-[:RECORDED_BY]->(s:Station)-[:LOCATED_AT]->(l:Location), (p)-[:OBSERVED_AT]->(t:ObservationTime)",
+    "property_keys": {
+      "Station":         ["sid", "stationname_en", "stationtype_en"],
+      "Location":        ["sid", "prefecture_en", "city_en", "street_en", "pincode", "lat", "lon"],
+      "ObservationTime": ["tid", "obsdate", "year", "month", "month_name", "hour", "weekday_name", "dayType", "season", "timeCategory"],
+      "ObservedPM25":    ["tid", "pm25", "pm25_level"]
+    },
+    "enum_values": {
+      "Station.stationtype_en":        ["General Station", "Roadside Station"],
+      "ObservationTime.season":         ["Spring", "Summer", "Autumn", "Winter"],
+      "ObservationTime.dayType":        ["Weekday", "Weekend"],
+      "ObservationTime.timeCategory":   ["Early Morning", "Morning", "Afternoon", "Evening", "Night"],
+      "ObservationTime.month_name":     ["January","February","March","April","May","June","July","August","September","October","November","December"],
+      "ObservationTime.weekday_name":   ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "ObservedPM25.pm25_level":        ["Safe", "Moderate", "Slightly Unhealthy", "Unhealthy", "Very Unhealthy"]
+    }
+  },
+
+  "schema_bridge": {
+    "description": "Maps conceptual domain vocabulary to actual KG property names",
+    "node_mapping": {
+      "Station (conceptual)":      "Station (actual) — properties: sid→station_id, stationname_en→name, stationtype_en→type",
+      "Location (conceptual)":     "Location (actual) — properties: prefecture_en→prefecture, city_en→city, lat/lon→coordinates",
+      "Timestamp (conceptual)":    "ObservationTime (actual) — properties: obsdate→timestamp, year/month/hour→temporal dims",
+      "Observation (conceptual)":  "implicit join of ObservedPM25 + ObservationTime via shared tid",
+      "PM2.5Value (conceptual)":   "ObservedPM25 (actual) — properties: pm25→value, pm25_level→category"
+    },
+    "relationship_mapping": {
+      "locatedIn":   "LOCATED_AT  — (Station)-[:LOCATED_AT]->(Location)",
+      "observedAt":  "OBSERVED_AT — (ObservedPM25)-[:OBSERVED_AT]->(ObservationTime)",
+      "recordedBy":  "RECORDED_BY — (ObservedPM25)-[:RECORDED_BY]->(Station)",
+      "atLocation":  "AT_LOCATION — (ObservationTime)-[:AT_LOCATION]->(Location)"
+    }
+  },
+
+  "schema_specification": {
+    "node_types": [
+      {
+        "name": "Station",
+        "description": "An air quality monitoring station in Japan, operated under the national Soramame-kun network",
+        "properties": {
+          "sid":            {"type": "string",  "description": "Unique station identifier (8-digit Japanese monitoring code)", "example": "46208010"},
+          "stationname_en": {"type": "string",  "description": "Station name in romanized English", "example": "shussui"},
+          "stationtype_en": {"type": "string",  "description": "Station type", "enum": ["General Station", "Roadside Station"],
+                             "note": "General = background; Roadside = traffic-side measurement"}
+        },
+        "example_nodes": [
+          "Station(sid='46208010', stationname_en='shussui', stationtype_en='General Station')",
+          "Station(sid='27204060', stationname_en='namba', stationtype_en='Roadside Station')"
+        ],
+        "count": 1116
+      },
+      {
+        "name": "Location",
+        "description": "Geographic position of a monitoring station — prefecture, city, and coordinates",
+        "properties": {
+          "sid":           {"type": "string",  "description": "Links to Station.sid (same value)"},
+          "prefecture_en": {"type": "string",  "description": "Prefecture name in English", "example": "Kagoshima Prefecture",
+                            "note": "47 prefectures; format is always '<Name> Prefecture'"},
+          "city_en":       {"type": "string",  "description": "City name in English", "example": "Izumi"},
+          "street_en":     {"type": "string",  "description": "Street or road name", "example": "National Route 447"},
+          "pincode":       {"type": "string",  "description": "Japanese postal code", "example": "920-0864"},
+          "lat":           {"type": "float",   "description": "Latitude in decimal degrees (north positive)"},
+          "lon":           {"type": "float",   "description": "Longitude in decimal degrees (east positive)"}
+        },
+        "example_nodes": [
+          "Location(prefecture_en='Kagoshima Prefecture', city_en='Izumi', lat=32.088, lon=130.352)",
+          "Location(prefecture_en='Tokyo Prefecture', city_en='Shinjuku', lat=35.689, lon=139.692)"
+        ],
+        "count": 1116
+      },
+      {
+        "name": "ObservationTime",
+        "description": "A specific hourly timestamp enriched with temporal context attributes",
+        "properties": {
+          "tid":          {"type": "string",   "description": "Unique time node ID matching ObservedPM25.tid", "example": "T536"},
+          "obsdate":      {"type": "datetime", "description": "Full ISO timestamp (Neo4j DateTime)"},
+          "year":         {"type": "integer",  "range": "2018–2026"},
+          "month":        {"type": "integer",  "range": "1–12"},
+          "month_name":   {"type": "string",   "example": "September"},
+          "hour":         {"type": "integer",  "range": "0–23"},
+          "weekday_name": {"type": "string",   "enum": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]},
+          "dayType":      {"type": "string",   "enum": ["Weekday", "Weekend"]},
+          "season":       {"type": "string",   "enum": ["Spring", "Summer", "Autumn", "Winter"],
+                           "note": "Some records null; use t.season IS NOT NULL when filtering"},
+          "timeCategory": {"type": "string",   "enum": ["Early Morning", "Morning", "Afternoon", "Evening", "Night"],
+                           "note": "Some records null; use t.timeCategory IS NOT NULL when filtering"}
+        },
+        "example_nodes": [
+          "ObservationTime(tid='T536', year=2018, month=9, hour=1, dayType='Weekend', season='Autumn', timeCategory='Night')"
+        ],
+        "count": 71149372
+      },
+      {
+        "name": "ObservedPM25",
+        "description": "A PM2.5 concentration reading — paired 1-to-1 with an ObservationTime node via shared tid",
+        "properties": {
+          "tid":        {"type": "string",  "description": "Shared with ObservationTime.tid (1-to-1 pairing)"},
+          "pm25":       {"type": "float",   "unit": "µg/m³",
+                         "note": "Valid range 0–500. Raw data contains sensor errors outside this range; always filter WHERE p.pm25 >= 0 AND p.pm25 <= 500 for numeric analysis"},
+          "pm25_level": {"type": "string",  "enum": ["Safe", "Moderate", "Slightly Unhealthy", "Unhealthy", "Very Unhealthy"],
+                         "note": "Pre-computed Japan-standard classification; use for fast indexed lookups"}
+        },
+        "example_nodes": [
+          "ObservedPM25(tid='T536', pm25=3.0, pm25_level='Safe')",
+          "ObservedPM25(tid='T9001', pm25=42.5, pm25_level='Slightly Unhealthy')"
+        ],
+        "count": 71149372
+      }
+    ],
+    "relationship_types": [
+      {
+        "name": "LOCATED_AT",
+        "source": "Station",
+        "target": "Location",
+        "cardinality": "one-to-one",
+        "description": "Each station has exactly one geographic location",
+        "cypher_pattern": "(s:Station)-[:LOCATED_AT]->(l:Location)",
+        "count": 1116
+      },
+      {
+        "name": "AT_LOCATION",
+        "source": "ObservationTime",
+        "target": "Location",
+        "cardinality": "many-to-one",
+        "description": "Each observation timestamp is associated with one location (via the station that recorded it)",
+        "cypher_pattern": "(t:ObservationTime)-[:AT_LOCATION]->(l:Location)",
+        "count": 71149372
+      },
+      {
+        "name": "OBSERVED_AT",
+        "source": "ObservedPM25",
+        "target": "ObservationTime",
+        "cardinality": "one-to-one",
+        "description": "Each PM2.5 reading is paired with exactly one timestamp",
+        "cypher_pattern": "(p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)",
+        "count": 71149372
+      },
+      {
+        "name": "RECORDED_BY",
+        "source": "ObservedPM25",
+        "target": "Station",
+        "cardinality": "many-to-one",
+        "description": "Each PM2.5 reading was recorded by one station",
+        "cypher_pattern": "(p:ObservedPM25)-[:RECORDED_BY]->(s:Station)",
+        "count": 71149372
+      }
+    ]
+  },
+
+  "pm25_health_rules": [
+    {
+      "rule_id": "japan_standard_daily",
+      "name": "Japan Environmental Quality Standard",
+      "standard": "Japanese Ministry of the Environment",
+      "threshold": 35.0,
+      "unit": "µg/m³",
+      "period": "24-hour average",
+      "cypher_level_filter": "p.pm25_level IN ['Safe', 'Moderate']",
+      "cypher_numeric_filter": "p.pm25 <= 35.0",
+      "description": "Japan's national PM2.5 standard: daily average ≤ 35 µg/m³ (also annual average ≤ 15 µg/m³). Stations meeting this are Safe or Moderate level."
+    },
+    {
+      "rule_id": "japan_safe",
+      "name": "Safe",
+      "standard": "Japan PM2.5 Classification",
+      "threshold_max": 15.0,
+      "unit": "µg/m³",
+      "cypher_filter": "p.pm25_level = 'Safe'",
+      "cypher_numeric": "p.pm25 <= 15.0",
+      "description": "PM2.5 ≤ 15 µg/m³. Within Japan's annual guideline. No health risk.",
+      "color_code": "green"
+    },
+    {
+      "rule_id": "japan_moderate",
+      "name": "Moderate",
+      "standard": "Japan PM2.5 Classification",
+      "threshold_min": 15.0,
+      "threshold_max": 35.0,
+      "unit": "µg/m³",
+      "cypher_filter": "p.pm25_level = 'Moderate'",
+      "description": "PM2.5 15–35 µg/m³. Approaching Japan daily limit. Sensitive groups should reduce outdoor activity.",
+      "color_code": "yellow"
+    },
+    {
+      "rule_id": "japan_slightly_unhealthy",
+      "name": "Slightly Unhealthy",
+      "standard": "Japan PM2.5 Classification",
+      "threshold_min": 35.0,
+      "threshold_max": 70.0,
+      "unit": "µg/m³",
+      "cypher_filter": "p.pm25_level = 'Slightly Unhealthy'",
+      "description": "PM2.5 35–70 µg/m³. Exceeds Japan daily standard. Sensitive groups (elderly, children, respiratory patients) should avoid prolonged outdoor activity.",
+      "color_code": "orange"
+    },
+    {
+      "rule_id": "japan_unhealthy",
+      "name": "Unhealthy",
+      "standard": "Japan PM2.5 Classification",
+      "threshold_min": 70.0,
+      "threshold_max": 115.0,
+      "unit": "µg/m³",
+      "cypher_filter": "p.pm25_level = 'Unhealthy'",
+      "description": "PM2.5 70–115 µg/m³. General population health effects. All groups should reduce outdoor activity.",
+      "color_code": "red"
+    },
+    {
+      "rule_id": "japan_very_unhealthy",
+      "name": "Very Unhealthy",
+      "standard": "Japan PM2.5 Classification",
+      "threshold_min": 115.0,
+      "unit": "µg/m³",
+      "cypher_filter": "p.pm25_level = 'Very Unhealthy'",
+      "description": "PM2.5 > 115 µg/m³. Severely elevated. All outdoor activity should be avoided.",
+      "color_code": "purple"
+    },
+    {
+      "rule_id": "who_annual",
+      "name": "WHO Annual Mean Guideline",
+      "standard": "WHO 2021 Global Air Quality Guidelines",
+      "threshold": 5.0,
+      "unit": "µg/m³",
+      "period": "annual mean",
+      "cypher_filter": "p.pm25 > 5.0",
+      "description": "WHO tightened 2021 annual guideline: 5 µg/m³ annual mean. Most Japan stations exceed this."
+    },
+    {
+      "rule_id": "who_daily",
+      "name": "WHO 24-Hour Mean Guideline",
+      "standard": "WHO 2021 Global Air Quality Guidelines",
+      "threshold": 15.0,
+      "unit": "µg/m³",
+      "period": "24-hour mean",
+      "cypher_filter": "p.pm25 > 15.0",
+      "description": "WHO 2021 daily guideline: 15 µg/m³. This aligns with Japan's 'Safe' level ceiling."
+    },
+    {
+      "rule_id": "valid_sensor_range",
+      "name": "Valid Sensor Reading Range",
+      "standard": "Data Quality",
+      "threshold_min": 0.0,
+      "threshold_max": 500.0,
+      "unit": "µg/m³",
+      "cypher_filter": "p.pm25 >= 0 AND p.pm25 <= 500",
+      "description": "IMPORTANT: Raw Japan KG data contains sensor-error values (range: -10000 to 65535). Always apply this filter for any numeric aggregation (avg, max, percentile). The pre-computed pm25_level field is already cleaned — use pm25_level for categorical queries without needing this filter."
+    }
+  ],
+
+  "temporal_rules": [
+    {
+      "rule_id": "season_spring",
+      "name": "Spring",
+      "months": [3, 4, 5],
+      "month_names": ["March", "April", "May"],
+      "cypher_season_filter": "t.season = 'Spring'",
+      "cypher_month_filter": "t.month IN [3, 4, 5]",
+      "japan_context": "Peak season for kosa (黄砂, Asian dust/yellow sand) events transported from the Gobi and Taklamakan deserts. PM2.5 can spike significantly in western Japan (Kyushu, Chugoku). Cherry blossom season correlates with elevated dust events.",
+      "typical_pm25_trend": "Above-average, especially western Japan"
+    },
+    {
+      "rule_id": "season_summer",
+      "name": "Summer",
+      "months": [6, 7, 8],
+      "month_names": ["June", "July", "August"],
+      "cypher_season_filter": "t.season = 'Summer'",
+      "cypher_month_filter": "t.month IN [6, 7, 8]",
+      "japan_context": "Generally lowest PM2.5 season. Rainy season (tsuyu/梅雨) in June-July washes out particulates. Pacific high pressure brings clean air. Typhoon season (August-September) can occasionally bring elevated readings from the continent.",
+      "typical_pm25_trend": "Below-average — cleanest season"
+    },
+    {
+      "rule_id": "season_autumn",
+      "name": "Autumn",
+      "months": [9, 10, 11],
+      "month_names": ["September", "October", "November"],
+      "cypher_season_filter": "t.season = 'Autumn'",
+      "cypher_month_filter": "t.month IN [9, 10, 11]",
+      "japan_context": "Moderate PM2.5 levels. Transition from Pacific air mass to continental influence. November sees increasing PM2.5 as winter approaches and Siberian high builds.",
+      "typical_pm25_trend": "Intermediate — increasing toward end"
+    },
+    {
+      "rule_id": "season_winter",
+      "name": "Winter",
+      "months": [12, 1, 2],
+      "month_names": ["December", "January", "February"],
+      "cypher_season_filter": "t.season = 'Winter'",
+      "cypher_month_filter": "t.month IN [12, 1, 2]",
+      "japan_context": "Highest PM2.5 season. Siberian High drives continental air masses loaded with particulates from China and Korea across the Sea of Japan. Western-facing prefectures (Fukuoka, Osaka, Ishikawa) most affected. Heating fuel combustion adds local sources.",
+      "typical_pm25_trend": "Above-average — worst season overall"
+    },
+    {
+      "rule_id": "peak_pollution_period",
+      "name": "Peak Pollution Period",
+      "months": [12, 1, 2, 3],
+      "month_names": ["December", "January", "February", "March"],
+      "cypher_month_filter": "t.month IN [12, 1, 2, 3]",
+      "japan_context": "Combined winter + early spring: highest PM2.5 period driven by both Asian continental transport and kosa dust events. Critical period for health advisories.",
+      "typical_pm25_trend": "Highest of the year"
+    },
+    {
+      "rule_id": "time_early_morning",
+      "name": "Early Morning",
+      "hours": [0, 1, 2, 3, 4, 5],
+      "cypher_filter": "t.timeCategory = 'Early Morning'",
+      "cypher_numeric": "t.hour >= 0 AND t.hour <= 5"
+    },
+    {
+      "rule_id": "time_morning",
+      "name": "Morning",
+      "hours": [6, 7, 8, 9, 10, 11],
+      "cypher_filter": "t.timeCategory = 'Morning'",
+      "cypher_numeric": "t.hour >= 6 AND t.hour <= 11"
+    },
+    {
+      "rule_id": "time_afternoon",
+      "name": "Afternoon",
+      "hours": [12, 13, 14, 15, 16, 17],
+      "cypher_filter": "t.timeCategory = 'Afternoon'",
+      "cypher_numeric": "t.hour >= 12 AND t.hour <= 17"
+    },
+    {
+      "rule_id": "time_evening",
+      "name": "Evening",
+      "hours": [18, 19, 20],
+      "cypher_filter": "t.timeCategory = 'Evening'",
+      "cypher_numeric": "t.hour >= 18 AND t.hour <= 20"
+    },
+    {
+      "rule_id": "time_night",
+      "name": "Night",
+      "hours": [21, 22, 23],
+      "cypher_filter": "t.timeCategory = 'Night'",
+      "cypher_numeric": "t.hour >= 21 AND t.hour <= 23"
+    },
+    {
+      "rule_id": "rush_hour_morning",
+      "name": "Morning Rush Hour",
+      "definition": "Weekday 7–9 AM — peak traffic, relevant for Roadside stations",
+      "cypher_filter": "t.dayType = 'Weekday' AND t.hour >= 7 AND t.hour <= 9"
+    },
+    {
+      "rule_id": "rush_hour_evening",
+      "name": "Evening Rush Hour",
+      "definition": "Weekday 17–19 PM — peak traffic",
+      "cypher_filter": "t.dayType = 'Weekday' AND t.hour >= 17 AND t.hour <= 19"
+    }
+  ],
+
+  "japan_geographic_context": {
+    "total_prefectures": 47,
+    "sample_prefectures": [
+      "Tokyo Prefecture", "Osaka Prefecture", "Kanagawa Prefecture",
+      "Aichi Prefecture", "Fukuoka Prefecture", "Hokkaido Prefecture",
+      "Hiroshima Prefecture", "Miyagi Prefecture", "Ishikawa Prefecture",
+      "Kagoshima Prefecture"
+    ],
+    "high_pm25_regions": ["Fukuoka Prefecture", "Osaka Prefecture", "Aichi Prefecture"],
+    "note": "Western Japan prefectures facing the Sea of Japan (Fukuoka, Yamaguchi, Ishikawa) receive highest transboundary pollution. Tokyo and Osaka also elevated due to urban density.",
+    "station_count": 1116,
+    "station_types": {
+      "General Station": "Background monitoring — measures ambient air quality away from direct traffic",
+      "Roadside Station": "Traffic-adjacent monitoring — measures direct vehicle emission impact"
+    }
+  },
+
+  "traversal_policies": [
+    {
+      "policy_id": "use_pm25_level_index",
+      "priority": "HIGH",
+      "description": "Use pm25_level (indexed string) instead of numeric pm25 comparisons wherever possible. The index lookup is orders of magnitude faster over 71M nodes.",
+      "good_pattern":  "WHERE p.pm25_level IN ['Unhealthy', 'Very Unhealthy']",
+      "avoid_pattern": "WHERE p.pm25 > 70.0",
+      "exception": "Use numeric filter only when threshold doesn't align with a level boundary (e.g. WHO 15 µg/m³)"
+    },
+    {
+      "policy_id": "anchor_on_small_node_set",
+      "priority": "HIGH",
+      "description": "Start traversal from Station (1,116) or Location (1,116) — not from ObservedPM25 (71M). Always push geographic filters to the start of the MATCH clause.",
+      "good_pattern":  "MATCH (l:Location {prefecture_en: $pref})<-[:AT_LOCATION]-(t:ObservationTime)<-[:OBSERVED_AT]-(p:ObservedPM25)",
+      "avoid_pattern": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)-[:AT_LOCATION]->(l:Location) WHERE l.prefecture_en = $pref"
+    },
+    {
+      "policy_id": "use_year_month_indexes",
+      "priority": "HIGH",
+      "description": "year and month are indexed on ObservationTime. Filter on these before hour or timeCategory.",
+      "good_pattern":  "WHERE t.year = 2022 AND t.month IN [12, 1, 2]",
+      "avoid_pattern": "WHERE t.season = 'Winter' AND t.year = 2022"
+    },
+    {
+      "policy_id": "filter_sensor_errors",
+      "priority": "HIGH",
+      "description": "For any numeric aggregation (avg, max, percentile) always apply the sensor validity filter. Omit only when using pm25_level categorical filters.",
+      "cypher_pattern": "WHERE p.pm25 >= 0 AND p.pm25 <= 500",
+      "applies_to": "All queries using avg(p.pm25), max(p.pm25), min(p.pm25), percentile functions"
+    },
+    {
+      "policy_id": "order_by_in_with_not_return",
+      "priority": "HIGH",
+      "description": "Neo4j 2026 requires ORDER BY and LIMIT to appear in a WITH clause, not after RETURN when LIMIT may be appended. Always structure as: WITH ... ORDER BY ... LIMIT N RETURN ...",
+      "good_pattern":  "WITH station, avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10\nRETURN station, avg_pm25",
+      "avoid_pattern": "RETURN station, avg(pm25) AS avg_pm25 ORDER BY avg_pm25 DESC LIMIT 10"
+    },
+    {
+      "policy_id": "use_recorded_by_for_station",
+      "priority": "MEDIUM",
+      "description": "To find which station recorded a measurement, use RECORDED_BY directly from ObservedPM25. Do not traverse via ObservationTime → Location → Station.",
+      "good_pattern":  "(p:ObservedPM25)-[:RECORDED_BY]->(s:Station)",
+      "avoid_pattern": "(p:ObservedPM25)-[:OBSERVED_AT]->(t)-[:AT_LOCATION]->(l)<-[:LOCATED_AT]-(s:Station)"
+    },
+    {
+      "policy_id": "roadside_vs_general",
+      "priority": "MEDIUM",
+      "description": "When comparing traffic impact, filter stationtype_en. 'Roadside Station' captures vehicle emissions directly; 'General Station' captures background ambient levels.",
+      "cypher_pattern": "WHERE s.stationtype_en = 'Roadside Station'"
+    }
+  ],
+
+  "query_patterns": [
+    {
+      "pattern_id": "JP01",
+      "intent": "count_unhealthy_by_station",
+      "complexity": "simple",
+      "nl_template": "Which stations have the most [level] PM2.5 readings?",
+      "nl_example": "Which Japanese stations have the most unhealthy PM2.5 readings?",
+      "cypher": "MATCH (p:ObservedPM25)-[:RECORDED_BY]->(s:Station)\nWHERE p.pm25_level IN ['Unhealthy', 'Very Unhealthy', 'Slightly Unhealthy']\nWITH s.stationname_en AS station, s.stationtype_en AS type, count(p) AS unhealthy_count\nORDER BY unhealthy_count DESC\nLIMIT 10\nRETURN station, type, unhealthy_count",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP02",
+      "intent": "average_pm25_by_prefecture",
+      "complexity": "simple",
+      "nl_template": "What is the average PM2.5 in [prefecture]?",
+      "nl_example": "What is the average PM2.5 in Aichi Prefecture?",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)-[:AT_LOCATION]->(l:Location)\nWHERE l.prefecture_en = $prefecture\n  AND p.pm25 >= 0 AND p.pm25 <= 500\nRETURN l.prefecture_en AS prefecture,\n       round(avg(p.pm25), 2) AS avg_pm25,\n       count(p) AS total_readings",
+      "parameters": {"prefecture": "Aichi Prefecture"},
+      "validated": true
+    },
+    {
+      "pattern_id": "JP03",
+      "intent": "top_polluted_prefectures",
+      "complexity": "simple",
+      "nl_template": "Which prefectures have the highest average PM2.5?",
+      "nl_example": "Rank Japan's prefectures by average PM2.5 pollution",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)-[:AT_LOCATION]->(l:Location)\nWHERE p.pm25 >= 0 AND p.pm25 <= 500\nWITH l.prefecture_en AS prefecture, round(avg(p.pm25), 2) AS avg_pm25\nORDER BY avg_pm25 DESC\nLIMIT 15\nRETURN prefecture, avg_pm25",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP04",
+      "intent": "seasonal_pm25_japan",
+      "complexity": "simple",
+      "nl_template": "What is the average PM2.5 in each season across Japan?",
+      "nl_example": "How does PM2.5 vary by season in Japan?",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)\nWHERE p.pm25 >= 0 AND p.pm25 <= 500\n  AND t.season IS NOT NULL\nRETURN t.season AS season,\n       round(avg(p.pm25), 2) AS avg_pm25,\n       count(p) AS readings\nORDER BY avg_pm25 DESC",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP05",
+      "intent": "prefecture_seasonal_ranking",
+      "complexity": "medium",
+      "nl_template": "Which prefecture has the worst PM2.5 during [season]?",
+      "nl_example": "Which Japanese prefecture has the highest PM2.5 in winter?",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)-[:AT_LOCATION]->(l:Location)\nWHERE t.season = $season\n  AND p.pm25 >= 0 AND p.pm25 <= 500\nWITH l.prefecture_en AS prefecture, round(avg(p.pm25), 2) AS avg_pm25\nORDER BY avg_pm25 DESC\nLIMIT 10\nRETURN prefecture, avg_pm25",
+      "parameters": {"season": "Winter"},
+      "validated": true
+    },
+    {
+      "pattern_id": "JP06",
+      "intent": "roadside_vs_general_pm25",
+      "complexity": "simple",
+      "nl_template": "How does PM2.5 differ between roadside and general monitoring stations?",
+      "nl_example": "Compare average PM2.5 at roadside stations vs general stations in Japan",
+      "cypher": "MATCH (p:ObservedPM25)-[:RECORDED_BY]->(s:Station)\nWHERE p.pm25 >= 0 AND p.pm25 <= 500\nRETURN s.stationtype_en AS station_type,\n       round(avg(p.pm25), 2) AS avg_pm25,\n       round(percentileCont(p.pm25, 0.95), 2) AS p95_pm25,\n       count(p) AS readings\nORDER BY avg_pm25 DESC",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP07",
+      "intent": "stations_in_prefecture",
+      "complexity": "simple",
+      "nl_template": "List all monitoring stations in [prefecture]",
+      "nl_example": "Show all PM2.5 monitoring stations in Fukuoka Prefecture",
+      "cypher": "MATCH (s:Station)-[:LOCATED_AT]->(l:Location)\nWHERE l.prefecture_en = $prefecture\nRETURN s.stationname_en AS station,\n       s.stationtype_en AS type,\n       l.city_en AS city,\n       l.lat AS lat,\n       l.lon AS lon\nORDER BY s.stationname_en",
+      "parameters": {"prefecture": "Fukuoka Prefecture"},
+      "validated": true
+    },
+    {
+      "pattern_id": "JP08",
+      "intent": "year_over_year_trend",
+      "complexity": "medium",
+      "nl_template": "How has annual average PM2.5 changed over the years in Japan?",
+      "nl_example": "Show the year-over-year PM2.5 trend in Japan from 2018 to 2026",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)\nWHERE p.pm25 >= 0 AND p.pm25 <= 500\nRETURN t.year AS year,\n       round(avg(p.pm25), 2) AS avg_pm25,\n       count(p) AS readings\nORDER BY year",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP09",
+      "intent": "hourly_pm25_profile",
+      "complexity": "simple",
+      "nl_template": "What is the hourly PM2.5 pattern throughout the day in Japan?",
+      "nl_example": "Show how PM2.5 varies hour by hour across Japan",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)\nWHERE p.pm25 >= 0 AND p.pm25 <= 500\nRETURN t.hour AS hour,\n       round(avg(p.pm25), 2) AS avg_pm25\nORDER BY hour",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP10",
+      "intent": "weekday_vs_weekend",
+      "complexity": "simple",
+      "nl_template": "Is PM2.5 higher on weekdays or weekends in Japan?",
+      "nl_example": "Compare average PM2.5 on weekdays versus weekends",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)\nWHERE p.pm25 >= 0 AND p.pm25 <= 500\nRETURN t.dayType AS day_type,\n       round(avg(p.pm25), 2) AS avg_pm25,\n       count(p) AS readings\nORDER BY avg_pm25 DESC",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP11",
+      "intent": "rush_hour_pm25",
+      "complexity": "medium",
+      "nl_template": "How does PM2.5 compare during rush hour vs off-peak at roadside stations?",
+      "nl_example": "Compare PM2.5 at roadside stations during morning rush hour vs rest of the day on weekdays",
+      "cypher": "MATCH (p:ObservedPM25)-[:RECORDED_BY]->(s:Station),\n      (p)-[:OBSERVED_AT]->(t:ObservationTime)\nWHERE s.stationtype_en = 'Roadside Station'\n  AND t.dayType = 'Weekday'\n  AND p.pm25 >= 0 AND p.pm25 <= 500\nWITH t.hour AS hour, round(avg(p.pm25), 2) AS avg_pm25,\n     CASE WHEN t.hour IN [7,8,9] THEN 'Morning Rush'\n          WHEN t.hour IN [17,18,19] THEN 'Evening Rush'\n          ELSE 'Off-Peak' END AS period\nWITH period, round(avg(avg_pm25), 2) AS avg_pm25\nORDER BY avg_pm25 DESC\nRETURN period, avg_pm25",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP12",
+      "intent": "prefecture_winter_who_exceedance",
+      "complexity": "medium",
+      "nl_template": "Which prefectures exceed the WHO 24-hour guideline most frequently in winter?",
+      "nl_example": "How often does each prefecture exceed the WHO 15 µg/m³ guideline during winter?",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)-[:AT_LOCATION]->(l:Location)\nWHERE t.season = 'Winter'\n  AND p.pm25 >= 0 AND p.pm25 <= 500\nWITH l.prefecture_en AS prefecture,\n     count(p) AS total,\n     count(CASE WHEN p.pm25 > 15.0 THEN 1 END) AS exceeds_who\nWITH prefecture, total, exceeds_who,\n     round(100.0 * exceeds_who / total, 1) AS exceed_pct\nORDER BY exceed_pct DESC\nLIMIT 15\nRETURN prefecture, exceeds_who, total, exceed_pct",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP13",
+      "intent": "station_full_profile",
+      "complexity": "medium",
+      "nl_template": "Give a complete PM2.5 profile for station [name]",
+      "nl_example": "Show the complete PM2.5 profile for station shussui in Kagoshima",
+      "cypher": "MATCH (p:ObservedPM25)-[:RECORDED_BY]->(s:Station)-[:LOCATED_AT]->(l:Location)\nWHERE s.stationname_en = $station_name\n  AND p.pm25 >= 0 AND p.pm25 <= 500\nRETURN s.stationname_en AS station,\n       s.stationtype_en AS type,\n       l.prefecture_en AS prefecture,\n       l.city_en AS city,\n       round(avg(p.pm25), 2) AS avg_pm25,\n       round(min(p.pm25), 2) AS min_pm25,\n       round(max(p.pm25), 2) AS max_pm25,\n       count(p) AS total_readings,\n       count(CASE WHEN p.pm25_level = 'Safe' THEN 1 END) AS safe_count,\n       count(CASE WHEN p.pm25_level IN ['Unhealthy','Very Unhealthy'] THEN 1 END) AS unhealthy_count",
+      "parameters": {"station_name": "shussui"},
+      "validated": true
+    },
+    {
+      "pattern_id": "JP14",
+      "intent": "monthly_pm25_pattern",
+      "complexity": "simple",
+      "nl_template": "Show the monthly PM2.5 pattern in Japan",
+      "nl_example": "What is the average PM2.5 for each month of the year in Japan?",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)\nWHERE p.pm25 >= 0 AND p.pm25 <= 500\nRETURN t.month AS month,\n       t.month_name AS month_name,\n       round(avg(p.pm25), 2) AS avg_pm25\nORDER BY month",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP15",
+      "intent": "station_yearly_trend",
+      "complexity": "medium",
+      "nl_template": "Show annual PM2.5 trend for station [name]",
+      "nl_example": "How has PM2.5 changed year by year at station shussui?",
+      "cypher": "MATCH (p:ObservedPM25)-[:RECORDED_BY]->(s:Station),\n      (p)-[:OBSERVED_AT]->(t:ObservationTime)\nWHERE s.stationname_en = $station_name\n  AND p.pm25 >= 0 AND p.pm25 <= 500\nRETURN t.year AS year,\n       round(avg(p.pm25), 2) AS avg_pm25,\n       count(p) AS readings\nORDER BY year",
+      "parameters": {"station_name": "shussui"},
+      "validated": true
+    },
+    {
+      "pattern_id": "JP16",
+      "intent": "safe_station_pct_by_prefecture",
+      "complexity": "medium",
+      "nl_template": "Which prefectures have the cleanest air (highest % of Safe readings)?",
+      "nl_example": "Rank prefectures by percentage of Safe PM2.5 readings",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)-[:AT_LOCATION]->(l:Location)\nWITH l.prefecture_en AS prefecture,\n     count(p) AS total,\n     count(CASE WHEN p.pm25_level = 'Safe' THEN 1 END) AS safe_count\nWHERE total > 0\nWITH prefecture, total, safe_count,\n     round(100.0 * safe_count / total, 1) AS safe_pct\nORDER BY safe_pct DESC\nLIMIT 15\nRETURN prefecture, safe_pct, safe_count, total",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP17",
+      "intent": "pm25_level_distribution",
+      "complexity": "simple",
+      "nl_template": "What percentage of readings fall in each PM2.5 category in Japan?",
+      "nl_example": "Show the overall distribution of PM2.5 levels across Japan",
+      "cypher": "MATCH (p:ObservedPM25)\nWHERE p.pm25_level IS NOT NULL\nWITH p.pm25_level AS level, count(p) AS cnt\nORDER BY cnt DESC\nRETURN level, cnt",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP18",
+      "intent": "worst_day_of_week",
+      "complexity": "simple",
+      "nl_template": "Which day of the week has the worst PM2.5 in Japan?",
+      "nl_example": "Show average PM2.5 for each day of the week",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)\nWHERE p.pm25 >= 0 AND p.pm25 <= 500\nRETURN t.weekday_name AS weekday,\n       round(avg(p.pm25), 2) AS avg_pm25\nORDER BY avg_pm25 DESC",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP19",
+      "intent": "pm25_spike_detection",
+      "complexity": "medium",
+      "nl_template": "Find PM2.5 spikes (Unhealthy or worse) in [prefecture] in [year]",
+      "nl_example": "Find all Unhealthy PM2.5 events in Fukuoka Prefecture in 2022",
+      "cypher": "MATCH (p:ObservedPM25)-[:RECORDED_BY]->(s:Station)-[:LOCATED_AT]->(l:Location),\n      (p)-[:OBSERVED_AT]->(t:ObservationTime)\nWHERE l.prefecture_en = $prefecture\n  AND t.year = $year\n  AND p.pm25_level IN ['Unhealthy', 'Very Unhealthy']\nWITH s.stationname_en AS station,\n     t.obsdate AS datetime,\n     t.season AS season,\n     p.pm25 AS pm25,\n     p.pm25_level AS level\nORDER BY pm25 DESC\nLIMIT 20\nRETURN station, datetime, season, pm25, level",
+      "parameters": {"prefecture": "Fukuoka Prefecture", "year": 2022},
+      "validated": true
+    },
+    {
+      "pattern_id": "JP20",
+      "intent": "spring_kosa_ranking",
+      "complexity": "medium",
+      "nl_template": "Which prefectures are most affected by spring kosa (Asian dust) events?",
+      "nl_example": "Rank prefectures by average PM2.5 in spring — indicators of Asian dust impact",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)-[:AT_LOCATION]->(l:Location)\nWHERE t.season = 'Spring'\n  AND p.pm25 >= 0 AND p.pm25 <= 500\nWITH l.prefecture_en AS prefecture, round(avg(p.pm25), 2) AS avg_pm25\nORDER BY avg_pm25 DESC\nLIMIT 15\nRETURN prefecture, avg_pm25",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP21",
+      "intent": "who_guideline_exceedance_rate",
+      "complexity": "simple",
+      "nl_template": "What fraction of all Japan hourly readings exceed the WHO 24-hour guideline?",
+      "nl_example": "How often does Japan's PM2.5 exceed the WHO 15 µg/m³ guideline?",
+      "cypher": "MATCH (p:ObservedPM25)\nWHERE p.pm25 >= 0 AND p.pm25 <= 500\nWITH count(p) AS total,\n     count(CASE WHEN p.pm25 > 15.0 THEN 1 END) AS exceeds\nRETURN total, exceeds, round(100.0 * exceeds / total, 2) AS exceed_pct",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP22",
+      "intent": "station_seasonal_comparison",
+      "complexity": "medium",
+      "nl_template": "Compare seasonal PM2.5 variation at station [name]",
+      "nl_example": "How does PM2.5 vary by season at the shussui station?",
+      "cypher": "MATCH (p:ObservedPM25)-[:RECORDED_BY]->(s:Station),\n      (p)-[:OBSERVED_AT]->(t:ObservationTime)\nWHERE s.stationname_en = $station_name\n  AND p.pm25 >= 0 AND p.pm25 <= 500\n  AND t.season IS NOT NULL\nRETURN t.season AS season,\n       round(avg(p.pm25), 2) AS avg_pm25,\n       round(max(p.pm25), 2) AS max_pm25\nORDER BY avg_pm25 DESC",
+      "parameters": {"station_name": "shussui"},
+      "validated": true
+    },
+    {
+      "pattern_id": "JP23",
+      "intent": "pm25_above_standard_hours_by_year",
+      "complexity": "medium",
+      "nl_template": "How many hours per year does PM2.5 exceed Japan's daily standard across the country?",
+      "nl_example": "Count hours per year where PM2.5 exceeded Japan's 35 µg/m³ standard",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)\nWHERE p.pm25_level IN ['Slightly Unhealthy', 'Unhealthy', 'Very Unhealthy']\nRETURN t.year AS year,\n       count(p) AS hours_exceeded\nORDER BY year",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP24",
+      "intent": "pm25_by_time_of_day",
+      "complexity": "simple",
+      "nl_template": "How does PM2.5 vary by time of day in Japan?",
+      "nl_example": "Show average PM2.5 for each time category (morning, afternoon, evening, night)",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)\nWHERE p.pm25 >= 0 AND p.pm25 <= 500\n  AND t.timeCategory IS NOT NULL\nRETURN t.timeCategory AS time_of_day,\n       round(avg(p.pm25), 2) AS avg_pm25,\n       count(p) AS readings\nORDER BY avg_pm25 DESC",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP25",
+      "intent": "peak_month_per_prefecture",
+      "complexity": "complex",
+      "nl_template": "What month has the highest PM2.5 in each prefecture?",
+      "nl_example": "Find the month with worst air quality for each Japanese prefecture",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)-[:AT_LOCATION]->(l:Location)\nWHERE p.pm25 >= 0 AND p.pm25 <= 500\nWITH l.prefecture_en AS prefecture, t.month_name AS month,\n     round(avg(p.pm25), 2) AS avg_pm25\nWITH prefecture, collect({month: month, avg_pm25: avg_pm25}) AS monthly\nWITH prefecture,\n     reduce(best = {month: null, avg_pm25: 0.0}, m IN monthly |\n       CASE WHEN m.avg_pm25 > best.avg_pm25 THEN m ELSE best END) AS peak\nRETURN prefecture, peak.month AS peak_month, peak.avg_pm25 AS peak_pm25\nLIMIT 47",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP26",
+      "intent": "prefecture_pm25_statistics",
+      "complexity": "medium",
+      "nl_template": "Show full PM2.5 statistics for [prefecture]",
+      "nl_example": "Give complete PM2.5 statistics including percentiles for Osaka Prefecture",
+      "cypher": "MATCH (p:ObservedPM25)-[:OBSERVED_AT]->(t:ObservationTime)-[:AT_LOCATION]->(l:Location)\nWHERE l.prefecture_en = $prefecture\n  AND p.pm25 >= 0 AND p.pm25 <= 500\nRETURN l.prefecture_en AS prefecture,\n       round(avg(p.pm25), 2) AS avg_pm25,\n       round(min(p.pm25), 2) AS min_pm25,\n       round(max(p.pm25), 2) AS max_pm25,\n       round(percentileCont(p.pm25, 0.5), 2) AS median_pm25,\n       round(percentileCont(p.pm25, 0.95), 2) AS p95_pm25,\n       count(p) AS total_readings",
+      "parameters": {"prefecture": "Osaka Prefecture"},
+      "validated": true
+    },
+    {
+      "pattern_id": "JP27",
+      "intent": "who_compliant_stations",
+      "complexity": "medium",
+      "nl_template": "Which stations meet the WHO annual PM2.5 guideline?",
+      "nl_example": "Find Japanese stations whose average PM2.5 is below the WHO annual 5 µg/m³ guideline",
+      "cypher": "MATCH (p:ObservedPM25)-[:RECORDED_BY]->(s:Station)-[:LOCATED_AT]->(l:Location)\nWHERE p.pm25 >= 0 AND p.pm25 <= 500\nWITH s.stationname_en AS station,\n     l.prefecture_en AS prefecture,\n     s.stationtype_en AS type,\n     avg(p.pm25) AS avg_pm25\nWHERE avg_pm25 <= 5.0\nRETURN station, prefecture, type, round(avg_pm25, 2) AS avg_pm25\nORDER BY avg_pm25",
+      "validated": true
+    },
+    {
+      "pattern_id": "JP28",
+      "intent": "station_count_by_prefecture",
+      "complexity": "simple",
+      "nl_template": "How many monitoring stations are in each prefecture?",
+      "nl_example": "Show the number of PM2.5 monitoring stations per Japanese prefecture",
+      "cypher": "MATCH (s:Station)-[:LOCATED_AT]->(l:Location)\nRETURN l.prefecture_en AS prefecture,\n       count(s) AS station_count,\n       count(CASE WHEN s.stationtype_en = 'Roadside Station' THEN 1 END) AS roadside,\n       count(CASE WHEN s.stationtype_en = 'General Station' THEN 1 END) AS general\nORDER BY station_count DESC",
+      "validated": true
+    }
+  ],
+
+  "data_quality_notes": {
+    "sensor_error_values": "Raw pm25 values range from -10000 to 65535 µg/m³ — sensor malfunctions. Always filter WHERE p.pm25 >= 0 AND p.pm25 <= 500 for numeric queries.",
+    "null_fields": "Some ObservationTime nodes have null season and timeCategory. Use IS NOT NULL guards when filtering on these.",
+    "null_pm25_level": "Some ObservedPM25 nodes have null pm25_level. Use WHERE p.pm25_level IS NOT NULL for categorical queries.",
+    "pre_computed_levels": "pm25_level is pre-computed and indexed — prefer it over raw numeric comparisons for performance.",
+    "indexed_properties": ["Station.sid", "Location.sid", "Location.prefecture_en", "Location.city_en", "ObservationTime.tid", "ObservationTime.year", "ObservationTime.month", "ObservationTime.hour", "ObservedPM25.tid", "ObservedPM25.pm25_level"]
+  }
+}

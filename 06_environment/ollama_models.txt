@@ -1,4 +1,5 @@
-# LLMs used in BDA 2026 Paper Evaluation
+# Models used in the BDA 2026 evaluation
+# Generation settings and historical latency: models_and_generation.md
 # Pull commands (requires Ollama installed: https://ollama.com/download)
 
 ollama pull llama3.2:3b          # 3B parameters, Meta Llama 3.2

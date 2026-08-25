@@ -1,0 +1,31 @@
+prompting_configuration,model,Aggregate,Temporal,Health Risk,Station Filtering,Comparative,overall
+Baseline,llama3.2:3b,0.0,0.0,0.0,0.0,0.0,0.0
+Baseline,gemma2:9b,0.0,0.0,0.0,0.0,0.0,0.0
+Baseline,qwen2.5-coder:32b,0.0,0.0,0.0,0.0,0.0,0.0
+Baseline,qwen2.5:72b,0.0,0.0,0.0,0.0,0.0,0.0
+Baseline,POOLED(4 LLM),0.0,0.0,0.0,0.0,0.0,0.0
+Schema Baseline,llama3.2:3b,0.0,0.0,0.0,0.0,0.0,0.0
+Schema Baseline,gemma2:9b,0.0,0.0,0.0,0.0,0.0,0.0
+Schema Baseline,qwen2.5-coder:32b,0.0,0.0208,0.0,0.0,0.0,0.0042
+Schema Baseline,qwen2.5:72b,0.0,0.0,0.0,0.0,0.0,0.0
+Schema Baseline,POOLED(4 LLM),0.0,0.0052,0.0,0.0,0.0,0.001
+Schema+Values,llama3.2:3b,0.0,0.0,0.0,0.068,0.0238,0.0171
+Schema+Values,gemma2:9b,0.0,0.0,0.0,0.203,0.2114,0.0716
+Schema+Values,qwen2.5-coder:32b,0.0239,0.0267,0.0333,0.2125,0.2273,0.0939
+Schema+Values,qwen2.5:72b,0.1148,0.0933,0.0,0.2547,0.0,0.0987
+Schema+Values,POOLED(4 LLM),0.0347,0.03,0.0083,0.1846,0.1156,0.0703
+DKB-NoExamples,llama3.2:3b,0.0263,0.0,0.0111,0.0884,0.0,0.0266
+DKB-NoExamples,gemma2:9b,0.0395,0.0,0.0,0.1784,0.1052,0.0611
+DKB-NoExamples,qwen2.5-coder:32b,0.549,0.5667,0.3,0.421,0.6727,0.4953
+DKB-NoExamples,qwen2.5:72b,0.3852,0.6,0.0,0.2105,0.1149,0.2765
+DKB-NoExamples,POOLED(4 LLM),0.25,0.2917,0.0778,0.2246,0.2232,0.2149
+DKB,llama3.2:3b,0.0105,0.0267,0.0,0.0333,0.0,0.0147
+DKB,gemma2:9b,0.5921,0.1828,0.0533,0.2324,0.0,0.2437
+DKB,qwen2.5-coder:32b,0.6938,0.44,0.6833,0.3084,0.0,0.4621
+DKB,qwen2.5:72b,0.8096,0.56,0.3167,0.3803,0.9273,0.5925
+DKB,POOLED(4 LLM),0.5265,0.3024,0.2633,0.2386,0.2318,0.3282
+DKB+Hybrid,llama3.2:3b,0.327,0.0091,0.0,0.2052,0.0,0.1257
+DKB+Hybrid,gemma2:9b,0.4868,0.1967,0.1667,0.4124,0.0,0.2785
+DKB+Hybrid,qwen2.5-coder:32b,0.7122,0.7733,0.8,0.3514,0.5545,0.6467
+DKB+Hybrid,qwen2.5:72b,0.792,0.6933,0.7,0.3801,0.397,0.6136
+DKB+Hybrid,POOLED(4 LLM),0.5795,0.4181,0.4167,0.3373,0.2379,0.4161

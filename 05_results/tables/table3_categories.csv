@@ -1,7 +1,7 @@
-category,N,SE
-Aggregate,152,0.580
-Comparative,88,0.238
-Health Risk,120,0.417
-Station Filtering,120,0.337
-Temporal,120,0.418
-Overall,600,0.416
+Category,L3B,G9B,QC32B,Q72B,Pooled
+Aggregate,.327,.487,.712,.792,.580
+Temporal,.009,.197,.773,.693,.418
+Health Risk,.000,.167,.800,.700,.417
+Station Filtering,.205,.412,.351,.380,.337
+Comparative,.000,.000,.555,.397,.238
+Overall,.126,.279,.647,.614,.416

@@ -1,23 +1,24 @@
 """
 experiment_runner.py — ExperimentRunner for Japan PM2.5 NL-to-Cypher evaluation.
 
-Runs:
-  Systems 1,2,4,5 × 4 LLMs × 300 queries = 4,800 evaluations
-  System 3        × 1 model × 300 queries =   300 evaluations
-  Total:                                     5,100 evaluations
+Reported design:
+  6 prompting systems × 4 LLMs × 150 queries = 3,600 evaluations
+  fine-tuned baseline × 1 model × 150 queries =  150 evaluations
+  Total:                                        3,750 evaluations
 
 Features:
   - Append-only JSONL results (never overwrites)
   - Checkpoint/flush every 50 queries
   - Resume: skip already-completed (query_id, system, llm) combinations
   - tqdm progress bar with system|llm|query_id|ETA
-  - Print running average SE every 100 queries
+  - Print running average VM-F1 (stored as SE) every 100 queries
   - 30s timeout per query, 2 retries, graceful skip on failure
 """
 
 from __future__ import annotations
 
 import json
+import os
 import sys
 import time
 from collections import defaultdict
@@ -31,34 +32,53 @@ except ImportError:
     def tqdm(it, **kw):   # type: ignore
         return it
 
-# Ensure project root is on path
-sys.path.insert(0, str(Path(__file__).parent.parent))
+# Make this directory importable whichever way the runner is invoked.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from pipeline.systems import QueryGenerationSystems
-from pipeline.evaluator import QueryEvaluator
+try:
+    # Self-contained public package layout.
+    from systems import QueryGenerationSystems
+    from evaluator import QueryEvaluator
+except ImportError:  # historical layout
+    from pipeline.systems import QueryGenerationSystems
+    from pipeline.evaluator import QueryEvaluator
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 
-BENCHMARK_PATH  = Path("/home/arjun/pm25_system/benchmarks/benchmark_200_system.json")
-DEFAULT_RESULTS = Path("/home/arjun/pm25_system/results/results_raw.jsonl")
-CHECKPOINT_DIR  = Path("/home/arjun/pm25_system/results/checkpoints")
+_PKG = Path(__file__).resolve().parent.parent
+
+BENCHMARK_PATH  = Path(os.environ.get(
+    "BENCHMARK_PATH", _PKG / "02_benchmark" / "aircypher150_benchmark.json"))
+DEFAULT_RESULTS = Path(os.environ.get(
+    "RESULTS_FILE", _PKG / "05_results" / "raw" / "results_rerun.jsonl"))
+CHECKPOINT_DIR  = Path(os.environ.get(
+    "CHECKPOINT_DIR", _PKG / "05_results" / "checkpoints"))
 CHECKPOINT_N    = 50    # flush checkpoint every N completed evaluations
 
+# The four models reported in the paper.
 DEFAULT_LLMS = [
-    "llama3:latest",
+    "llama3.2:3b",
+    "gemma2:9b",
     "qwen2.5-coder:32b",
-    "deepseek-coder:33b",
-    "gemma3:27b",
+    "qwen2.5:72b",
 ]
 
-# Systems that iterate over each LLM
-LLM_SYSTEMS = ["baseline", "cypherbench_style", "dkb", "dkb_hybrid"]
+# The six prompting configurations, run against each LLM.
+LLM_SYSTEMS = [
+    "baseline",            # Baseline
+    "cypherbench_style",   # Schema
+    "schema_plus_values",  # Schema+Values
+    "dkb_no_examples",     # DKB-NoExamples
+    "dkb",                 # DKB
+    "dkb_hybrid",          # DKB+Hybrid
+]
 # Systems with a fixed single model (System 3)
 FIXED_SYSTEMS = ["text2cypher_finetuned"]   # no LLM arg; model is internal
 
 QUERY_TIMEOUT_S = 30
 QUERY_RETRIES   = 2
-PRINT_SE_EVERY  = 100   # print running avg SE every N evaluations
+PRINT_SE_EVERY  = 100   # print running avg VM-F1 (field `SE`) every N evaluations
 
 
 class ExperimentRunner:
@@ -168,6 +188,10 @@ class ExperimentRunner:
                     gen_result = self._systems.baseline(nl_query, llm)
                 elif system == "cypherbench_style":
                     gen_result = self._systems.cypherbench_style(nl_query, llm)
+                elif system == "schema_plus_values":
+                    gen_result = self._systems.schema_plus_values(nl_query, llm)
+                elif system == "dkb_no_examples":
+                    gen_result = self._systems.dkb_no_examples(nl_query, llm)
                 elif system == "dkb":
                     gen_result = self._systems.dkb(nl_query, llm)
                 elif system == "dkb_hybrid":

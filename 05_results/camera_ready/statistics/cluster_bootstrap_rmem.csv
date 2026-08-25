@@ -1,0 +1,13 @@
+metric,comparison,n_clusters,n_resamples,seed,macro_mean_diff,ci95_lo,ci95_hi,frac_resamples_le_0
+RMEM_strict,DKB+Hybrid vs Baseline,150,10000,42,0.1517,0.12,0.1833,0.0
+RMEM_strict,DKB+Hybrid vs Schema Baseline,150,10000,42,0.1517,0.12,0.185,0.0
+RMEM_strict,DKB+Hybrid vs DKB,150,10000,42,0.075,0.045,0.105,0.0
+RMEM_strict,DKB-NoExamples vs Schema+Values,150,10000,42,0.04,0.015,0.065,0.0006
+RMEM_strict,Schema+Values vs Schema Baseline,150,10000,42,0.035,0.0167,0.0583,0.0
+RMEM_strict,Schema Baseline vs Baseline,150,10000,42,0.0,0.0,0.0,1.0
+RMEM_tolerant,DKB+Hybrid vs Baseline,150,10000,42,0.1533,0.1233,0.185,0.0
+RMEM_tolerant,DKB+Hybrid vs Schema Baseline,150,10000,42,0.1517,0.12,0.185,0.0
+RMEM_tolerant,DKB+Hybrid vs DKB,150,10000,42,0.0767,0.0467,0.1083,0.0
+RMEM_tolerant,DKB-NoExamples vs Schema+Values,150,10000,42,0.0317,0.0067,0.0583,0.0081
+RMEM_tolerant,Schema+Values vs Schema Baseline,150,10000,42,0.0417,0.0217,0.065,0.0
+RMEM_tolerant,Schema Baseline vs Baseline,150,10000,42,0.0017,0.0,0.005,0.3724

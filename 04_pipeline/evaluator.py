@@ -1,17 +1,31 @@
 """
-evaluator.py — 5-metric evaluation suite for NL-to-Cypher quality assessment.
+evaluator.py — the evaluation suite used to produce the reported raw results.
 
 Class QueryEvaluator:
   cv(generated_cypher)                              → float  Cypher Validity (0/1)
   es(generated_cypher)                              → float  Execution Success (0/1)
   em(generated_cypher, gold_cypher)                 → float  Exact Match (0/1)
-  se(generated_cypher, gold_cypher, neo4j_driver)   → float  Semantic Equivalence (0/1)
+  se(generated_cypher, gold_cypher, neo4j_driver)   → float  see the note below
   rq(generated_cypher, gold_cypher, nl_query)       → float  Result Quality (0–1)
-  evaluate_all(generated_cypher, gold_cypher, nl_query) → dict  all 5 metrics
+  evaluate_all(generated_cypher, gold_cypher, nl_query) → dict  all five
+
+NOTE ON `se` / the `SE` FIELD
+-----------------------------
+`se()` computes a continuous, partial-credit F1 over value multisets. The
+camera-ready paper reports it under its accurate name, **Value-Multiset F1
+(VM-F1)**. The method and field name `SE` ("Set Equality") are the submitted
+names and are retained here so that `05_results/raw/results_full.jsonl` stays
+readable exactly as generated. The values are the same quantity.
+
+The strict binary counterpart, **Row-Multiset Exact Match (RMEM)**, is not
+computed here; see `camera_ready_evaluator.py` and `METRICS.md`.
+
+Credentials are read from the environment; see `.env.example`.
 """
 
 from __future__ import annotations
 
+import os
 import re
 import time
 from typing import Any, Dict, List, Optional, Tuple
@@ -21,9 +35,11 @@ from neo4j.exceptions import CypherSyntaxError, ClientError, DatabaseError
 
 # ── Neo4j connection config ────────────────────────────────────────────────────
 
-NEO4J_URI  = "bolt://localhost:37689"
-NEO4J_USER = "neo4j"
-NEO4J_PASS = "StrongPasswordHere"
+# Connection settings come from the environment so that no credential lives in
+# this repository. See .env.example.
+NEO4J_URI  = os.environ.get("NEO4J_URI", "bolt://localhost:37689")
+NEO4J_USER = os.environ.get("NEO4J_USER", "neo4j")
+NEO4J_PASS = os.environ.get("NEO4J_PASSWORD")
 EXEC_TIMEOUT_S = 30   # seconds before treating execution as failure
 
 # Neo4j error codes that indicate a genuine syntax / schema problem
@@ -69,6 +85,11 @@ class QueryEvaluator:
         neo4j_pass: str = NEO4J_PASS,
         exec_timeout_s: float = EXEC_TIMEOUT_S,
     ):
+        if not neo4j_pass:
+            raise RuntimeError(
+                "No Neo4j password. Set NEO4J_PASSWORD in the environment "
+                "(see .env.example) or pass neo4j_pass explicitly."
+            )
         self._driver = GraphDatabase.driver(neo4j_uri, auth=(neo4j_user, neo4j_pass))
         self._exec_timeout_s = exec_timeout_s
         # Cache of cypher_text -> (success, rows, error). A single gold query
@@ -289,7 +310,7 @@ class QueryEvaluator:
             self._normalize_cypher(gold_cypher)
         ) else 0.0
 
-    # ── Metric 4: Semantic Equivalence (SE) ───────────────────────────────────
+    # ── Metric 4: Value-Multiset F1 (stored under the legacy name SE) ─────────
 
     def se(
         self,
@@ -298,8 +319,9 @@ class QueryEvaluator:
         neo4j_driver=None,  # accepted for API compatibility; uses self._driver
     ) -> Optional[float]:
         """
-        Semantic Equivalence with partial credit (0.0–1.0), or None if the gold
-        query itself cannot be evaluated.
+        Value-Multiset F1 (VM-F1) with partial credit (0.0–1.0), or None if the
+        gold query itself cannot be evaluated. Stored in the raw results under
+        the legacy field name `SE`; see METRICS.md.
 
         Compares the *value content* of the two result sets — F1 overlap of the
         normalized primitive-value multisets — rather than requiring byte-identical
@@ -411,7 +433,8 @@ class QueryEvaluator:
         nl_query: str,
     ) -> Dict[str, Any]:
         """
-        Run all 5 metrics. Returns:
+        Run all five metrics. `SE` in the returned dict is VM-F1 (see METRICS.md).
+        Returns:
             {
                 "CV": float, "ES": float, "EM": float, "SE": float, "RQ": float,
                 "_eval_ms": float, "_error": str|None,

@@ -1,0 +1,6 @@
+prompting_configuration,model,Aggregate,Temporal,Health Risk,Station Filtering,Comparative,overall
+DKB+Hybrid,llama3.2:3b,0.327,0.0091,0.0,0.2052,0.0,0.1257
+DKB+Hybrid,gemma2:9b,0.4868,0.1967,0.1667,0.4124,0.0,0.2785
+DKB+Hybrid,qwen2.5-coder:32b,0.7122,0.7733,0.8,0.3514,0.5545,0.6467
+DKB+Hybrid,qwen2.5:72b,0.792,0.6933,0.7,0.3801,0.397,0.6136
+DKB+Hybrid,POOLED(4 LLM),0.5795,0.4181,0.4167,0.3373,0.2379,0.4161

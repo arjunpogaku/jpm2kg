@@ -1,0 +1,193 @@
+scope,prompting_configuration,model,category,N,CV,ES,EM,SE,SE_binary_rate,RQ,gen_time_ms_median,gen_time_ms_mean
+category_x_config,Baseline,POOLED(4 LLM),Aggregate,152,0.0,0.7303,0.0,0.0,0.0,0.352,6002.0,7025.0
+category_x_config,Baseline,POOLED(4 LLM),Comparative,88,0.0114,0.7727,0.0,0.0,0.0,0.1364,7086.6,8363.2
+category_x_config,Baseline,POOLED(4 LLM),Health Risk,120,0.0,0.525,0.0,0.0,0.0,0.1875,6002.4,7686.3
+category_x_config,Baseline,POOLED(4 LLM),Station Filtering,120,0.0417,0.7667,0.0,0.0,0.0,0.0167,6723.2,13673.2
+category_x_config,Baseline,POOLED(4 LLM),Temporal,120,0.0,0.475,0.0,0.0,0.0,0.0292,8592.0,11076.9
+category_x_config,Schema Baseline,POOLED(4 LLM),Aggregate,152,0.7105,0.7105,0.0,0.0,0.0,0.3651,8794.3,8326.7
+category_x_config,Schema Baseline,POOLED(4 LLM),Comparative,88,0.4773,0.3864,0.0,0.0,0.0,0.0511,8220.4,8739.2
+category_x_config,Schema Baseline,POOLED(4 LLM),Health Risk,120,0.65,0.4417,0.0,0.0,0.0,0.1833,6729.6,9522.1
+category_x_config,Schema Baseline,POOLED(4 LLM),Station Filtering,120,0.5583,0.5583,0.0,0.0,0.0,0.0208,7754.8,10557.1
+category_x_config,Schema Baseline,POOLED(4 LLM),Temporal,120,0.3667,0.3583,0.0,0.0052,0.0,0.0375,9214.8,8865.3
+category_x_config,Schema+Values,POOLED(4 LLM),Aggregate,152,0.7632,0.6711,0.0,0.0347,0.0,0.3651,9812.0,11171.7
+category_x_config,Schema+Values,POOLED(4 LLM),Comparative,88,0.5455,0.4886,0.0,0.1156,0.0795,0.233,11594.6,10637.2
+category_x_config,Schema+Values,POOLED(4 LLM),Health Risk,120,0.8917,0.3583,0.0,0.0083,0.0,0.2167,10098.5,14213.9
+category_x_config,Schema+Values,POOLED(4 LLM),Station Filtering,120,0.875,0.7333,0.0,0.1846,0.1,0.1833,10606.6,13376.6
+category_x_config,Schema+Values,POOLED(4 LLM),Temporal,120,0.4583,0.175,0.0,0.03,0.0167,0.0375,10987.2,13922.4
+category_x_config,DKB-NoExamples,POOLED(4 LLM),Aggregate,152,0.9079,0.7697,0.0,0.25,0.0,0.3816,7731.7,8900.5
+category_x_config,DKB-NoExamples,POOLED(4 LLM),Comparative,88,0.7841,0.75,0.0,0.2232,0.0682,0.2955,14295.1,17342.9
+category_x_config,DKB-NoExamples,POOLED(4 LLM),Health Risk,120,0.8,0.7167,0.0,0.0778,0.0,0.3583,10162.8,14418.8
+category_x_config,DKB-NoExamples,POOLED(4 LLM),Station Filtering,120,0.95,0.9,0.0,0.2246,0.0333,0.2917,11674.7,14417.7
+category_x_config,DKB-NoExamples,POOLED(4 LLM),Temporal,120,0.525,0.3417,0.0,0.2917,0.2917,0.1833,11028.9,12292.1
+category_x_config,DKB,POOLED(4 LLM),Aggregate,152,0.9605,0.9474,0.0,0.5265,0.0,0.7434,9389.8,9449.4
+category_x_config,DKB,POOLED(4 LLM),Comparative,88,0.3977,0.3523,0.0,0.2318,0.1591,0.267,11079.5,11690.2
+category_x_config,DKB,POOLED(4 LLM),Health Risk,120,0.8083,0.7917,0.0,0.2633,0.0917,0.3958,8151.6,9840.4
+category_x_config,DKB,POOLED(4 LLM),Station Filtering,120,0.6417,0.5,0.0,0.2386,0.0917,0.4375,9450.7,11753.0
+category_x_config,DKB,POOLED(4 LLM),Temporal,120,0.825,0.6,0.0,0.3024,0.0833,0.45,9350.1,9502.6
+category_x_config,DKB+Hybrid,POOLED(4 LLM),Aggregate,152,0.9342,0.9276,0.0,0.5795,0.0132,0.8816,8229.1,8378.4
+category_x_config,DKB+Hybrid,POOLED(4 LLM),Comparative,88,0.4205,0.3068,0.0,0.2379,0.1705,0.267,9788.7,10703.5
+category_x_config,DKB+Hybrid,POOLED(4 LLM),Health Risk,120,0.925,0.8917,0.0,0.4167,0.4167,0.725,7726.7,8049.4
+category_x_config,DKB+Hybrid,POOLED(4 LLM),Station Filtering,120,0.7667,0.6917,0.0,0.3373,0.1,0.5792,8427.9,10864.3
+category_x_config,DKB+Hybrid,POOLED(4 LLM),Temporal,120,0.9167,0.6417,0.0,0.4181,0.1,0.5667,9306.7,8724.8
+category_x_config,FT Text2Cypher,POOLED(4 LLM),Aggregate,38,0.8684,0.8421,0.0,0.0,0.0,0.3684,13210.4,16426.7
+category_x_config,FT Text2Cypher,POOLED(4 LLM),Comparative,22,0.3182,0.1818,0.0,0.0,0.0,0.0,29523.8,26584.2
+category_x_config,FT Text2Cypher,POOLED(4 LLM),Health Risk,30,0.4333,0.4333,0.0,0.0,0.0,0.2167,21005.8,23822.2
+category_x_config,FT Text2Cypher,POOLED(4 LLM),Station Filtering,30,0.9667,0.9667,0.0,0.0,0.0,0.0167,15201.6,15036.6
+category_x_config,FT Text2Cypher,POOLED(4 LLM),Temporal,30,0.3333,0.3,0.0,0.0,0.0,0.0,16997.9,20712.0
+category_x_model_x_config,Baseline,gemma2:9b,Aggregate,38,0.0,0.8684,0.0,0.0,0.0,0.4342,6002.0,6131.2
+category_x_model_x_config,Baseline,gemma2:9b,Comparative,22,0.0455,0.9545,0.0,0.0,0.0,0.2045,6385.7,6424.6
+category_x_model_x_config,Baseline,gemma2:9b,Health Risk,30,0.0,0.3667,0.0,0.0,0.0,0.1833,5621.8,5687.0
+category_x_model_x_config,Baseline,gemma2:9b,Station Filtering,30,0.1333,0.7667,0.0,0.0,0.0,0.0167,6940.2,10538.8
+category_x_model_x_config,Baseline,gemma2:9b,Temporal,30,0.0,0.0,0.0,0.0,0.0,0.0,6607.0,7498.9
+category_x_model_x_config,Baseline,llama3.2:3b,Aggregate,38,0.0,0.2105,0.0,0.0,0.0,0.1053,4540.1,4528.1
+category_x_model_x_config,Baseline,llama3.2:3b,Comparative,22,0.0,0.3636,0.0,0.0,0.0,0.0682,4098.5,4174.0
+category_x_model_x_config,Baseline,llama3.2:3b,Health Risk,30,0.0,0.4,0.0,0.0,0.0,0.2,3901.2,3740.4
+category_x_model_x_config,Baseline,llama3.2:3b,Station Filtering,30,0.0,0.3667,0.0,0.0,0.0,0.0167,4135.6,8355.6
+category_x_model_x_config,Baseline,llama3.2:3b,Temporal,30,0.0,0.2333,0.0,0.0,0.0,0.1167,5197.7,5544.3
+category_x_model_x_config,Baseline,qwen2.5-coder:32b,Aggregate,38,0.0,0.8684,0.0,0.0,0.0,0.4342,10760.0,11305.9
+category_x_model_x_config,Baseline,qwen2.5-coder:32b,Comparative,22,0.0,0.7727,0.0,0.0,0.0,0.2727,11650.4,12747.8
+category_x_model_x_config,Baseline,qwen2.5-coder:32b,Health Risk,30,0.0,0.3667,0.0,0.0,0.0,0.1833,13992.9,13393.7
+category_x_model_x_config,Baseline,qwen2.5-coder:32b,Station Filtering,30,0.0,0.9667,0.0,0.0,0.0,0.0167,12765.0,14719.0
+category_x_model_x_config,Baseline,qwen2.5-coder:32b,Temporal,30,0.0,0.8667,0.0,0.0,0.0,0.0,14070.3,13692.2
+category_x_model_x_config,Baseline,qwen2.5:72b,Aggregate,38,0.0,0.9737,0.0,0.0,0.0,0.4342,5542.6,6134.8
+category_x_model_x_config,Baseline,qwen2.5:72b,Comparative,22,0.0,1.0,0.0,0.0,0.0,0.0,9931.7,10106.6
+category_x_model_x_config,Baseline,qwen2.5:72b,Health Risk,30,0.0,0.9667,0.0,0.0,0.0,0.1833,9386.7,7924.1
+category_x_model_x_config,Baseline,qwen2.5:72b,Station Filtering,30,0.0333,0.9667,0.0,0.0,0.0,0.0167,5847.4,21079.3
+category_x_model_x_config,Baseline,qwen2.5:72b,Temporal,30,0.0,0.8,0.0,0.0,0.0,0.0,11417.5,17572.1
+category_x_model_x_config,Schema Baseline,gemma2:9b,Aggregate,38,0.2105,0.2105,0.0,0.0,0.0,0.1184,7856.1,8119.4
+category_x_model_x_config,Schema Baseline,gemma2:9b,Comparative,22,0.5,0.5,0.0,0.0,0.0,0.1818,6690.6,6741.5
+category_x_model_x_config,Schema Baseline,gemma2:9b,Health Risk,30,0.5667,0.1,0.0,0.0,0.0,0.05,6409.4,6331.2
+category_x_model_x_config,Schema Baseline,gemma2:9b,Station Filtering,30,0.2667,0.2667,0.0,0.0,0.0,0.0167,7603.3,9293.3
+category_x_model_x_config,Schema Baseline,gemma2:9b,Temporal,30,0.0,0.0,0.0,0.0,0.0,0.0,9083.4,9211.3
+category_x_model_x_config,Schema Baseline,llama3.2:3b,Aggregate,38,0.6579,0.6579,0.0,0.0,0.0,0.3289,4815.4,4900.4
+category_x_model_x_config,Schema Baseline,llama3.2:3b,Comparative,22,0.4091,0.4091,0.0,0.0,0.0,0.0227,4303.5,4233.4
+category_x_model_x_config,Schema Baseline,llama3.2:3b,Health Risk,30,0.5333,0.3,0.0,0.0,0.0,0.05,4446.0,4065.0
+category_x_model_x_config,Schema Baseline,llama3.2:3b,Station Filtering,30,0.6667,0.6667,0.0,0.0,0.0,0.0167,4430.2,5395.3
+category_x_model_x_config,Schema Baseline,llama3.2:3b,Temporal,30,0.2333,0.2,0.0,0.0,0.0,0.1167,5951.3,6225.4
+category_x_model_x_config,Schema Baseline,qwen2.5-coder:32b,Aggregate,38,1.0,1.0,0.0,0.0,0.0,0.5789,10799.8,11062.7
+category_x_model_x_config,Schema Baseline,qwen2.5-coder:32b,Comparative,22,0.3636,0.0,0.0,0.0,0.0,0.0,13075.1,13721.1
+category_x_model_x_config,Schema Baseline,qwen2.5-coder:32b,Health Risk,30,0.5,0.3667,0.0,0.0,0.0,0.3667,16042.7,15440.5
+category_x_model_x_config,Schema Baseline,qwen2.5-coder:32b,Station Filtering,30,0.9667,0.9667,0.0,0.0,0.0,0.0333,10171.1,10491.3
+category_x_model_x_config,Schema Baseline,qwen2.5-coder:32b,Temporal,30,0.4667,0.4667,0.0,0.0208,0.0,0.0333,10648.7,10761.5
+category_x_model_x_config,Schema Baseline,qwen2.5:72b,Aggregate,38,0.9737,0.9737,0.0,0.0,0.0,0.4342,9240.3,9224.4
+category_x_model_x_config,Schema Baseline,qwen2.5:72b,Comparative,22,0.6364,0.6364,0.0,0.0,0.0,0.0,10060.3,10260.6
+category_x_model_x_config,Schema Baseline,qwen2.5:72b,Health Risk,30,1.0,1.0,0.0,0.0,0.0,0.2667,12176.5,12251.5
+category_x_model_x_config,Schema Baseline,qwen2.5:72b,Station Filtering,30,0.3333,0.3333,0.0,0.0,0.0,0.0167,10694.5,17048.5
+category_x_model_x_config,Schema Baseline,qwen2.5:72b,Temporal,30,0.7667,0.7667,0.0,0.0,0.0,0.0,9176.9,9263.1
+category_x_model_x_config,Schema+Values,gemma2:9b,Aggregate,38,0.3684,0.3684,0.0,0.0,0.0,0.2895,7787.6,7895.1
+category_x_model_x_config,Schema+Values,gemma2:9b,Comparative,22,0.4091,0.4091,0.0,0.2114,0.0909,0.3636,12993.8,12440.2
+category_x_model_x_config,Schema+Values,gemma2:9b,Health Risk,30,0.9667,0.3667,0.0,0.0,0.0,0.1833,9147.6,8800.0
+category_x_model_x_config,Schema+Values,gemma2:9b,Station Filtering,30,0.8,0.8,0.0,0.203,0.0333,0.3,10759.4,11872.0
+category_x_model_x_config,Schema+Values,gemma2:9b,Temporal,30,0.0,0.0,0.0,0.0,0.0,0.0,10198.9,9536.8
+category_x_model_x_config,Schema+Values,llama3.2:3b,Aggregate,38,0.6842,0.5263,0.0,0.0,0.0,0.25,6283.5,6851.2
+category_x_model_x_config,Schema+Values,llama3.2:3b,Comparative,22,0.5455,0.5,0.0,0.0238,0.0,0.3409,2449.6,2464.3
+category_x_model_x_config,Schema+Values,llama3.2:3b,Health Risk,30,0.7333,0.0667,0.0,0.0,0.0,0.0333,6103.3,6096.3
+category_x_model_x_config,Schema+Values,llama3.2:3b,Station Filtering,30,0.7667,0.7667,0.0,0.068,0.0333,0.1333,6995.4,6250.1
+category_x_model_x_config,Schema+Values,llama3.2:3b,Temporal,30,0.3333,0.1,0.0,0.0,0.0,0.0167,9013.8,8608.5
+category_x_model_x_config,Schema+Values,qwen2.5-coder:32b,Aggregate,38,1.0,1.0,0.0,0.0239,0.0,0.5263,16932.8,15989.0
+category_x_model_x_config,Schema+Values,qwen2.5-coder:32b,Comparative,22,0.3636,0.2727,0.0,0.2273,0.2273,0.2273,16226.4,15158.3
+category_x_model_x_config,Schema+Values,qwen2.5-coder:32b,Health Risk,30,0.8667,0.4333,0.0,0.0333,0.0,0.4,24202.5,23647.3
+category_x_model_x_config,Schema+Values,qwen2.5-coder:32b,Station Filtering,30,0.9333,0.3667,0.0,0.2125,0.1,0.1667,10790.2,12143.4
+category_x_model_x_config,Schema+Values,qwen2.5-coder:32b,Temporal,30,0.5,0.5,0.0,0.0267,0.0,0.0333,24687.8,22691.6
+category_x_model_x_config,Schema+Values,qwen2.5:72b,Aggregate,38,1.0,0.7895,0.0,0.1148,0.0,0.3947,14301.6,13951.6
+category_x_model_x_config,Schema+Values,qwen2.5:72b,Comparative,22,0.8636,0.7727,0.0,0.0,0.0,0.0,10994.4,12486.0
+category_x_model_x_config,Schema+Values,qwen2.5:72b,Health Risk,30,1.0,0.5667,0.0,0.0,0.0,0.25,15843.7,18312.1
+category_x_model_x_config,Schema+Values,qwen2.5:72b,Station Filtering,30,1.0,1.0,0.0,0.2547,0.2333,0.1333,19127.7,23241.0
+category_x_model_x_config,Schema+Values,qwen2.5:72b,Temporal,30,1.0,0.1,0.0,0.0933,0.0667,0.1,13292.7,14852.6
+category_x_model_x_config,DKB-NoExamples,gemma2:9b,Aggregate,38,0.8421,0.8421,0.0,0.0395,0.0,0.4211,6883.4,6575.6
+category_x_model_x_config,DKB-NoExamples,gemma2:9b,Comparative,22,0.7273,0.7273,0.0,0.1052,0.0,0.4091,12465.6,12594.6
+category_x_model_x_config,DKB-NoExamples,gemma2:9b,Health Risk,30,0.3667,0.3667,0.0,0.0,0.0,0.1833,8485.3,8237.1
+category_x_model_x_config,DKB-NoExamples,gemma2:9b,Station Filtering,30,0.8,0.8,0.0,0.1784,0.0333,0.4,10214.6,11503.0
+category_x_model_x_config,DKB-NoExamples,gemma2:9b,Temporal,30,0.0,0.0,0.0,0.0,0.0,0.0,10053.5,9673.2
+category_x_model_x_config,DKB-NoExamples,llama3.2:3b,Aggregate,38,0.7895,0.5,0.0,0.0263,0.0,0.25,4554.2,5589.5
+category_x_model_x_config,DKB-NoExamples,llama3.2:3b,Comparative,22,0.4545,0.4091,0.0,0.0,0.0,0.0227,9077.5,8863.7
+category_x_model_x_config,DKB-NoExamples,llama3.2:3b,Health Risk,30,0.9,0.6333,0.0,0.0111,0.0,0.3167,6898.0,7655.2
+category_x_model_x_config,DKB-NoExamples,llama3.2:3b,Station Filtering,30,1.0,0.8,0.0,0.0884,0.0333,0.1167,8167.9,8285.0
+category_x_model_x_config,DKB-NoExamples,llama3.2:3b,Temporal,30,0.4,0.0,0.0,0.0,0.0,0.0,7853.2,7851.1
+category_x_model_x_config,DKB-NoExamples,qwen2.5-coder:32b,Aggregate,38,1.0,1.0,0.0,0.549,0.0,0.5,10152.3,11475.1
+category_x_model_x_config,DKB-NoExamples,qwen2.5-coder:32b,Comparative,22,1.0,1.0,0.0,0.6727,0.2727,0.5909,24402.3,22750.6
+category_x_model_x_config,DKB-NoExamples,qwen2.5-coder:32b,Health Risk,30,1.0,1.0,0.0,0.3,0.0,0.5,23477.9,24513.1
+category_x_model_x_config,DKB-NoExamples,qwen2.5-coder:32b,Station Filtering,30,1.0,1.0,0.0,0.421,0.0333,0.4,13056.7,13714.4
+category_x_model_x_config,DKB-NoExamples,qwen2.5-coder:32b,Temporal,30,0.7,0.5667,0.0,0.5667,0.5667,0.3333,17994.4,18097.0
+category_x_model_x_config,DKB-NoExamples,qwen2.5:72b,Aggregate,38,1.0,0.7368,0.0,0.3852,0.0,0.3553,10203.9,11961.9
+category_x_model_x_config,DKB-NoExamples,qwen2.5:72b,Comparative,22,0.9545,0.8636,0.0,0.1149,0.0,0.1591,24797.7,25162.6
+category_x_model_x_config,DKB-NoExamples,qwen2.5:72b,Health Risk,30,0.9333,0.8667,0.0,0.0,0.0,0.4333,18772.0,17269.6
+category_x_model_x_config,DKB-NoExamples,qwen2.5:72b,Station Filtering,30,1.0,1.0,0.0,0.2105,0.0333,0.25,21826.4,24168.6
+category_x_model_x_config,DKB-NoExamples,qwen2.5:72b,Temporal,30,1.0,0.8,0.0,0.6,0.6,0.4,14092.5,13547.2
+category_x_model_x_config,DKB,gemma2:9b,Aggregate,38,0.8684,0.8684,0.0,0.5921,0.0,0.8684,8170.3,8402.1
+category_x_model_x_config,DKB,gemma2:9b,Comparative,22,0.0,0.0,0.0,0.0,0.0,0.0,6917.9,6923.7
+category_x_model_x_config,DKB,gemma2:9b,Health Risk,30,0.2333,0.2333,0.0,0.0533,0.0,0.1167,6441.7,6615.6
+category_x_model_x_config,DKB,gemma2:9b,Station Filtering,30,0.4,0.4,0.0,0.2324,0.1333,0.2667,8226.7,7809.5
+category_x_model_x_config,DKB,gemma2:9b,Temporal,30,1.0,0.5333,0.0,0.1828,0.0,0.5333,9039.1,8686.8
+category_x_model_x_config,DKB,llama3.2:3b,Aggregate,38,0.9737,0.9211,0.0,0.0105,0.0,0.1053,4404.0,4616.4
+category_x_model_x_config,DKB,llama3.2:3b,Comparative,22,0.2727,0.2727,0.0,0.0,0.0,0.0682,5584.2,5705.3
+category_x_model_x_config,DKB,llama3.2:3b,Health Risk,30,1.0,0.9333,0.0,0.0,0.0,0.4667,4248.0,3911.0
+category_x_model_x_config,DKB,llama3.2:3b,Station Filtering,30,0.2,0.1333,0.0,0.0333,0.0333,0.0167,3937.3,4967.5
+category_x_model_x_config,DKB,llama3.2:3b,Temporal,30,0.8667,0.7,0.0,0.0267,0.0,0.1,5395.6,5308.8
+category_x_model_x_config,DKB,qwen2.5-coder:32b,Aggregate,38,1.0,1.0,0.0,0.6938,0.0,1.0,9451.4,9422.0
+category_x_model_x_config,DKB,qwen2.5-coder:32b,Comparative,22,0.3182,0.1364,0.0,0.0,0.0,0.0,18042.4,17808.5
+category_x_model_x_config,DKB,qwen2.5-coder:32b,Health Risk,30,1.0,1.0,0.0,0.6833,0.3667,0.5,15919.5,13711.3
+category_x_model_x_config,DKB,qwen2.5-coder:32b,Station Filtering,30,1.0,0.5,0.0,0.3084,0.1667,0.5,13694.8,13258.5
+category_x_model_x_config,DKB,qwen2.5-coder:32b,Temporal,30,0.6,0.4667,0.0,0.44,0.3333,0.4667,9381.4,11639.7
+category_x_model_x_config,DKB,qwen2.5:72b,Aggregate,38,1.0,1.0,0.0,0.8096,0.0,1.0,16461.2,15357.2
+category_x_model_x_config,DKB,qwen2.5:72b,Comparative,22,1.0,1.0,0.0,0.9273,0.6364,1.0,17890.8,16323.4
+category_x_model_x_config,DKB,qwen2.5:72b,Health Risk,30,1.0,1.0,0.0,0.3167,0.0,0.5,17790.2,15123.7
+category_x_model_x_config,DKB,qwen2.5:72b,Station Filtering,30,0.9667,0.9667,0.0,0.3803,0.0333,0.9667,15980.2,20976.4
+category_x_model_x_config,DKB,qwen2.5:72b,Temporal,30,0.8333,0.7,0.0,0.56,0.0,0.7,11814.4,12375.0
+category_x_model_x_config,DKB+Hybrid,gemma2:9b,Aggregate,38,0.9211,0.9211,0.0,0.4868,0.0526,0.9211,7287.9,7600.1
+category_x_model_x_config,DKB+Hybrid,gemma2:9b,Comparative,22,0.0909,0.0,0.0,0.0,0.0,0.0,6510.6,6489.1
+category_x_model_x_config,DKB+Hybrid,gemma2:9b,Health Risk,30,0.8,0.8,0.0,0.1667,0.1667,0.7,6255.6,6274.0
+category_x_model_x_config,DKB+Hybrid,gemma2:9b,Station Filtering,30,0.6,0.6,0.0,0.4124,0.2333,0.5167,7973.4,8095.8
+category_x_model_x_config,DKB+Hybrid,gemma2:9b,Temporal,30,0.9667,0.5333,0.0,0.1967,0.0,0.4,8064.6,7969.4
+category_x_model_x_config,DKB+Hybrid,llama3.2:3b,Aggregate,38,0.8158,0.7895,0.0,0.327,0.0,0.6053,4224.0,4447.1
+category_x_model_x_config,DKB+Hybrid,llama3.2:3b,Comparative,22,0.2273,0.1818,0.0,0.0,0.0,0.0227,6933.7,6587.0
+category_x_model_x_config,DKB+Hybrid,llama3.2:3b,Health Risk,30,0.9,0.7667,0.0,0.0,0.0,0.5667,3764.4,3914.8
+category_x_model_x_config,DKB+Hybrid,llama3.2:3b,Station Filtering,30,0.6,0.5333,0.0,0.2052,0.1,0.3167,5000.1,5179.3
+category_x_model_x_config,DKB+Hybrid,llama3.2:3b,Temporal,30,0.7,0.3,0.0,0.0091,0.0,0.1333,6237.9,6697.6
+category_x_model_x_config,DKB+Hybrid,qwen2.5-coder:32b,Aggregate,38,1.0,1.0,0.0,0.7122,0.0,1.0,8365.7,8646.5
+category_x_model_x_config,DKB+Hybrid,qwen2.5-coder:32b,Comparative,22,0.9091,0.5909,0.0,0.5545,0.4091,0.5909,13753.2,13951.0
+category_x_model_x_config,DKB+Hybrid,qwen2.5-coder:32b,Health Risk,30,1.0,1.0,0.0,0.8,0.8,0.8333,12084.1,11164.7
+category_x_model_x_config,DKB+Hybrid,qwen2.5-coder:32b,Station Filtering,30,0.9333,0.7,0.0,0.3514,0.0333,0.6167,10461.7,11170.1
+category_x_model_x_config,DKB+Hybrid,qwen2.5-coder:32b,Temporal,30,1.0,0.8667,0.0,0.7733,0.4,0.8667,8810.8,9811.3
+category_x_model_x_config,DKB+Hybrid,qwen2.5:72b,Aggregate,38,1.0,1.0,0.0,0.792,0.0,1.0,13832.6,12819.9
+category_x_model_x_config,DKB+Hybrid,qwen2.5:72b,Comparative,22,0.4545,0.4545,0.0,0.397,0.2727,0.4545,17150.6,15786.7
+category_x_model_x_config,DKB+Hybrid,qwen2.5:72b,Health Risk,30,1.0,1.0,0.0,0.7,0.7,0.8,11658.7,10844.0
+category_x_model_x_config,DKB+Hybrid,qwen2.5:72b,Station Filtering,30,0.9333,0.9333,0.0,0.3801,0.0333,0.8667,10732.1,19012.1
+category_x_model_x_config,DKB+Hybrid,qwen2.5:72b,Temporal,30,1.0,0.8667,0.0,0.6933,0.0,0.8667,10440.1,10421.0
+category_x_model_x_config,FT Text2Cypher,text2cypher-gemma2-9b,Aggregate,38,0.8684,0.8421,0.0,0.0,0.0,0.3684,13210.4,16426.7
+category_x_model_x_config,FT Text2Cypher,text2cypher-gemma2-9b,Comparative,22,0.3182,0.1818,0.0,0.0,0.0,0.0,29523.8,26584.2
+category_x_model_x_config,FT Text2Cypher,text2cypher-gemma2-9b,Health Risk,30,0.4333,0.4333,0.0,0.0,0.0,0.2167,21005.8,23822.2
+category_x_model_x_config,FT Text2Cypher,text2cypher-gemma2-9b,Station Filtering,30,0.9667,0.9667,0.0,0.0,0.0,0.0167,15201.6,15036.6
+category_x_model_x_config,FT Text2Cypher,text2cypher-gemma2-9b,Temporal,30,0.3333,0.3,0.0,0.0,0.0,0.0,16997.9,20712.0
+per_model_x_config,Baseline,gemma2:9b,ALL,150,0.0333,0.5867,0.0,0.0,0.0,0.18,6231.6,7240.5
+per_model_x_config,Baseline,llama3.2:3b,ALL,150,0.0,0.3067,0.0,0.0,0.0,0.1033,4582.8,5287.3
+per_model_x_config,Baseline,qwen2.5-coder:32b,ALL,150,0.0,0.7733,0.0,0.0,0.0,0.19,12113.3,13094.8
+per_model_x_config,Baseline,qwen2.5:72b,ALL,150,0.0067,0.94,0.0,0.0,0.0,0.15,6949.9,12351.6
+per_model_x_config,Schema Baseline,gemma2:9b,ALL,150,0.2933,0.2,0.0,0.0,0.0,0.07,7145.8,8012.8
+per_model_x_config,Schema Baseline,llama3.2:3b,ALL,150,0.5133,0.46,0.0,0.0,0.0,0.1233,4792.4,4999.5
+per_model_x_config,Schema Baseline,qwen2.5-coder:32b,ALL,150,0.6933,0.6133,0.0,0.0042,0.0,0.2333,12571.7,12153.6
+per_model_x_config,Schema Baseline,qwen2.5:72b,ALL,150,0.76,0.76,0.0,0.0,0.0,0.1667,9420.2,11554.4
+per_model_x_config,Schema+Values,gemma2:9b,ALL,150,0.5067,0.3867,0.0,0.0716,0.02,0.2233,9283.2,9866.4
+per_model_x_config,Schema+Values,llama3.2:3b,ALL,150,0.62,0.3933,0.0,0.0171,0.0067,0.15,6245.3,6288.1
+per_model_x_config,Schema+Values,qwen2.5-coder:32b,ALL,150,0.7667,0.5533,0.0,0.0939,0.0533,0.2867,16992.3,17970.2
+per_model_x_config,Schema+Values,qwen2.5:72b,ALL,150,0.98,0.6467,0.0,0.0987,0.06,0.1967,14998.8,16646.8
+per_model_x_config,DKB-NoExamples,gemma2:9b,ALL,150,0.5533,0.5533,0.0,0.0611,0.0067,0.2833,9098.8,9395.7
+per_model_x_config,DKB-NoExamples,llama3.2:3b,ALL,150,0.7267,0.4733,0.0,0.0266,0.0067,0.1533,6964.9,7474.3
+per_model_x_config,DKB-NoExamples,qwen2.5-coder:32b,ALL,150,0.94,0.9133,0.0,0.4953,0.16,0.46,17052.0,17508.7
+per_model_x_config,DKB-NoExamples,qwen2.5:72b,ALL,150,0.98,0.8467,0.0,0.2765,0.1267,0.33,16194.6,17717.9
+per_model_x_config,DKB,gemma2:9b,ALL,150,0.5467,0.4533,0.0,0.2437,0.0267,0.4033,7440.2,7766.4
+per_model_x_config,DKB,llama3.2:3b,ALL,150,0.7,0.6267,0.0,0.0147,0.0067,0.1533,4604.7,4843.7
+per_model_x_config,DKB,qwen2.5-coder:32b,ALL,150,0.82,0.6667,0.0,0.4621,0.1733,0.5467,12738.7,12720.7
+per_model_x_config,DKB,qwen2.5:72b,ALL,150,0.96,0.9333,0.0,0.5925,0.1,0.8333,15328.9,15979.6
+per_model_x_config,DKB+Hybrid,gemma2:9b,ALL,150,0.72,0.62,0.0,0.2785,0.0933,0.5567,6868.6,7344.9
+per_model_x_config,DKB+Hybrid,llama3.2:3b,ALL,150,0.68,0.5467,0.0,0.1257,0.02,0.36,5223.4,5251.0
+per_model_x_config,DKB+Hybrid,qwen2.5-coder:32b,ALL,150,0.9733,0.8533,0.0,0.6467,0.3067,0.8033,10397.8,10665.8
+per_model_x_config,DKB+Hybrid,qwen2.5:72b,ALL,150,0.9067,0.88,0.0,0.6136,0.1867,0.8267,11351.7,13618.5
+per_model_x_config,FT Text2Cypher,text2cypher-gemma2-9b,ALL,150,0.6133,0.58,0.0,0.0,0.0,0.14,16011.0,19974.6
+pooled_x_config,Baseline,POOLED(4 LLM),ALL,600,0.01,0.6517,0.0,0.0,0.0,0.1558,6569.7,9493.5
+pooled_x_config,Schema Baseline,POOLED(4 LLM),ALL,600,0.565,0.5083,0.0,0.001,0.0,0.1483,8764.9,9180.1
+pooled_x_config,Schema+Values,POOLED(4 LLM),ALL,600,0.7183,0.495,0.0,0.0703,0.035,0.2142,10821.8,12692.9
+pooled_x_config,DKB-NoExamples,POOLED(4 LLM),ALL,600,0.8,0.6967,0.0,0.2149,0.075,0.3067,10424.5,13024.1
+pooled_x_config,DKB,POOLED(4 LLM),ALL,600,0.7567,0.67,0.0,0.3282,0.0767,0.4842,9293.1,10327.6
+pooled_x_config,DKB+Hybrid,POOLED(4 LLM),ALL,600,0.82,0.725,0.0,0.4161,0.1517,0.6367,8303.1,9220.1
+pooled_x_config,FT Text2Cypher,POOLED(4 LLM),ALL,150,0.6133,0.58,0.0,0.0,0.0,0.14,16011.0,19974.6

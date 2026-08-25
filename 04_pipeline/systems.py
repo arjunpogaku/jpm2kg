@@ -1,12 +1,20 @@
 """
-systems.py — 5 NL-to-Cypher generation systems for Japan PM2.5 KG.
+systems.py — NL-to-Cypher generation systems for JPM2KG.
 
-Class QueryGenerationSystems with 5 methods:
-  1. baseline          — zero-shot prompt
-  2. cypherbench_style — dynamic schema from Neo4j (CypherBench, Feng et al. ACL 2025)
-  3. text2cypher_finetuned — HuggingFace neo4j/text2cypher-gemma-2-9b-it-finetuned-2024v1
-  4. dkb               — DKB domain knowledge base prompt
-  5. dkb_hybrid        — DKB + top-3 retrieved examples via sentence-transformers
+Class QueryGenerationSystems. The six prompting configurations reported in the
+paper, in the order they appear in the tables:
+
+  baseline           — zero-shot prompt, no schema           ("Baseline")
+  cypherbench_style  — dynamic schema from Neo4j             ("Schema")
+                       (CypherBench, Feng et al. ACL 2025)
+  schema_plus_values — schema + canonical values             ("Schema+Values")
+  dkb_no_examples    — full DKB minus the exemplars          ("DKB-NoExamples")
+  dkb                — full DKB, 8 fixed exemplars           ("DKB")
+  dkb_hybrid         — full DKB, 3 retrieved + 5 fixed       ("DKB+Hybrid")
+
+plus one non-prompting baseline:
+
+  text2cypher_finetuned — HuggingFace neo4j/text2cypher-gemma-2-9b-it-finetuned-2024v1
 
 All methods return:
     {
@@ -53,11 +61,22 @@ OLLAMA_URL     = "http://localhost:11434"
 OLLAMA_TIMEOUT = int(os.environ.get("OLLAMA_TIMEOUT", "60"))
 OLLAMA_RETRIES = 2
 
-NEO4J_URI  = "bolt://localhost:37689"
-NEO4J_USER = "neo4j"
-NEO4J_PASS = "StrongPasswordHere"
+# Connection settings come from the environment so that no credential lives in
+# this repository. See .env.example.
+NEO4J_URI  = os.environ.get("NEO4J_URI", "bolt://localhost:37689")
+NEO4J_USER = os.environ.get("NEO4J_USER", "neo4j")
+NEO4J_PASS = os.environ.get("NEO4J_PASSWORD")
 
-DKB_PATH = Path("/home/arjun/pm25_system/data/dkb_japan.json")
+# The active public DKB, resolved relative to this file so the package is
+# self-contained. Override with DKB_PATH if you keep the DKB elsewhere.
+DKB_PATH = Path(os.environ.get(
+    "DKB_PATH",
+    Path(__file__).resolve().parent.parent / "03_domain_knowledge_base" / "dkb_japan.json",
+))
+
+# Number of exemplars retrieved for DKB+Hybrid. Fixed a priori at 3 for the
+# reported experiments; see 05_results/camera_ready/k_sensitivity/.
+DKB_HYBRID_K = 3
 
 _dkb_cache: Optional[dict] = None
 _st_model_cache = None        # sentence-transformers model (lazy)
@@ -228,11 +247,12 @@ def _get_st_model():
         try:
             from sentence_transformers import SentenceTransformer
             _st_model_cache = SentenceTransformer("all-MiniLM-L6-v2")
-        except ImportError:
+        except ImportError as e:
             raise RuntimeError(
-                "sentence-transformers not installed. "
-                "Run: pip install sentence-transformers"
-            )
+                "sentence-transformers is required for DKB+Hybrid retrieval but "
+                "could not be imported. Install it with the pinned version in "
+                f"requirements.txt (pip install -r requirements.txt). Original error: {e}"
+            ) from e
     return _st_model_cache
 
 
@@ -615,16 +635,16 @@ Cypher:"""
         t0 = time.time()
 
         try:
-            from pipeline.sota_ft_model import (
+            # Ships in this package (sota_ft_model.py).
+            from sota_ft_model import (
                 is_available,
                 get_load_error,
                 generate_cypher as ft_generate,
-                get_model_and_tokenizer,
             )
         except ImportError:
-            # Try relative import
+            # Historical layout, kept so the submitted tree still works.
             try:
-                from sota_ft_model import (
+                from pipeline.sota_ft_model import (
                     is_available,
                     get_load_error,
                     generate_cypher as ft_generate,
@@ -780,10 +800,11 @@ Cypher:"""
         cosine similarity on nl_query vs pattern NL templates.
         """
         t0 = time.time()
-        try:
-            retrieved = _retrieve_top_k(nl_query, k=3)
-        except Exception:
-            retrieved = []
+        # Deliberately NOT wrapped in a try/except. If retrieval is broken —
+        # sentence-transformers missing, the embedding model unavailable — this
+        # must fail loudly. Silently falling back to zero retrieved exemplars
+        # would turn DKB+Hybrid into DKB and quietly invalidate the comparison.
+        retrieved = _retrieve_top_k(nl_query, k=DKB_HYBRID_K)
 
         prompt = _build_dkb_prompt_core(nl_query, extra_examples=retrieved)
         try:

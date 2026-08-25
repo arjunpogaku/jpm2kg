@@ -1,0 +1,5 @@
+model,both_correct,hybrid_only,dkb_only,delta_rmem,exact_p_two_sided
+L3B,1,2,0,+0.0133,0.5000
+G9B,4,10,0,+0.0667,0.0020
+QC32B,15,31,11,+0.1333,0.0029
+Q72B,2,26,13,+0.0867,0.0533

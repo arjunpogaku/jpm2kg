@@ -1,0 +1,104 @@
+{
+  "checks": [
+    {
+      "check": "neo4j reachable bolt://localhost:37689",
+      "pass": true,
+      "detail": "2026.02.2 (community)"
+    },
+    {
+      "check": "graph counts match audited snapshot",
+      "pass": true,
+      "detail": "nodes=142,300,976 rels=213,449,232 ObservedPM25=71,149,372"
+    },
+    {
+      "check": "ollama reachable :11434",
+      "pass": true,
+      "detail": "v0.32.1"
+    },
+    {
+      "check": "qwen2.5-coder:32b installed",
+      "pass": true,
+      "detail": "b92d6a0bd47ee79114298de0"
+    },
+    {
+      "check": "sentence-transformers importable",
+      "pass": true,
+      "detail": "5.1.1"
+    },
+    {
+      "check": "all-MiniLM-L6-v2 loads",
+      "pass": true,
+      "detail": "384-dim"
+    },
+    {
+      "check": "retrieval returns exactly k=1",
+      "pass": true,
+      "detail": "JP28"
+    },
+    {
+      "check": "retrieval returns exactly k=3",
+      "pass": true,
+      "detail": "JP28,JP06,JP05"
+    },
+    {
+      "check": "retrieval returns exactly k=5",
+      "pass": true,
+      "detail": "JP28,JP06,JP05,JP07,JP13"
+    },
+    {
+      "check": "retrieved exemplars present in prompt",
+      "pass": true,
+      "detail": "JP28,JP06,JP05"
+    }
+  ],
+  "all_passed": true,
+  "info": {
+    "neo4j_version": "2026.02.2 (community)",
+    "graph_counts": {
+      "nodes": 142300976,
+      "relationships": 213449232,
+      "ObservedPM25": 71149372
+    },
+    "ollama_version": "0.32.1",
+    "qwen_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+    "qwen_details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "32.8B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 5120
+    },
+    "qwen_size_bytes": 19851349898,
+    "python": "3.12.11",
+    "sentence_transformers": "5.1.1",
+    "transformers": "4.56.1",
+    "torch": "2.7.1+cu126",
+    "cuda_available": true,
+    "gpu": "NVIDIA RTX A6000",
+    "cuda_version": "12.6",
+    "benchmark_n": 150,
+    "sample_query": "Which general stations are in Yamaguchi Prefecture?",
+    "sample_retrieval": {
+      "1": [
+        "JP28"
+      ],
+      "3": [
+        "JP28",
+        "JP06",
+        "JP05"
+      ],
+      "5": [
+        "JP28",
+        "JP06",
+        "JP05",
+        "JP07",
+        "JP13"
+      ]
+    }
+  }
+}

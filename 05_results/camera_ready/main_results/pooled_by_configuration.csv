@@ -1,0 +1,8 @@
+prompting_configuration,n,vmf1_saved,vmf1_strict_reexecuted,vmf1_tolerant,vmf1_delta_tolerant_minus_strict,vmf1_exact1_saved,vmf1_exact1_strict,vmf1_exact1_tolerant,rmem_strict_correct,rmem_relaxed_only_correct,rmem_tolerant_correct,rmem_still_incorrect,rmem_strict_accuracy,rmem_tolerant_accuracy,rmem_absolute_difference,rmem_relative_difference,execution_failures,vmf1_1_but_rmem_0
+Baseline,600,0.0,0.0,0.0,0.0,0,0,0,0,0,0,600,0.0,0.0,0.0,,209,0
+DKB,600,0.3282,0.3356,0.3485,0.0129,46,46,46,46,0,46,554,0.0767,0.0767,0.0,0.0,183,0
+DKB+Hybrid,600,0.4161,0.4188,0.4259,0.0071,91,91,92,91,1,92,508,0.1517,0.1533,0.0017,0.011,160,0
+DKB-NoExamples,600,0.2149,0.2149,0.2454,0.0305,45,45,45,45,0,45,555,0.075,0.075,0.0,0.0,182,0
+Schema Baseline,600,0.001,0.001,0.0142,0.0132,0,0,1,0,1,1,599,0.0,0.0017,0.0017,,295,0
+Schema+Values,600,0.0703,0.0695,0.0734,0.0039,21,21,26,21,5,26,574,0.035,0.0433,0.0083,0.2381,304,0
+Text2Cypher-FT,150,0.0,0.0,0.0,0.0,0,0,0,0,0,0,150,0.0,0.0,0.0,,63,0

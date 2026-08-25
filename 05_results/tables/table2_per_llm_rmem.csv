@@ -1,0 +1,7 @@
+System,L3B,G9B,QC32B,Q72B
+Baseline,.000,.000,.000,.000
+Schema,.000,.000,.000,.000
+Schema+Values,.007,.020,.053,.060
+DKB-NoExamples,.007,.007,.160,.127
+DKB,.007,.027,.173,.100
+DKB+Hybrid,.020,.093,.307,.187

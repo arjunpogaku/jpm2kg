@@ -1,0 +1,5 @@
+metric,comparison,n_paired,both_correct,k3_only_correct,comparator_only_correct,both_wrong,k3_accuracy,comparator_accuracy,accuracy_difference_k3_minus_comparator,n_discordant,test,two_sided_exact_p
+RMEM_strict,k3_vs_k1,150,25,21,5,99,0.3067,0.2,0.1067,26,exact McNemar (two-sided exact binomial on discordant pairs),0.002494
+RMEM_strict,k3_vs_k5,150,29,17,1,103,0.3067,0.2,0.1067,18,exact McNemar (two-sided exact binomial on discordant pairs),0.000145
+RMEM_tolerant,k3_vs_k1,150,25,21,5,99,0.3067,0.2,0.1067,26,exact McNemar (two-sided exact binomial on discordant pairs),0.002494
+RMEM_tolerant,k3_vs_k5,150,29,17,1,103,0.3067,0.2,0.1067,18,exact McNemar (two-sided exact binomial on discordant pairs),0.000145

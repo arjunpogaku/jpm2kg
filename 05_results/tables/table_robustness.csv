@@ -1,0 +1,5 @@
+transition,evaluation,rmem_from,rmem_to,delta,ci95
+Schema+Values -> DKB-NoExamples,strict,.035,.075,+0.0400,"[+0.0150, +0.0650]"
+Schema+Values -> DKB-NoExamples,tolerant,.043,.075,+0.0317,"[+0.0067, +0.0583]"
+DKB -> DKB+Hybrid,strict,.077,.152,+0.0750,"[+0.0450, +0.1050]"
+DKB -> DKB+Hybrid,tolerant,.077,.153,+0.0767,"[+0.0467, +0.1083]"

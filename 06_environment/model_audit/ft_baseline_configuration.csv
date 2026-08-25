@@ -1,0 +1,18 @@
+field,value,source
+model identifier,neo4j/text2cypher-gemma-2-9b-it-finetuned-2024v1,"camera_ready_audit/upload_bundle/source_evidence/sota_ft_model.py:22,27-34 (_MODEL_REGISTRY, default ""gemma2-9b"")"
+runtime,HuggingFace Transformers (AutoModelForCausalLM) + bitsandbytes,camera_ready_audit/upload_bundle/source_evidence/sota_ft_model.py:53
+Transformers version,4.56.1 (pinned),04_pipeline/requirements.txt:10
+torch version,2.7.1 (pinned),04_pipeline/requirements.txt:11
+quantization type,BitsAndBytes load_in_4bit=True,camera_ready_audit/upload_bundle/source_evidence/sota_ft_model.py:55-56
+quantization bits,4,camera_ready_audit/upload_bundle/source_evidence/sota_ft_model.py:56
+quant format,nf4 (bnb_4bit_quant_type),camera_ready_audit/upload_bundle/source_evidence/sota_ft_model.py:57
+double quantization,True (bnb_4bit_use_double_quant),camera_ready_audit/upload_bundle/source_evidence/sota_ft_model.py:59
+compute dtype,torch.bfloat16,camera_ready_audit/upload_bundle/source_evidence/sota_ft_model.py:58
+do_sample,False,camera_ready_audit/upload_bundle/source_evidence/sota_ft_model.py:143
+max_new_tokens,256,camera_ready_audit/upload_bundle/source_evidence/sota_ft_model.py:114
+temperature,1.0 (inert: do_sample=False => greedy decoding),camera_ready_audit/upload_bundle/source_evidence/sota_ft_model.py:144
+seed,NOT EXPLICITLY SET,sota_ft_model.py (no set_seed / generator)
+device mapping,"device_map=""auto""",camera_ready_audit/upload_bundle/source_evidence/sota_ft_model.py:68
+records in JSONL,"150 (system=text2cypher_ft, llm=text2cypher-gemma2-9b)",results_full.jsonl
+median generation time (s),16.011,results_full.jsonl
+p95 generation time (s),39.369,results_full.jsonl

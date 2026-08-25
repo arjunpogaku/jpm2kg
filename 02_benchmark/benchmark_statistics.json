@@ -1,29 +1,46 @@
 {
   "benchmark_name": "AirCypher-150",
+  "description": "Graph-grounded, execution-validated NL-to-Cypher benchmark over JPM2KG.",
+  "construction": [
+    "human-designed query forms",
+    "instantiated with values extracted from JPM2KG",
+    "reference Cypher executed against the live graph",
+    "only successful, non-empty candidates retained"
+  ],
   "total_queries": 150,
   "categories": {
     "Aggregate": 38,
-    "Station Filtering": 30,
     "Temporal": 30,
     "Health Risk": 30,
+    "Station Filtering": 30,
     "Comparative": 22
+  },
+  "intents": {
+    "health_risk": 52,
+    "aggregate": 38,
+    "temporal": 30,
+    "comparative": 22,
+    "station_monitoring": 8
   },
   "complexity": {
     "simple": 8,
     "medium": 69,
     "complex": 73
   },
-  "logical_forms": 13,
+  "complexity_note": "Complexity labels are assigned per query form at instantiation; they are declared, not measured.",
   "prefectures_covered": 43,
-  "execution_stats": {
-    "min_execution_time_s": 0.2,
-    "max_execution_time_s": 9.6,
-    "mean_execution_time_s": 2.03,
-    "median_execution_time_s": 1.43
-  },
   "validation": {
     "all_queries_execute": true,
     "all_results_non_empty": true,
-    "all_values_verified_in_graph": true
-  }
+    "all_values_verified_in_graph": true,
+    "validation_note": "Validation is execution-based: every reference query was run against the live JPM2KG graph and retained only if it executed successfully and returned at least one row. All instantiated values are drawn from the graph."
+  },
+  "disjointness_from_dkb_exemplars": {
+    "dkb_exemplar_pairs": 28,
+    "identical_nl_questions": 0,
+    "identical_cypher_queries": 0,
+    "identical_normalized_query_structures": 0,
+    "note": "Normalized structure compares Cypher with string literals and numeric constants masked and whitespace collapsed."
+  },
+  "query_id_note": "Query IDs run q001..q198 with gaps: they were assigned over a larger validated candidate pool before the 150 released items were selected. Do not assume contiguous q001..q150."
 }
