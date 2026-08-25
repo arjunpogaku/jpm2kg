@@ -1,0 +1,102 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, benchmark, or data, please cite both the
+  conference paper (preferred-citation) and this repository.
+title: >-
+  Structured Domain Grounding for Natural-Language Querying of Japan's
+  Large-Scale PM2.5 Knowledge Graph — Reproducibility Artifact
+abstract: >-
+  Camera-ready reproducibility artifact for the BDA 2026 paper. Contains the
+  AirCypher-150 execution-validated NL-to-Cypher benchmark (150 items), the
+  Domain Knowledge Base (DKB) for JPM2KG, the evaluation pipeline for six
+  prompting configurations across four open-source LLMs and a fine-tuned
+  Text2Cypher baseline, all 3,750 raw generation records, and the
+  camera-ready result tables and statistics.
+type: dataset
+authors:
+  - family-names: Pogaku
+    given-names: Arjun Chakravarthi
+    orcid: https://orcid.org/0000-0003-2680-6371
+    affiliation: The University of Aizu, Aizu-Wakamatsu, Fukushima, Japan
+    email: arjun.chakravarthip@gmail.com
+  - family-names: Rage
+    given-names: Uday Kiran
+    orcid: https://orcid.org/0000-0002-5417-0289
+    affiliation: The University of Aizu, Aizu-Wakamatsu, Fukushima, Japan
+  - family-names: Selvaraj
+    given-names: Padma
+    orcid: https://orcid.org/0000-0002-2845-1714
+    affiliation: >-
+      Department of CSE (Artificial Intelligence and Machine Learning),
+      Madanapalle Institute of Technology & Science (MITS), Deemed to be
+      University, Madanapalle, Andhra Pradesh, India
+  - family-names: Pera
+    given-names: Naveen Kumar
+    orcid: https://orcid.org/0000-0002-6873-7848
+    affiliation: >-
+      Department of Hospital Administration, Kasturba Medical College,
+      Manipal, Manipal Academy of Higher Education, Manipal, Karnataka, India
+repository-code: https://github.com/arjunpogaku/jpm2kg
+license:
+  - MIT
+  - CC-BY-4.0
+date-released: '2026-08-25'
+keywords:
+  - natural language to Cypher
+  - knowledge graphs
+  - large language models
+  - retrieval-augmented generation
+  - domain knowledge base
+  - environmental monitoring
+  - PM2.5
+  - air quality
+  - Neo4j
+  - reproducibility
+
+preferred-citation:
+  type: conference-paper
+  title: >-
+    Structured Domain Grounding for Natural-Language Querying of Japan's
+    Large-Scale PM2.5 Knowledge Graph
+  authors:
+    - family-names: Pogaku
+      given-names: Arjun Chakravarthi
+      orcid: https://orcid.org/0000-0003-2680-6371
+      affiliation: The University of Aizu, Aizu-Wakamatsu, Fukushima, Japan
+    - family-names: Rage
+      given-names: Uday Kiran
+      orcid: https://orcid.org/0000-0002-5417-0289
+      affiliation: The University of Aizu, Aizu-Wakamatsu, Fukushima, Japan
+    - family-names: Selvaraj
+      given-names: Padma
+      orcid: https://orcid.org/0000-0002-2845-1714
+    - family-names: Pera
+      given-names: Naveen Kumar
+      orcid: https://orcid.org/0000-0002-6873-7848
+  collection-title: Big Data Analytics — BDA 2026
+  collection-type: proceedings
+  conference:
+    name: 14th International Conference on Big Data Analytics (BDA 2026)
+  publisher:
+    name: Springer
+  year: 2026
+
+references:
+  - type: article
+    title: >-
+      Patterns Discovery Dataset for Particulate Matter (PM2.5) Pollution
+      Trends in Japan
+    authors:
+      - family-names: Rage
+        given-names: Uday Kiran
+      - family-names: Kattumuri
+        given-names: Vanitha
+      - family-names: Pogaku
+        given-names: Arjun Chakravarthi
+    journal: Scientific Data
+    volume: 12
+    start: 1009
+    year: 2025
+    doi: 10.1038/s41597-025-05195-2
+    notes: >-
+      Documents the PM2.5 data collection procedure underlying JPM2KG.

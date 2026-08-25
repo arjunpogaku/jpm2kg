@@ -54,6 +54,9 @@ See `05_results/`.
 ```
 .
 ├── README.md
+├── LICENSE                           MIT — applies to the code
+├── LICENSE-DATA                      CC BY 4.0 — applies to the data and results
+├── CITATION.cff                      machine-readable citation metadata
 ├── DATASET_ACCESS.md                 dataset and graph download instructions
 ├── RELEASE_NOTES_BDA2026_CAMERA_READY.md
 ├── 01_knowledge_graph/
@@ -212,6 +215,9 @@ both.
 
 ## Citation
 
+Machine-readable metadata is in `CITATION.cff`; GitHub's “Cite this repository”
+button reads it directly.
+
 ```bibtex
 @inproceedings{pogaku2026domaingrounding,
   author    = {Pogaku, Arjun Chakravarthi and Rage, Uday Kiran and
@@ -241,3 +247,17 @@ Please also cite the data collection procedure:
   doi     = {10.1038/s41597-025-05195-2}
 }
 ```
+
+## License
+
+This repository is dual-licensed, which is standard for a reproducibility
+artifact that ships both software and data.
+
+| Part | License | File |
+|---|---|---|
+| **Code** — `04_pipeline/`, `05_results/camera_ready/k_sensitivity/code/` | MIT | `LICENSE` |
+| **Data and results** — the AirCypher-150 benchmark, the Domain Knowledge Base, the graph schema and statistics, `05_results/raw/results_full.jsonl`, and all result tables | CC BY 4.0 | `LICENSE-DATA` |
+
+Reuse of the data requires attribution: cite the paper (see Citation above).
+The `jpm2kg.dump` graph file is distributed separately and is not covered by
+this repository's licenses; see `DATASET_ACCESS.md`.
