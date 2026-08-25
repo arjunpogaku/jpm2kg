@@ -1,7 +1,0 @@
-system,SE,delta_SE
-Baseline,0.000,—
-Schema Baseline,0.004,+0.004
-Schema+Values,0.094,+0.090
-DKB-NoExamples,0.495,+0.401
-DKB,0.462,-0.033
-DKB+Hybrid,0.647,+0.185

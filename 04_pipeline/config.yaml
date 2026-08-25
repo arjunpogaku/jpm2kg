@@ -54,7 +54,7 @@ retrieval:
 
 dkb:
   filepath: 03_domain_knowledge_base/dkb_japan.json
-  archived_experimental_dkb: 03_domain_knowledge_base/archive/dkb_japan_bda2026_experimental.json
+  archived_experimental_dkb: 03_domain_knowledge_base/reproducibility/dkb_japan_bda2026_experimental.json
 
 benchmark:
   filepath: 02_benchmark/aircypher150_benchmark.json

@@ -5,7 +5,6 @@
 | `raw/` | `results_full.jsonl` — the 3,750 historical generation records, unmodified. |
 | `tables/` | The camera-ready paper tables, regenerable from `raw/` and `camera_ready/`. |
 | `camera_ready/` | Camera-ready analyses: main results, per-category results, validity-filter robustness, statistics, retrieval-k sensitivity. |
-| `archive_submission/` | Review-era tables, superseded. See `LEGACY_SUBMISSION_RESULTS.md`. |
 
 ## `raw/results_full.jsonl`
 

@@ -75,8 +75,8 @@ below include the six generations (0.16 %) that timed out.
 as observed wall-clock time; the retained records do not support an explanation.
 
 Total accumulated generation time across all 3,750 calls: 41,359 s ≈ 11.5 h.
-Full breakdowns, including per system and per model × system, are in
-`model_audit/`.
+Per-system and per-model × system breakdowns are derivable from the latency
+fields in `../05_results/raw/results_full.jsonl`.
 
 ## What was not recorded
 
@@ -95,8 +95,8 @@ as experimental parameters:
 - **Parameter counts.** The `3b` / `9b` / `32b` / `72b` figures come from the tag
   names.
 
-`model_audit/paper_ready_model_table_strict.csv` is the conservative table
-containing only historically established values.
+The model table in this document is the conservative one: it contains only
+historically established values.
 
 ## Software
 

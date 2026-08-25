@@ -18,9 +18,8 @@ unchanged and still stores VM-F1 under its legacy field name `SE`
 
 ## Main results — pooled across the four LLMs (N = 600 per configuration)
 
-Source: `main_results/pooled_by_configuration.csv` (VM-F1, RMEM) and
-`main_results/cv_es_vmf1_recomputed_all_scopes.csv` (CV, ES, scope
-`pooled_x_config`).
+Source: `main_results/pooled_by_configuration.csv` (VM-F1, RMEM). CV and ES are
+computed directly from the immutable `../raw/results_full.jsonl`.
 
 | System | CV | ES | VM-F1 | RMEM |
 |---|---|---|---|---|
@@ -61,7 +60,6 @@ Source: `main_results/by_model_and_configuration.csv`, column
 | `main_results/pooled_by_configuration.csv` | Per configuration: N, VM-F1 (saved / re-executed / tolerant), RMEM strict and tolerant counts and accuracies, execution failures. |
 | `main_results/by_model_and_configuration.csv` | The same, split by model. |
 | `main_results/vmf1_by_model_and_configuration.csv` | VM-F1 matrix: configuration × model, with macro and pooled means. |
-| `main_results/cv_es_vmf1_recomputed_all_scopes.csv` | CV, ES, EM, VM-F1 and the submission's RQ heuristic, at four scopes (pooled, per model, per category, per category × model). |
 
 `vmf1_saved` is the historical value read from the raw JSONL;
 `vmf1_strict_reexecuted` is the same metric recomputed by re-executing the stored

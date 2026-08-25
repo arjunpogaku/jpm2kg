@@ -68,7 +68,7 @@ See `05_results/`.
 ├── 03_domain_knowledge_base/
 │   ├── dkb_japan.json                the active public DKB
 │   ├── dkb_structure_explained.md
-│   └── archive/                      the exact DKB used for the reported runs
+│   └── reproducibility/              the exact DKB used for the reported runs
 ├── 04_pipeline/
 │   ├── README.md
 │   ├── METRICS.md                    metric definitions — read this first
@@ -78,20 +78,17 @@ See `05_results/`.
 │   ├── camera_ready_evaluator.py     VM-F1 + RMEM, strict and tolerant
 │   ├── experiment_runner.py
 │   ├── generate_camera_ready_tables.py
-│   ├── config.yaml, .env.example, requirements.txt
-│   └── archive_submission/           the submitted pipeline, unmodified
+│   └── config.yaml, .env.example, requirements.txt
 ├── 05_results/
 │   ├── README.md
 │   ├── raw/results_full.jsonl        3,750 immutable generation records
 │   ├── tables/                       the camera-ready paper tables
-│   ├── camera_ready/                 main, category, robustness, statistics, k-sensitivity
-│   └── archive_submission/           review-era tables (superseded)
+│   └── camera_ready/                 main, category, robustness, statistics, k-sensitivity
 └── 06_environment/
     ├── README.md
     ├── models_and_generation.md      models, generation settings, latency
     ├── docker_setup.md
-    ├── ollama_models.txt
-    └── model_audit/
+    └── ollama_models.txt
 ```
 
 ## Benchmark
@@ -208,11 +205,10 @@ collection procedure; it does not contain the extended JPM2KG dataset through
 ## Historical reproducibility
 
 The exact DKB used for the reported generations is preserved at
-`03_domain_knowledge_base/archive/dkb_japan_bda2026_experimental.json`. The active
+`03_domain_knowledge_base/reproducibility/dkb_japan_bda2026_experimental.json`. The active
 `dkb_japan.json` corrects the documentation of the graph's stored PM2.5 category
 bands; canonical values, query patterns and traversal policies are identical in
-both. The submitted pipeline sources are preserved unmodified in
-`04_pipeline/archive_submission/`.
+both.
 
 ## Citation
 

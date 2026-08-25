@@ -14,7 +14,6 @@
 | `config.yaml` | Model, retrieval, path and system settings. No credentials. |
 | `.env.example` | Environment variables to set. |
 | `requirements.txt` | Pinned dependencies. |
-| `archive_submission/` | Byte-identical copies of the submitted pipeline sources. |
 
 ## Setup
 
@@ -40,7 +39,7 @@ Anything that touches the graph needs a running JPM2KG instance; see
 
 ## Differences from the submitted code
 
-The active files differ from `archive_submission/` only in the following ways.
+The active files differ from the originally submitted sources only in the following ways.
 **No metric definition, prompt text or generation setting was changed.**
 
 1. **No credentials in the repository.** `NEO4J_PASSWORD` is read from the

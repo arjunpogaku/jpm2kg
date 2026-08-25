@@ -7,9 +7,9 @@ exemplars in DKB+Hybrid.
 k ∈ {1, 3, 5}. The prompt always carries **8 exemplars in total**: k retrieved
 plus the fixed head of the exemplar pool, truncated to 8. So k = 1 gives 1
 retrieved + 7 fixed, k = 3 gives 3 + 5, and k = 5 gives 5 + 3. Only the retrieved
-share changes; prompt length and structure do not. `prompt_equivalence.md` and
-`prompt_equivalence.csv` verify this per question, and
-`environment_verification.md` records the graph, Ollama and embedding-model
+share changes; prompt length and structure do not.
+`results/prompt_equivalence.csv` verifies this per question, and
+`results/env_verification.json` records the graph, Ollama and embedding-model
 checks that were run before generation.
 
 ## Results
@@ -48,7 +48,6 @@ Source: `results/k_sensitivity_summary.csv`, rows with `category = ALL`.
 | `results/retrieval_sets.json` | Which exemplars were retrieved for each question at each k. |
 | `results/env_verification.json` | Machine-readable environment verification. |
 | `results/prompt_equivalence.csv` | Per-question prompt structure comparison across k. |
-| `environment_verification.md`, `prompt_equivalence.md`, `retrieval_diagnostics.md`, `decision_report.md` | The corresponding reports. |
 | `code/` | The scripts that produced the above. |
 
 ## Running the code

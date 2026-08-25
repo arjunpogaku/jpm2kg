@@ -42,5 +42,5 @@ establish anything.
 
 The review-era package reported Wilcoxon signed-rank tests over per-query SE
 scores with Stouffer's method combining p-values across models. Those outputs are
-kept for provenance in `../../archive_submission/` and are **not** the
-camera-ready inference. No p-value combination is used here.
+superseded and are **not** the camera-ready inference. No p-value combination is
+used here.

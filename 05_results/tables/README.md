@@ -23,6 +23,5 @@ exits non-zero on any mismatch.
 CV and ES are computed directly from the immutable `../raw/results_full.jsonl`.
 VM-F1, RMEM and the statistics are read from `../camera_ready/`.
 
-The review-era tables, which used the legacy metric name `SE` and Stouffer-combined
-p-values, are in `../archive_submission/tables/`. See
-`../archive_submission/LEGACY_SUBMISSION_RESULTS.md`.
+The review-era tables, which used the legacy metric name `SE` and
+Stouffer-combined p-values, are superseded and are not part of this release.

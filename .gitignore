@@ -1,10 +1,15 @@
+# Private local archive (historical / reviewer-era / internal audit material)
+/archive/
+
 # Neo4j database dump — too large for Git (~6.1 GB)
 # Distribute separately; see DATASET_ACCESS.md and
 # 01_knowledge_graph/neo4j_backup/README_BACKUP.md
 01_knowledge_graph/neo4j_backup/jpm2kg.dump
 
-# Local credentials — never commit
+# Secrets
 .env
+.env.*
+!.env.example
 04_pipeline/.env
 
 # Execution caches produced by camera_ready_evaluator.py
@@ -12,11 +17,58 @@
 05_results/camera_ready/recomputed/
 05_results/checkpoints/
 
-# Python cache
+# Python
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
 
-# OS files
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
 Thumbs.db
+
+# Logs / temporary
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+*.cache
+
+# Large local databases / graph artifacts
+*.dump
+*.backup
+*.sqlite
+*.sqlite3
+
+# Model files / caches
+*.safetensors
+*.gguf
+*.pt
+*.pth
+*.ckpt
+models/
+model_cache/
+
+# Large source datasets
+data/
+datasets/
+raw_data/
+downloads/
+
+# Locally generated packages
+*.tar.gz
+*.tgz
+*.zip

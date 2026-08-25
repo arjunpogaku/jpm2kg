@@ -35,9 +35,9 @@ The camera-ready inference is **per-model exact McNemar tests on RMEM** plus a
 The four per-model p-values are reported separately and are **not** combined,
 because the four models answer the same questions.
 
-The review-era Wilcoxon and Stouffer-combined outputs are moved to
-`05_results/archive_submission/` and are no longer presented as active results.
-See `05_results/archive_submission/LEGACY_SUBMISSION_RESULTS.md`.
+The review-era Wilcoxon and Stouffer-combined outputs are retained by the
+authors but are not part of this release and are no longer presented as
+active results.
 
 ## Documentation and metadata corrections
 
@@ -87,9 +87,8 @@ See `05_results/archive_submission/LEGACY_SUBMISSION_RESULTS.md`.
 - `05_results/raw/results_full.jsonl` — all 3,750 historical generations,
   checksum-identical to the reviewer package.
 - `02_benchmark/aircypher150_benchmark.json` — the benchmark items.
-- `03_domain_knowledge_base/archive/dkb_japan_bda2026_experimental.json` — the
+- `03_domain_knowledge_base/reproducibility/dkb_japan_bda2026_experimental.json` — the
   exact DKB used for the reported generations.
-- `04_pipeline/archive_submission/` — the submitted pipeline sources, unmodified.
 
 No LLM generation was rerun and no historical score was rewritten for this
 release.

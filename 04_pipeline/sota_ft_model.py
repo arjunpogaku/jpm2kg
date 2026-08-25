@@ -12,7 +12,7 @@ and are not shipped in this repository. Set `HF_TOKEN` if your environment
 requires an authenticated download. A GPU is required in practice.
 
 The exact submitted copy is preserved unchanged at
-`archive_submission/sota_ft_model_bda2026_submission.py`; this file differs from
+the originally submitted `sota_ft_model.py`; this file differs from
 it only in this docstring.
 
 Supports multiple models selectable via FT_MODEL_NAME env var:

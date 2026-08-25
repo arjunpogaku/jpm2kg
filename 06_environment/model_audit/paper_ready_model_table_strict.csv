@@ -1,6 +1,0 @@
-Model,Runtime,Parameters,Quantization,Temperature,Context,Max output,Historical median generation time (s),Historical p95 generation time (s)
-llama3.2:3b,Ollama,not recorded,not recorded,0.0,8192 (num_ctx),512 (num_predict),5.08,10.77
-gemma2:9b,Ollama,not recorded,not recorded,0.0,8192 (num_ctx),512 (num_predict),7.41,13.12
-qwen2.5-coder:32b,Ollama,not recorded,not recorded,0.0,8192 (num_ctx),512 (num_predict),12.87,27.17
-qwen2.5:72b,Ollama,not recorded,not recorded,0.0,8192 (num_ctx),512 (num_predict),11.15,25.85
-neo4j/text2cypher-gemma-2-9b-it-finetuned-2024v1,HuggingFace Transformers,not recorded,"4-bit NF4, double quant, bfloat16 compute",n/a (do_sample=False),not recorded,256 (max_new_tokens),16.01,39.37
