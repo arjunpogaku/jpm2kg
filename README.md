@@ -215,9 +215,6 @@ both.
 
 ## Citation
 
-Machine-readable metadata is in `CITATION.cff`; GitHub's “Cite this repository”
-button reads it directly.
-
 ```bibtex
 @inproceedings{pogaku2026domaingrounding,
   author    = {Pogaku, Arjun Chakravarthi and Rage, Uday Kiran and
